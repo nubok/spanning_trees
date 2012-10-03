@@ -1,0 +1,16 @@
+*.tex~
+
+# Latex files
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.pdf
+*.toc
+*.synctex.gz
+
+# Latex when using beamer template
+*.nav
+*.snm
+*.out
