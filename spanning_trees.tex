@@ -2232,74 +2232,11 @@ bilden erweiterte Formulierungen des Branching-Polytops $P^{\vec{K}_n, branch}$.
 
 \part{Eigenschaften der erweiterten Formulierungen}
 
-\chapter{Der Zusammenhang zwischen den erweiterten Formulierungen}
-
-\section{Der Zusammenhang zwischen $P^{K_n, spt, symm, 0}$ und $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$}
-
-\begin{Le}
-Für  $n\geq 3$ ist
-\begin{displaymath}
-P^{K_n, spt, symm, 0} \subset P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}
-\end{displaymath}
-(für $n\leq 2$ gilt Gleichheit).
-\end{Le}
-\begin{bew}
-Dass für $n\leq 2$ Gleichheit gilt, ist trivial nachzurechnen.
-
-Es ist offensichtlich, dass $P^{K_n, spt, symm, 0} \subseteq P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ erfüllt ist. Daher ist nur zu zeigen, dass die Inklusion für $n\geq 3$ echt ist.
-
-Dies folgt direkt aus Satz \ref{sa:dimension_formulierungen} wegen
-\begin{eqnarray*}
-\dim P^{K_n, spt, symm, 0} & = & \frac{\left(n-1\right)^2 \left(n-2\right)}{2} \\
-& < & \frac{n \left(n-1\right)\left(n-2\right)}{2} \\
-& = & \dim P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}.
-\end{eqnarray*}
-
-Wir wollen jedoch direkt einen Punkt angeben, welcher in $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$, nicht jedoch in $P^{K_n, spt, symm, 0}$ liegt:
-
-Setze
-\begin{eqnarray*}
-x_e & = & \frac{2}{n}\ \forall e\in {\left[n\right] \choose 2} \\
-z_{\left(v, w\right), u} & = & \begin{cases}
-\frac{2}{n} & \textnormal{für }\left(v, w, u\right)\in \left\{\left(1, 2, 3\right), \left(2, 3, 1\right), \left(3, 1, 2\right)\right\} \\
-0 & \textnormal{für }\left(v, w, u\right)\in \left\{\left(3, 2, 1\right), \left(1, 3, 2\right), \left(2, 1, 3\right)\right\} \\
-\frac{1}{n} & \textnormal{sonst}
-\end{cases}
-\end{eqnarray*}
-
-Offenbar gilt:
-
-\begin{eqnarray*}
-x_{\left\{1, 2\right\}} + \sum_{u\in \left[n\right]\backslash \left\{1, 2\right\}} z_{\left(1, u\right), 2} & = & \frac{2}{n} + \underbrace{z_{\left(1, 3\right), 2}}_{= 0}+\left(n-3\right)\frac{1}{n} \\
-& = & \frac{n-1}{n} \\
-& \neq & 1,
-\end{eqnarray*}
-also ist $\left(
-\begin{array}{c}
-x \\
-z
-\end{array}
-\right) \notin P^{K_n, spt, symm, 0}$.
-
-Auf der anderen Seite haben wir:
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n \\
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) & = & 2\ \forall \left\{v, w\right\}\in {[n] \choose 2} \\
-z_{\left(v, w\right), u} & \geq & 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}},
-\end{eqnarray*}
-weswegen $\left(
-\begin{array}{c}
-x \\
-z
-\end{array}
-\right) \in P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ ist.
-\end{bew}
-
-\section{Der Zusammenhang zwischen $P^{K_n, spt, symm, 0}$ und $P^{K_n, spt, asymm, 4}$}
+\chapter{Der Zusammenhang zwischen $P^{K_n, spt, symm, 0}$ und $P^{K_n, spt, asymm, 4}$}
 
 Nun wollen anschauen, ob für $P^{K_n, spt, asymm, 4}$ die Aussage
 \begin{equation}
-\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2<3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 4}? \label{eq:proj_asymm4}
+\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2<3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 4} \label{eq:proj_asymm4}
 \end{equation}
 erfüllt ist.
 
@@ -2377,141 +2314,11 @@ Für $n\leq 3$ ist jedoch
 erfüllt.
 \end{Kor}
 
-\chapter{Die Notwendigkeit der Nichtnegativitätsbedingungen}
+\chapter{Die Notwendigkeit der Nichtnegativitätsbedingungen von $P^{K_n, spt, symm, xy}$}
 
-In diesem Kapitel soll es um die Frage gehen: sind Nichtnegativitätsbedingungen der erweiterten Formulierungen des Spannbaum-Polytops in dem Sinne irredundant, dass, wenn man sie weglässt, das Ergebnis keine erweiterte Formulierung des Spannbaum-Polytops mehr darstellt?
+In diesem Kapitel soll es um die Frage gehen: sind Nichtnegativitätsbedingungen von $P^{K_n, spt, symm, xy}$ in dem Sinne irredundant, dass, wenn man sie weglässt, das Ergebnis keine erweiterte Formulierung des Spannbaum-Polytops mehr darstellt?
 
-Für einige der vorgestellten erweiterten Formulierungen wollen wir in diesem Kapitel die Frage beantworten.
-
-\section{Die Nichtnegativitätsbedingungen für $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$}
-
-\begin{Sa}
-Wenn man in $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ nur eine einzige der $z_{\left(v,w\right), u} \geq 0$-Bedingungen weglässt, so ist das resultierende Polyeder keine erweiterte Formulierung des Spannbaum-Poly\-tops mehr.
-\end{Sa}
-\begin{bew}
-Zugunsten einer besseren Lesbarkeit des Beweises (Vermeidung indizierter Indizes) werden wir anstelle des allgemeinen Falls das Resultat nur für die Ungleichung $z_{\left(n, n-1\right), n-2} \geq 0$ zeigen. Der allgemeine Fall folgt aufgrund der Symmetrie von $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$. Offensichtlich ist es nur sinnvoll, $n\geq 3$ zu betrachten, da es für $n\leq 2$ keine $z$-Variablen gibt.
-
-Nehmen wir an, die Ungleichung  $z_{\left(n, n-1\right), n-2} \geq 0$ würde \emph{nicht} gelten.
-
-\paragraph{Fall 1: $n=3$}
-
-Setze
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & = & \begin{cases}
-2 & \left\{v, w\right\} = \left\{1, 3\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & = & \begin{cases}
-2 & \left(v, w, u\right) \in \left\{\left(2, 3, 1\right), \left(3, 1, 2\right)\right\} \\
--2 & \left(v, w, u\right) = \left(3, 2, 1\right) \\
-0 & \textnormal{sonst}.
-\end{cases}
-\end{eqnarray*}
-
-Hier rechnet man einfach nach, dass alle Gleichungen und Ungleichungen erfüllt sind.
-
-\paragraph{Fall 2: $n\geq 4$}
-
-Setze (mit $\left\{v, w\right\} \in {\left[n\right] \choose 2}$ und $\left(v, w, u\right) \in \left[n\right]^{\underline{3}}$)
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & = & \begin{cases}
-1 & \left\{v, w\right\} = \left\{1, w\right\} \textnormal{ mit } w\notin \left\{n-2, n\right\} \\
-2 & \left\{v, w\right\} = \left\{n-2, n\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & = & \begin{cases}
-1 & \left(v, w, u\right) \in \left\{\left(1, n-1, n-2\right), \left(1, n-1, n\right)\right\} \\
-1 & w=1 \wedge v \leq n-3 \\
-1 & \left(v, w\right) = \left(n-2, n\right) \wedge u \neq n-1 \\
-1 & \left(v, w\right) = \left(n-1, 1\right) \wedge u \leq n-3 \\
-2 & \left(v, w, u\right) = \left(n-1, n, n-2\right) \\
-1 & \left(v, w\right) = \left(n, n-2\right), u \neq n-1 \\
-2 & \left(v, w, u\right) = \left(n, n-2, n-1\right) \\
--2 & \left(v, w, u\right) = \left(n, n-1, n-2\right) \\
-0 & \textnormal{sonst}.
-\end{cases}
-\end{eqnarray*}
-
-Zu Gleichung \eqref{eq:spt_erweitert_symm_prim_1}:
-\begin{displaymath}
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n.
-\end{displaymath}
-
-Sei $\left(\left\{v, w\right\}, u\right)\in EV_n$ und ohne Einschränkung $v<w$.
-
-\subparagraph{Fall 1: $\left(v, w\right) \in \left\{\left(1, n-2\right), \left(1, n\right)\right\}$} Dann gilt $x_{\left\{1, w\right\}} = z_{\left(1, w\right), u} = z_{\left(w, 1\right), u} = 0$.
-
-\subparagraph{Fall 2: $\left(v, w\right) = \left(1, n-1\right)$} Dann ist $x_{\left\{1, n-1\right\}} = 1$.
-
-Falls $u\in \left\{n-2, n\right\}$ ist, ist $z_{\left(1, n-1\right), u} = 1$ und $z_{\left(n-1, 1\right), u} = 0$.
-
-Im Falle von $u\notin \left\{n-2, n\right\}$ ist die Situation umgekehrt: wir haben  $z_{\left(1, n-1\right), u} = 0$ und $z_{\left(n-1, 1\right), u} = 1$.
-
-\subparagraph{Fall 3: $v=1 \wedge w\notin \left\{n-2, n-1, n\right\}$} Es ist $x_{\left\{1, w\right\}} = 1$, $z_{\left(1, w\right), u} = 0$ und $z_{\left(w, 1\right), u} = 1$.
-
-\subparagraph{Fall 4: $\left(v, w\right) = \left(n-2, n-1\right)$} Dann gilt $x_{\left\{n-2, n-1\right\}} = z_{\left(n-2, n-1\right), u} = z_{\left(n-1, n-2\right), u} = 0$.
-
-\subparagraph{Fall 5: $\left(v, w\right) = \left(n-2, n\right)$} Es ist $x_{\left\{n-2, n\right\}} = 2$. Falls $u\neq n-1$ ist, ist $z_{\left(n-2, n\right), u} = z_{\left(n, n-2\right), u} = 1$. Für $u=n-1$ hat man $z_{\left(n-2, n\right), n-1} = 0$ und $z_{\left(n, n-2\right), n-1} = 2$.
-
-\subparagraph{Fall 6: $v=n-1$} Dann ist wegen $v<w$ sicher $w=n$ und es gilt: $x_{\left\{n-1, n\right\}} = 0$.
-
-Falls $u=n-2$ ist, gilt: $z_{\left(n-1, n\right), n-2} = 2$ und $z_{\left(n, n-1\right), n-2} = -2$.
-
-Sonst ist $z_{\left(n-1, n\right), u} = z_{\left(n, n-1\right), u} = 0$.
-
-\subparagraph{Fall 7: $2 \leq v \leq n-3$} Dann haben wir $x_{\left\{v, w\right\}} = 0$ und wegen $v<w$ gilt sicher $w\geq 3$. Dann haben wir $z_{\left(v, w\right), u} = z_{\left(w, v\right), u} = 0$. \\
-
-Zu Gleichung \eqref{eq:spt_erweitert_symm_prim_2}:
-\begin{displaymath}
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) = 2\ \forall \left\{v, w\right\}\in {[n] \choose 2}.
-\end{displaymath}
-
-Sei $\left\{v, w\right\}\in {[n] \choose 2}$ und wieder ohne Einschränkung $v<w$.
-
-\subparagraph{Fall 1: $\left(v, w\right) \in \left\{\left(1, n-2\right), \left(1, n\right)\right\}$} Dann gilt $x_{\left\{1, w\right\}} = 0$; von den  $z_{\left(1, u\right), w}$ ist genau $z_{\left(1, n-1\right), w} = 1$ und von den $z_{\left(w, u\right), 1}$ ist bei $w=n-2$ genau $z_{\left(n-2, n\right), 1} = 1$ und bei $w=n$ genau $z_{\left(n, n-2\right), 1} = 1$ (alle anderen sind $0$).
-
-\subparagraph{Fall 2: $v=1 \wedge w \notin \left\{n-2, n\right\}$} Dann ist $x_{\left\{1, w\right\}} = 1$ und es gilt für alle $u\neq, 1, w$:  $z_{\left(1, u\right), w} = z_{\left(w, u\right), 1} = 0$.
-
-\subparagraph{Fall 3: $2 \leq v \leq n-3$} Es ist $x_{\left\{v, w\right\}} = 0$. Da nach Voraussetzung $v \leq n-3$ ist, gilt $z_{\left(v, 1\right), w} = 1$ und für $u\neq 1$ ist $z_{\left(v, u\right), w} = 0$.
-
-Falls $w \leq n-3$ ist, ist $z_{\left(w, 1\right), v} = 1$.
-
-Für $w = n-2$ gilt $z_{\left(n-2, n\right), v} = 1$.
-
-Im Falle von $w = n-1$ ist $z_{\left(n-1, 1\right), v} = 1$.
-
-Wenn $w = n$ ist, haben wir $z_{\left(n, n-2\right), v} = 1$.
-
-In jedem Fall gilt für alle sonstigen $u$: $z_{\left(w, u\right), v} = 0$.
-
-\subparagraph{Fall 4: $\left(v, w\right) = \left(n-2, n-1\right)$} Hier ist $x_{\left\{n-2, n-1\right\}} = 0$, $z_{\left(n-1, n\right), n-2} = 2$ und alle sonstigen $z_{\left(n-2, u\right), n-1}$ bzw. $z_{\left(n-1, u\right), n-2}$ sind $0$.
-
-\subparagraph{Fall 5: $\left(v, w\right) = \left(n-2, n\right)$} Hier ist $x_{\left\{n-2, n\right\}} = 2$, $z_{\left(n, n-1\right), n-2} = -2$ und alle sonstigen $z_{\left(n-2, u\right), n}$ bzw. $z_{\left(n, u\right), n-2}$ sind $0$.
-
-\subparagraph{Fall 6: $\left(v, w\right) = \left(n-1, n\right)$} Hier ist $x_{\left\{n-1, n\right\}} = 0$, $z_{\left(n, n-2\right), n-1} = 2$ und alle sonstigen $z_{\left(n-1, u\right), n}$ bzw. $z_{\left(n, u\right), n-1}$ sind $0$.
-\end{bew}
-
-\begin{Bem}
-Ein weiteres Gegenbeispiel speziell für $n=4$ ist
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & = & \begin{cases}
-\frac{1}{2} & \left\{v, w\right\} = \left\{1, 3\right\} \\
-1 & \left\{v, w\right\} = \left\{1, 4\right\} \\
-\frac{3}{2} & \left\{v, w\right\} = \left\{2, 4\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & = & \begin{cases}
-\frac{1}{2} & \left(v, w, u\right) \in \left\{\left(1, 3, 2\right), \left(3, 1, 4\right)\right\} \\
-1 & \left(v, w, u\right) \in \left\{\left(1, 4, 3\right), \left(4, 1, 2\right)\right\} \\
-\frac{3}{2} & \left(v, w, u\right) \in \left\{\left(2, 4, 1\right), \left(4, 2, 3\right)\right\} \\
-2 & \left(v, w, u\right) = \left(3, 4, 2\right) \\
--2 & \left(v, w, u\right) = \left(4, 3, 2\right) \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{eqnarray*}
-\end{Bem}
-
-\section{Die Nichtnegativitätsbedingungen für $P^{K_n, spt, symm, xy}$}
+Diese Frage wird in den folgenden beiden Sätzen beantwortet:
 
 \begin{Sa}
 Sämtliche $x_{\left\{v_1, v_2\right\}}\geq 0 \ \forall \left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}$-Bedingungen in der Beschreibung von $P^{K_n, spt, symm, xy}$ in Definition \ref{def:P_p^symm_xy} sind für $n\geq 4$ in dem Sinne tatsächlich erforderlich, dass ein Weglassen einer einzelnen dieser Nichtnegativitätsbedingungen dazu führt, dass keine erweiterte Formulierung des Spannbaum-Polytops mehr vorliegt.
@@ -4657,86 +4464,6 @@ v\right)} \\
 was die zu zeigende notwendige Bedingung darstellt.
 \end{bew}
 
-\subsection{Untersuchung von $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$}
-
-Es sei daran erinnert (vgl. Satz \ref{sa:spt_erw_symmetrisch}), dass
-\begin{eqnarray*}
-P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}} & := & \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n\ \left(q_{\left\{v, w\right\}, u}\right) \\
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) & = & 2\ \forall \left\{v, w\right\}\in {[n] \choose 2} \ \left(r_{\left\{v, w\right\}}\right) \\
-z_{\left(v, w\right), u} & \geq & \left.0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}} \right\}
-\end{eqnarray*}
-ist.
-
-Somit ist das homogene lineare Gleichungssystem
-\begin{eqnarray*}
-\sum_{u\in[n]\backslash\left\{v, w\right\}} q_{\left\{v, w\right\}, u} + 2 r_{\left\{v, w\right\}} & = & 0 \ \forall \left\{v, w\right\}\in {[n] \choose 2}\ \left(x_{\left\{v, w\right\}}\right) \\
--q_{\left\{v, w\right\}, u} + r_{\left\{v, u\right\}} & = & 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}}\ \left(z_{\left(v, w\right), u}\right)
-\end{eqnarray*}
-zu analysieren.
-
-\begin{Le}
-\label{le:kern_symm_vereinfacht}
-Betrachte das homogene lineare Gleichungssystem
-\begin{eqnarray}
--q_{\left\{v, w\right\}, u} + r_{\left\{v, u\right\}} & = & 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}}  \label{eq:le_kern_symm_vereinfacht}
-\end{eqnarray}
-mit
-\begin{displaymath}
-\left(\begin{array}{c}
-q \\
-r
-\end{array}\right) \in \mathbb{R}^{EV_n}\times \mathbb{R}^{[n]^{\underline{2}}}.
-\end{displaymath}
-
-Jede Lösung dieses homogenen linearen Gleichungssystems lässt sich folgendermaßen darstellen:
-
-Sei $\lambda\in\mathbb{R}$ vorgegeben. Setze
-\begin{eqnarray*}
-r_{\left\{i, j\right\}} & := & \lambda\ \forall \left\{i, j\right\}\in\left[n\right]^2 \\
-q_{\left\{i, j\right\}, k} & := & \lambda\ \forall \left(\left\{i, j\right\}, k\right)\in EV_n.
-\end{eqnarray*}
-\end{Le}
-\begin{bew}
-Zuerst zeigen wir, dass $r_{\left\{v, w\right\}} = r_{\left\{v', w'\right\}}$ für $\left\{v, w\right\} \neq \left\{v', w'\right\}$ ist.
-
-Sei ohne Einschränkung $w\neq w'$.
-
-\begin{eqnarray*}
-r_{\left\{v, w\right\}} & = & q_{\left\{v, w'\right\}, w} \\
-& = & r_{\left\{w, w'\right\}} \\
-& = & q_{\left\{v', w\right\}, w'} \\
-& = & r_{\left\{v', w'\right\}}
-\end{eqnarray*}
-
-Somit gilt (unter Beachtung von $-q_{\left\{v, w\right\}, u} + r_{\left\{v, u\right\}} = 0$) die Aussage.
-\end{bew}
-
-\begin{Kor}
-\label{kor:linearisiert_C_symm_vereinfacht}
-Betrachte das lineare Gleichungssystem
-\begin{eqnarray}
-\sum_{u\in[n]\backslash\left\{v, w\right\}} q_{\left\{v, w\right\}, u} + 2 r_{\left\{v, w\right\}} & = & 0 \ \forall \left\{v, w\right\}\in {[n] \choose 2} \label{kor:kern1_symm_vereinfacht} \\
--q_{\left\{v, w\right\}, u} + r_{\left\{v, u\right\}} & = & 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}} \nonumber
-\end{eqnarray}
-mit
-\begin{displaymath}
-\left(\begin{array}{c}
-q \\
-r
-\end{array}\right) \in \mathbb{R}^{EV_n}\times \mathbb{R}^{[n]^{\underline{2}}}.
-\end{displaymath}
-
-Dieses lineare Gleichungssystem hat als Lösung genau die Nulllösung.
-\end{Kor}
-\begin{bew}
-Die Eindeutigkeit folgt, indem wir die Lösung aus Lemma \ref{le:kern_symm_vereinfacht} in Gleichung \eqref{kor:kern1_symm_vereinfacht} einsetzen.
-\end{bew}
-
 \subsection{Untersuchung von $P^{K_n, spt, symm, xy}$}
 
 Wir wollen in Erinnerung rufen, dass gemäß Definition \ref{def:P_p^symm_xy} $P^{K_n, spt, symm, xy}$ folgendermaßen definiert wurde:
@@ -4886,7 +4613,6 @@ Nun nehmen wir alle Resultate zusammen und berechnen die Dimensionen der Polytop
 \label{sa:dimension_formulierungen}
 \begin{eqnarray*}
 \dim P^{K_n, spt, symm, 0} & = & \frac{\left(n-1\right)^2 \left(n-2\right)}{2} \\
-\dim P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}} & = & \frac{n \left(n-1\right)\left(n-2\right)}{2} \\
 \dim P^{K_n, spt, symm, xy} & = & \frac{n \left(n-1\right)\left(n-2\right)}{3} \\
 \dim P^{K_n, spt, asymm, 4} & = & \frac{\left(n+3\right)\left(n-1\right)\left(n-2\right)}{6}
 \end{eqnarray*}
@@ -4898,7 +4624,7 @@ Somit können wir die Sätze \ref{sa:dim1} und \ref{sa:dim2} anwenden.
 
 Für die Anzahl an Variablen erhalten wir ${n \choose 2} = \frac{n \left(n-1\right)}{2}$ $x$-Variablen und für die Anzahl zusätzlicher Variablen gilt:
 \begin{itemize}
-\item $n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, symm, 0}$ (bezüglich Beschreibung $\mathcal{I}^{n, symm, 0}_2$; vgl. Bemerkung \ref{bem:spt_erweitert_dual2}) und  $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ (vg. Bemerkung \ref{bem:spt_erw_symmetrisch})
+\item $n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, symm, 0}$ (bezüglich Beschreibung $\mathcal{I}^{n, symm, 0}_2$; vgl. Bemerkung \ref{bem:spt_erweitert_dual2})
 \item $\frac{1}{2} n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, symm, xy}$ (vgl. Bemerkung \ref{bem:gleichungen_Pxy})
 \item $\frac{1}{3} n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, asymm, 4}$ (vgl. Bemerkung \ref{bem:asymm_erw4_eigenschaften}).
 \end{itemize}
@@ -4906,7 +4632,6 @@ Für die Anzahl an Variablen erhalten wir ${n \choose 2} = \frac{n \left(n-1\rig
 Als Anzahl an Gleichungen haben wir
 \begin{itemize}
 \item $\frac{1}{2} n \left(n-1\right) \left(n-2\right) + n \left(n-1\right)$ für $P^{K_n, spt, symm, 0}$ (bezüglich Beschreibung $\mathcal{I}^{n, symm, 0}_2$; vgl. Bemerkung \ref{bem:spt_erweitert_dual2})
-\item $\frac{1}{2} n \left(n-1\right) \left(n-2\right) + \frac{1}{2} n \left(n-1\right)$ für $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ (vg. Bemerkung \ref{bem:spt_erw_symmetrisch})
 \item $\frac{1}{6} n \left(n-1\right) \left(n-2\right) + \frac{1}{2} n \left(n-1\right)$ für $P^{K_n, spt, symm, xy}$ (vgl. Bemerkung \ref{bem:gleichungen_Pxy})
 \item $\frac{1}{6} n \left(n-1\right) \left(n-2\right) + \left(n-1\right)$ für $P^{K_n, spt, asymm, 4}$ (vgl. Bemerkung \ref{bem:asymm_erw4_eigenschaften}).
 \end{itemize}
@@ -4914,7 +4639,7 @@ Als Anzahl an Gleichungen haben wir
 Für die Dimension des Kerns von $A^T$ (mit $A$ Matrix der Gleichungen) erhalten wir
 \begin{itemize}
 \item $n-1$ (vgl. Korollar \ref{kor:kern}) für $P^{K_n, spt, symm, 0}$ (bezüglich Beschreibung $\mathcal{I}^{n, symm, 0}_2$)
-\item $0$ für $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ (vgl.  Korollar \ref{kor:linearisiert_C_symm_vereinfacht}), $P^{K_n, spt, symm, xy}$ (vgl. Korollar \ref{kor:loesung_transponiert_nsymmxy}) und $P^{K_n, spt, asymm, 4}$ (vgl. Lemma \ref{le:linearisiert_asymm4_vereinfacht})
+\item $0$ für $P^{K_n, spt, symm, xy}$ (vgl. Korollar \ref{kor:loesung_transponiert_nsymmxy}) und $P^{K_n, spt, asymm, 4}$ (vgl. Lemma \ref{le:linearisiert_asymm4_vereinfacht})
 \end{itemize}
 
 Somit gilt: 
@@ -4922,12 +4647,6 @@ Somit gilt:
 \dim P^{K_n, spt, symm, 0} & = & \frac{n \left(n-1\right)}{2}+n \left(n-1\right)(n-2) \\
 & & -\left(\frac{n \left(n-1\right)\left(n-2\right)}{2}+n \left(n-1\right)\right)+\left(n-1\right) \\
 & = & \frac{\left(n-1\right)^2 \left(n-2\right)}{2}.
-\end{eqnarray*}
-
-Zu $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$:
-\begin{eqnarray*}
-\dim P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}} & = & \frac{n \left(n-1\right)}{2}+n \left(n-1\right)(n-2)  -\left(\frac{n \left(n-1\right)\left(n-2\right)}{2}+\frac{n \left(n-1\right)}{2}\right) \\
-& = & \frac{n \left(n-1\right)\left(n-2\right)}{2}.
 \end{eqnarray*}
 
 Für $P^{K_n, spt, symm, xy}$ ergibt sich
