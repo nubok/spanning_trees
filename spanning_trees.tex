@@ -1412,273 +1412,15 @@ Nun wollen wir noch für den Rest dieses Kapitel ein paar Symbole definieren:
 \begin{Def}
 Sei $S\subseteq \left[n\right]$. Dann definieren wir:
 \begin{eqnarray*}
-EV_n^{\not>} & := & \left\{\left(\left\{v, w\right\}, u\right) \in EV_n: \min\left(v, w\right) < u\right\}, \\
 EV_n^{<} & := & \left\{\left(\left\{v, w\right\}, u\right) \in EV_n: \max\left(v, w\right) < u\right\}, \\
 S^{\underline{3}^{1<3}} & := & \left\{\left(v, w, u\right) \in S^{\underline{3}}: v<u\right\} \\
-S^{\underline{3}^{2<3<1}} & := & \left\{\left(v, w, u\right) \in S^{\underline{3}}: w<u<v\right\} \\
-S^{\underline{3}^{1,2\not>3}} & := & \left\{\left(v, w, u\right) \in S^{\underline{3}}: \min\left(v, w\right) < u\right\} \\
-& = & S^{\underline{3}^{1<3}} \cupdot S^{\underline{3}^{2<3<1}} \\
 S^{\underline{3}^{1,2<3}} & := & \left\{\left(v, w, u\right) \in S^{\underline{3}}: \max\left(v, w\right) < u\right\}.
 \end{eqnarray*}
 \end{Def}
 
-\section{Elimination von Gleichungen ($P^{K_n, spt, asymm, 1}$)}
+\section{Elimination von Variablen und Gleichungen ($P^{K_n, spt, asymm, 3}$ und $P^{K_n, spt, asymm, 4}$)}
 
-\label{sec:asymm_bew}
-
-In Computerexperimenten haben wir zu dem linearen Optimierungsproblem, für vorgegebene Kantengewichte unter Nutzung von $P^{K_n, spt, symm, 0}$ einen optimalen aufspannenden Baum zu berechnen, Lösungen für das dazu duale Optimierungsproblem berechnen lassen.
-
-Hierbei fiel uns auf, dass überraschend viele Dualvariablen auf 0 gesetzt wurden. Dies lässt vermuten, dass zahlreiche Restriktionen in $P^{K_n, spt, symm, 0}$ überflüssig sind (in dem Sinne, dass man sie einfach weglassen kann und nicht wie in Kapitel \ref{chap:neu_symm}, wo wir durch Aufsummieren der Gleichungen bzw. Ungleichungen schwächere, aber für die Eigenschaft einer erweiterten Formulierung ausreichende, Restriktionen hergeleitet haben).
-
-In der Tat werden wir nun zeigen, dass ein Polytop, das wir mit $P^{K_n, spt, asymm, 1}$ bezeichnen und die durch das Weglassen von Gleichungen aus $P^{K_n, spt, symm, 0}$ entstanden ist (einzige Ausnahme: wir fügen die zusätzliche Ungleichung $x_{\left\{n-1, n\right\}} \geq 0$ ein -- in Lemma \ref{le:xn-1, ngeq0} werden wir zeigen, dass dies für $n \geq 4$ tatsächlich erforderlich ist), tatsächlich eine Erweiterung (und somit seine Gleichungs-/Ungleichungsbeschreibung eine erweiterte Formulierung) des Spannbaum-Polytops bildet.
-
-Um dies zu zeigen, werden wir die Gleichungen und Ungleichungen auf eine alternative Art aufsummieren.
-
-\begin{Sa}
-\label{sa:spt_erw_asymmetrisch}
-\begin{align}
-P^{K_n, spt, asymm, 1} & := \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in \mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^{\not>} \label{eq:spt_erweitert_asymm_prim_1} \\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = 1\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^< \label{eq:spt_erweitert_asymm_prim_2} \\
-x_{\left\{n-1, n\right\}} & \geq 0 \label{eq:spt_erweitert_asymm_x_n-1n} \\
-z_{\left(v, w\right), u} & \left. \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}} \right\} \label{eq:spt_erweitert_asymm_z}
-\end{align}
-bildet eine asymmetrische erweiterte Formulierung des Spannbaum-Polytops.
-\end{Sa}
-
-Bevor wir diese Aussage beweisen, bringen wir noch eine Bemerkung über die Anzahl an Gleichungen und Ungleichungen:
-\begin{Bem}
-\label{bem:gleichungen_asymm}
-In der vorliegenden Formulierung wird $P^{K_n, spt, asymm, 1}$ durch
-\begin{itemize}
-\item $\frac{1}{3} n \left(n-1\right) \left(n-2\right)$ Gleichungen \eqref{eq:spt_erweitert_asymm_prim_1}
-\item $\frac{1}{2} n \left(n-1\right)$ Gleichungen \eqref{eq:spt_erweitert_asymm_prim_2}
-\item  $1$ Nichtnegativitätsbedingung für $x_{\left\{n-1, n\right\}}$ \eqref{eq:spt_erweitert_asymm_x_n-1n}
-\item $\frac{2}{3} n \left(n-1\right) \left(n-2\right)$ Nichtnegativitätsbedingungen für $z$-Komponenten \eqref{eq:spt_erweitert_asymm_z}
-\end{itemize}
-in 
-\begin{itemize}
-\item $\frac{1}{2} n \left(n-1\right)$ $x$-Variablen
-\item $\frac{2}{3} n \left(n-1\right) \left(n-2\right)$ $z$-Variablen
-\end{itemize}
-beschrieben.
-\end{Bem}
-\begin{bew}
-Um die Anzahl Gleichungen \eqref{eq:spt_erweitert_asymm_prim_1} zu berechnen, schauen wir uns an, wie viele Paare $\left(k, l\right) \in \left[n\right]^{\underline{2}}$ mit $k<l$ es für ein vorgegebenes $k$ gibt.
-
-Die Antwort darauf ist offenbar $n-k$.
-
-Nun sei für ein vorgegebenes $k$ ein solches Paar $\left(k, l\right)\cong \left\{k, l\right\}$ vorgegeben.
-
-Dann gibt es $n-k-1$ Möglichkeiten für ein $m$, so dass nicht $m\leq k\vee m=l$ gilt.
-
-Dies macht in der Summe
-\begin{displaymath}
-\sum_{k=1}^{n-1} \left(n-k\right) \left(n-k-1\right) = \frac{n \left(n-1\right) \left(n-2\right)}{3}
-\end{displaymath}
-Gleichungen vom Typ \eqref{eq:spt_erweitert_asymm_prim_1}.
-
-Die Anzahl an Gleichungen von Typ \eqref{eq:spt_erweitert_asymm_prim_2} ist offensichtlich.
-
-Für die Anzahl an Nichtnegativitätsbedingungen bzw. $z$-Variablen beachte man, dass jedem Element aus der Menge $EV_n^{\not>}$ (deren Kardinalität wir soeben bestimmt haben) zwei Elemente aus $\left[n\right]^{\underline{3}^{1,2\not>3}}$ gegenüberstehen.
-
-Somit erhalten wir $\frac{2}{3} n \left(n-1\right) \left(n-2\right)$ $z$-Variablen.
-\end{bew}
-
-\begin{bew} (Satz \ref{sa:spt_erw_asymmetrisch})
-Die Gleichungen \eqref{eq:spt_erweitert_asymm_prim_1} und \eqref{eq:spt_erweitert_asymm_prim_2} bilden eine Teilmenge der Gleichungen \eqref{eq:spt_erweitert_2_1} und \eqref{eq:spt_erweitert_2_2} -- somit ist die eine Inklusion offensichtlich.
-
-Für die andere Richtung zeigen wir zuerst $x_{\left\{v, w\right\}}\geq 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2}$. 
-
-Für $\left(v, w\right)\in [n]^{\underline{2}^<}\backslash \left\{\left(n-1, n\right)\right\}$ folgt aus der durch $\left(v, w\right)$ indizierten Gleichung \eqref{eq:spt_erweitert_asymm_prim_1} (unter Nutzung von $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}}$): $x_{\left\{v, w\right\}} \geq 0$. $x_{\left\{n-1, n\right\}} \geq 0$ gilt wegen \eqref{eq:spt_erweitert_asymm_x_n-1n}.
-
-Nachdem diese Vorbereitung erledigt ist, sei $S\subseteq \left[n\right]$ mit $\left|S\right| \geq 2$. Setze
-\begin{eqnarray*}
-s_{max} := \max S.
-\end{eqnarray*}
-
-Dann gilt:
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-x\left(E(S)\right) & = & \sum_{\left\{v, w\right\} \in {S \backslash \left\{s_{max}\right\} \choose 2}} x_{\left\{v, w\right\}} + \sum_{v \in S \backslash \left\{s_{max}\right\}} x_{\left\{v, s_{max}\right\}} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & \sum_{\left\{v, w\right\} \in {S \backslash \left\{s_{max}\right\} \choose 2}} \left(z_{\left(v, w\right), s_{max}} + z_{\left(w, v\right), s_{max}}\right) + \sum_{v \in S \backslash \left\{s_{max}\right\}} x_{\left\{v, s_{max}\right\}} \\
-& = & \sum_{v \in S \backslash \left\{s_{max}\right\}} \left(x_{\left\{v, s_{max}\right\}} + \sum_{u \in S \backslash \left\{s_{max}, v\right\}} z_{\left(v, u\right), s_{max}}\right) \\
-& \stackrel{z \geq 0}{\leq} & \sum_{v \in S \backslash \left\{s_{max}\right\}} \left(x_{\left\{v, s_{max}\right\}} + \sum_{u \in \left[n\right] \backslash \left\{s_{max}, v\right\}} z_{\left(v, u\right), s_{max}}\right) \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_2}}{=} & \sum_{v \in S \backslash \left\{s_{max}\right\}} 1 \\
-& = & \left|S\right| - 1.
-\end{eqnarray*}
-}
-
-Die Bedingung $x\left({\left[n\right] \choose 2}\right) = n-1$ folgt offensichtlich aus dieser Ungleichungskette unter Beachtung, dass für $S=\left[n\right]$ die Bedingung $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}}$ nicht benutzt wurde.
-\end{bew}
-
-\section{Elimination von Nichtnegativitätsbedingungen ($P^{K_n, spt, asymm, 2}$)}
-
-Als erstes beobachtet man, dass im Beweis von Satz \ref{sa:spt_erw_asymmetrisch} der Schlupf in der Ungleichung
-\begin{displaymath}
-x\left(E\left(S\right)\right) \leq \left|S\right|-1
-\end{displaymath}
-gleich
-\begin{displaymath}
-\sum_{
-\substack{
-v\in S \backslash \left\{s_{max}\left(S\right)\right\}, \\
-w\in \left[n\right]\backslash S
-}
-} z_{\left(v, w\right), s_{max}}
-\end{displaymath}
-ist.
-
-Daher ist es als erster Schritt sinnvoll, die Menge
-\begin{displaymath}
-\bigcup_{
-\substack{
-S \subseteq \left[n\right], \\
-v\in S \backslash \left\{s_{max}\left(S\right)\right\}, \\
-w\in \left[n\right]\backslash S
-}
-}
- \left\{\left(v, w, s_{max}\left(S\right)\right)\right\}
-\end{displaymath}
-zu charakterisieren.
-
-\begin{Le}
-\begin{displaymath}
-\bigcup_{
-\substack{
-S \subseteq \left[n\right], \\
-v\in S \backslash \left\{s_{max}\left(S\right)\right\}, \\
-w\in \left[n\right]\backslash S
-}
-}
-\left\{\left(v, w, \max\left(S\right)\right)\right\}
-= \left[n\right]^{\underline{3}^{1<3}}
-\end{displaymath}
-\end{Le}
-\begin{bew}
-"`$\subseteq$"': klar, weil wegen $v<s_{max}\left(S\right)$ sicher die erste Komponente kleiner der dritten ist. \\
-
-"`$\supseteq$"': Sei $\left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}^{1<3}}$. Setze $\widetilde{S}:=\left\{v_1, v_3\right)$. Dann ist sicherlich
-\begin{displaymath}
-\left(v_1, v_2, v_3\right) \in
-\bigcup_{
-\substack{
-v\in \widetilde{S} \backslash \left\{\max\left(\widetilde{S}\right)\right\}, \\
-w\in \left[n\right]\backslash \widetilde{S}
-}
-}
-\left\{\left(v, w, \max\left(\widetilde{S}\right)\right)\right\}, 
-\end{displaymath}
-also auch
-\begin{displaymath}
-\left(v_1, v_2, v_3\right) \in \bigcup_{
-\substack{
-S \subseteq \left[n\right], \\
-v\in S \backslash \left\{\max\left(S\right)\right\}, \\
-w\in \left[n\right]\backslash S
-}
-}
-\left\{\left(v, w, s_{max}\left(S\right)\right)\right\}.
-\end{displaymath}
-\end{bew}
-
-Dieses Lemma können wir ausnutzen, um eine neue asymmetrische erweiterte Formulierung des Spannbaum-Polytops zu erzeugen:
-
-\begin{Sa}
-\label{sa:asymmetrisch_erweitert2}
-\begin{align}
-P^{K_n, spt, asymm, 2} := \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in \mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^{\not>} \label{eq:spt_erweitert_asymm2_prim_1} \\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = 1\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^< \label{eq:spt_erweitert_asymm2_prim_2} \\
-x_{\left\{v, n\right\}} & \geq 0 \ \forall v \in \left[n-1\right] \label{eq:spt_erweitert_asymm2_x_n} \\
-z_{\left(v, w\right), u} & \left. \geq 0 \ \forall \left(v, w, u\right)\in \left[n\right]^{\underline{3}^{1<3}} \label{eq:spt_erweitert_asymm2_z} \right\}
-\end{align}
-bildet eine asymmetrische erweiterte Formulierung des Spannbaum-Polytops.
-\end{Sa}
-\begin{bew}
-Da die Gleichungen und Ungleichungen eine Teilmenge der für die erweiterte Formulierung aus Satz \ref{sa:spt_erw_asymmetrisch} gültigen Gleichungen und Ungleichungen darstellen, lässt sich sicherlich jeder Baum einbetten.
-
-Nun zur Rückrichtung: die Ungleichungen bzw. Gleichung
-\begin{eqnarray*}
-x\left(E\left(S\right)\right) & \leq & \left|S\right|-1 \\
-x\left(E\left(\left[n\right]\right)\right) & = & n-1
-\end{eqnarray*}
-folgen aus der vorhergehenden Betrachtung.
-
-Damit ist nur $x_{\left\{v, w\right\}}\geq 0$ sicherzustellen. Falls $n\in \left\{v, w\right\}$ ist, folgt dies sofort aus \eqref{eq:spt_erweitert_asymm2_x_n}.
-
-Sei daher $n\notin \left\{v, w\right\}$.
-
-Dann gilt
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & \stackrel{\eqref{eq:spt_erweitert_asymm2_prim_1}}{=} & z_{\left(v, w\right), n} + z_{\left(w, v\right), n} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm2_z}}{\geq} & 0.
-\end{eqnarray*}
-\end{bew}
-
-\begin{Bem}
-$P^{K_n, spt, asymm, 2}$ wird in Satz \ref{sa:asymmetrisch_erweitert2} durch
-\begin{itemize}
-\item $\frac{1}{3} n \left(n-1\right) \left(n-2\right)$ Gleichungen \eqref{eq:spt_erweitert_asymm2_prim_1}
-\item $\frac{1}{2} n \left(n-1\right)$ Gleichungen \eqref{eq:spt_erweitert_asymm2_prim_2}
-\item $n-1$ Nichtnegativitätsbedingungen für $x$-Komponenten \eqref{eq:spt_erweitert_asymm2_x_n}
-\item $\frac{1}{2} n \left(n-1\right) \left(n-2\right)$ Nichtnegativitätsbedingungen für $z$-Komponenten \eqref{eq:spt_erweitert_asymm2_z}
-\end{itemize}
-in 
-\begin{itemize}
-\item $\frac{1}{2} n \left(n-1\right)$ $x$-Variablen
-\item $\frac{2}{3} n \left(n-1\right) \left(n-2\right)$ $z$-Variablen
-\end{itemize}
-beschrieben.
-\end{Bem}
-
-\section{Elimination von Variablen ($P^{K_n, spt, asymm, 3}$ und $P^{K_n, spt, asymm, 4}$)}
-
-Als nächstes fällt auf, dass in der erweiterten Formulierung aus Satz \ref{sa:asymmetrisch_erweitert2} jede der Variablen $z_{\left(v, w\right), u}$ mit $v>u$ in genau einer Gleichung (nämlich vom Typ \eqref{eq:spt_erweitert_asymm2_prim_1}) auftritt.
-
-Da eine solche Variable nicht vorzeichenbeschränkt ist, kann sie jeden beliebigen Wert annehmen -- die entsprechende Gleichung bringt also keine Einschränkung, da wir die entsprechende $z_{\left(v, w\right), u}$-Variable mit $v>u$ immer derart setzen können, dass die Gleichung stets erfüllt ist.
-
-Präziser: setze für $v>u$
-\begin{displaymath}
-z_{\left(v, w\right), u} := x_{\left\{v, w\right\}} - z_{\left(w, v\right), u}.
-\end{displaymath}
-
-Wenn wir die entsprechenden Gleichungen entfernen, erhalten wir
-\begin{align*}
-\left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in \mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^< \\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = 1\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^< \\
-x_{\left\{v, n\right\}} & \geq 0 \ \forall v\in \left[n-1\right] \\
-z_{\left(v, w\right), u} & \left. \geq 0 \ \forall \left(v, w, u\right)\in \left[n\right]^{\underline{3}^{1<3}} \right\}.
-\end{align*}
-
-In den resultierenden Gleichungen treten keine Variablen $z_{\left(v, w\right), u}$ mit $v>u$ auf -- diese können wir demnach auch entfernen und erhalten
-\begin{align*}
-\left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in \mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{\left[n\right]^{\underline{3}^{1<3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^< \\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = 1\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^< \\
-x_{\left\{v, n\right\}} & \geq 0 \ \forall v\in \left[n-1\right]  \\
-z_{\left(v, w\right), u} & \left. \geq 0 \ \forall \left(v, w, u\right)\in \left[n\right]^{\underline{3}^{1<3}} \right\}.
-\end{align*}
-
-Dass dies eine erweiterte Formulierung des Spannbaum-Polytops bildet, ist Inhalt des nächsten Satzes.
+In diesem Kapitel wollen wir zeigen, wie wir durch alternative Aufsummierung der Gleichungen mit einem Bruchteil der Bedingungen gegenüber $P^{K_n, spt, symm, 0}$ eine erweiterte Formulierung des Spannbaum-Polytops erhalten können.
 
 \begin{Sa}
 \label{sa:asymmetrisch_erweitert3}
@@ -1695,16 +1437,6 @@ z_{\left(v, w\right), u} & \left. \geq 0 \ \forall \left(v, w, u\right)\in \left
 \end{align}
 bildet eine erweiterte Formulierung des Spannbaum-Polytops.
 \end{Sa}
-\begin{bew}
-Man überprüft leicht, dass der vorgestellte Beweis von Satz \ref{sa:asymmetrisch_erweitert2}, dass sich jeder Baum einbetten lässt und die Gleichungen/Ungleichungen
-\begin{eqnarray*}
-x\left(E\left(S\right)\right) \leq \left|S\right|-1 \ \forall S \subset \left[n\right], \left|S\right| & \geq & 2, \\
-x\left(E\left(\left[n\right]\right)\right) & = & n-1
-\shortintertext{und}
-x_{\left\{v, w\right\}} & \geq & 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2}
-\end{eqnarray*}
-erfüllt sind, weiterhin funktioniert.
-\end{bew}
 
 \begin{Bem}
 Die erweiterte Formulierung von $P^{K_n, spt, asymm, 3}$ aus Satz \ref{sa:asymmetrisch_erweitert3} wird durch
@@ -1722,11 +1454,39 @@ in
 beschrieben.
 \end{Bem}
 \begin{bew}
-Lediglich die Anzahl von Gleichungen vom Typ \eqref{eq:spt_erweitert_asymm3_prim_1} ist nicht unmittelbar ersichtlich oder aus vorhergehenden Resultaten bekannt.
+Lediglich die Anzahl von Gleichungen vom Typ \eqref{eq:spt_erweitert_asymm3_prim_1} ist nicht unmittelbar ersichtlich.
 
 Die wohl einfachste Möglichkeit, dies zu beweisen, ist festzustellen, dass sich jedes Element aus $EV_n^<$ auf natürliche Weise eindeutig mit einer dreielementigen Teilmenge von $\left[n\right]$ identifizieren lässt.
 
 Von solchen gibt es $n \choose 3$ Stück.
+\end{bew}
+
+\begin{bew} (Satz \ref{sa:asymmetrisch_erweitert3})
+Die Gleichungen \eqref{eq:spt_erweitert_asymm3_prim_1} und \eqref{eq:spt_erweitert_asymm3_prim_2} bilden eine Teilmenge der Gleichungen \eqref{eq:spt_erweitert_2_1} und \eqref{eq:spt_erweitert_2_2} -- somit ist die eine Inklusion offensichtlich.
+
+Für die andere Richtung zeigen wir zuerst $x_{\left\{v, w\right\}}\geq 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2}$. 
+
+Für $\left(v, w\right)\in [n-1]^{\underline{2}^<}$ folgt aus der durch $\left(v, w\right)$ indizierten Gleichung \eqref{eq:spt_erweitert_asymm3_prim_1} (unter Nutzung von $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}}$): $x_{\left\{v, w\right\}} \geq 0$. $x_{\left\{v, n\right\}} \geq 0$ für alle $v \in \left[n-1\right]$ gilt wegen \eqref{eq:spt_erweitert_asymm3_x_n}.
+
+Nachdem diese Vorbereitung erledigt ist, sei $S\subseteq \left[n\right]$ mit $\left|S\right| \geq 2$. Setze
+\begin{eqnarray*}
+s_{max} := \max S.
+\end{eqnarray*}
+
+Dann gilt:
+{
+\allowdisplaybreaks
+\begin{eqnarray*}
+x\left(E(S)\right) & = & \sum_{\left\{v, w\right\} \in {S \backslash \left\{s_{max}\right\} \choose 2}} x_{\left\{v, w\right\}} + \sum_{v \in S \backslash \left\{s_{max}\right\}} x_{\left\{v, s_{max}\right\}} \\
+& \stackrel{\eqref{eq:spt_erweitert_asymm3_prim_1}}{=} & \sum_{\left\{v, w\right\} \in {S \backslash \left\{s_{max}\right\} \choose 2}} \left(z_{\left(v, w\right), s_{max}} + z_{\left(w, v\right), s_{max}}\right) + \sum_{v \in S \backslash \left\{s_{max}\right\}} x_{\left\{v, s_{max}\right\}} \\
+& = & \sum_{v \in S \backslash \left\{s_{max}\right\}} \left(x_{\left\{v, s_{max}\right\}} + \sum_{u \in S \backslash \left\{s_{max}, v\right\}} z_{\left(v, u\right), s_{max}}\right) \\
+& \stackrel{z \geq 0}{\leq} & \sum_{v \in S \backslash \left\{s_{max}\right\}} \left(x_{\left\{v, s_{max}\right\}} + \sum_{u \in \left[n\right] \backslash \left\{s_{max}, v\right\}} z_{\left(v, u\right), s_{max}}\right) \\
+& \stackrel{\eqref{eq:spt_erweitert_asymm3_prim_2}}{=} & \sum_{v \in S \backslash \left\{s_{max}\right\}} 1 \\
+& = & \left|S\right| - 1.
+\end{eqnarray*}
+}
+
+Die Bedingung $x\left({\left[n\right] \choose 2}\right) = n-1$ folgt offensichtlich aus dieser Ungleichungskette unter Beachtung, dass für $S=\left[n\right]$ die Bedingung $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1<3}}$ nicht benutzt wurde.
 \end{bew}
 
 Als nächstes beachte man, dass in der erweiterten Formulierung aus Satz \ref{sa:asymmetrisch_erweitert3} jede der Variablen $z_{\left(v, w\right), u}$ mit $w>u$ ausschließlich einmal auftritt (nämlich in der Gleichung \eqref{eq:spt_erweitert_asymm3_prim_2}) -- da erscheint es plausibel, dass wenn wir den Term
@@ -1752,7 +1512,7 @@ z_{\left(v_1, v_2\right), v_3} & \left. \geq 0 \ \forall \left(v_1, v_2, v_3\rig
 bildet eine erweiterte Formulierung des Spannbaum-Polytops.
 \end{Sa}
 \begin{bew}
-Obgleich der Beweis analog zu dem Beweis von Satz \ref{sa:spt_erw_asymmetrisch} erfolgt, wollen wir ihn explizit aufschreiben.
+Obgleich der Beweis analog zu dem Beweis von Satz \ref{sa:asymmetrisch_erweitert3} erfolgt, wollen wir ihn explizit aufschreiben.
 
 Die Einbettung der Bäume und die Ungleichung $x_{\left\{v_1, v_2\right\}} \geq 0 \ \forall \left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}$ sind offensichtlich.
 
@@ -2191,42 +1951,11 @@ Die Einbettung eines Waldes in $P^{K_n, for, symm, xy}$ ist im Allgemeinen \emph
 
 \subsection{Vereinfachte asymmetrische erweiterte Formulierungen des Wald-Polytops}
 
-Aus Platzgründen wollen wir in diesem Unterkapitel lediglich die zu den erweiterten Formulierungen $P^{K_n, spt, asymm, 1}$ und $P^{K_n, spt, asymm, 4}$ des Spannbaum-Polytops $P^{K_n, spt}$ korrespondierenden erweiterten Formulierungen $P^{K_n, for, asymm, 1}$ bzw. $P^{K_n, for, asymm, 4}$ des Wald-Polytops $P^{K_n, for}$ angeben. Es ist jedoch einfach möglich, auch aus $P^{K_n, spt, asymm, 2}$ und $P^{K_n, spt, asymm, 3}$ erweiterte Formulierungen von  $P^{K_n, for}$ mittels einer analogen Konstruktion zu erhalten. 
+Aus Platzgründen wollen wir in diesem Unterkapitel lediglich die zu der erweiterten Formulierung $P^{K_n, spt, asymm, 4}$ des Spannbaum-Polytops $P^{K_n, spt}$ korrespondierende erweiterte Formulierung $P^{K_n, for, asymm, 4}$ des Wald-Polytops $P^{K_n, for}$ angeben. Es ist jedoch einfach möglich, auch aus $P^{K_n, spt, asymm, 3}$ eine erweiterte Formulierung von  $P^{K_n, for}$ mittels einer analogen Konstruktion zu erhalten. 
 
-Analog zum Beweis von Satz \ref{sa:baum_erweitert_1} (selbe Einbettung von Wäldern) unter Nutzung des Beweises von Satz \ref{sa:spt_erw_asymmetrisch} (wobei man wie im Beweis von diesem Satz die Gleichungen umnummeriert und ggf. Gleichheits-Zeichen durch $\leq$-Zeichen ersetzt) beweist man:
+Analog zum Beweis von Satz \ref{sa:baum_erweitert_1} (selbe Einbettung von Wäldern) unter Nutzung des Beweises von Satz \ref{sa:asymmetrisch_erweitert3} (wobei man wie im Beweis von diesem Satz die Gleichungen umnummeriert und ggf. Gleichheits-Zeichen durch $\leq$-Zeichen ersetzt) beweist man:
 
-\begin{Sa}
-\begin{align}
-P^{K_n, for, asymm, 1} & := \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in \mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^{\not>} \label{eq:forest_erweitert_asymm_prim_1} \\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & \leq 1\ \forall \left(v, w\right)\in {\left[n\right]^{\underline{2}}}^< \label{eq:forest_erweitert_asymm_prim_2} \\
-x_{\left\{n-1, n\right\}} & \geq 0 \label{eq:forest_erweitert_asymm_x} \\
-z_{\left(v, w\right), u} & \left. \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}} \right\} \label{eq:forest_erweitert_asymm_z}
-\end{align}
-bildet eine asymmetrische erweiterte Formulierung des Wald-Polytops $P^{K_n, for}$.
-\end{Sa}
-
-\begin{Bem}
-In der vorliegenden Formulierung wird $P^{K_n, for, asymm, 1}$ durch
-\begin{itemize}
-\item $\frac{1}{3} n \left(n-1\right) \left(n-2\right)$ Gleichungen \eqref{eq:forest_erweitert_asymm_prim_1}
-\item $\frac{1}{2} n \left(n-1\right)$ Ungleichungen \eqref{eq:forest_erweitert_asymm_prim_2}
-\item $1$ Nichtnegativitätsbedingung für $x_{\left\{n-1, n\right\}}$ \eqref{eq:forest_erweitert_asymm_x}
-\item $\frac{2}{3} n \left(n-1\right) \left(n-2\right)$ Nichtnegativitätsbedingungen für $z$-Komponenten \eqref{eq:forest_erweitert_asymm_z}
-\end{itemize}
-in 
-\begin{itemize}
-\item $\frac{1}{2} n \left(n-1\right)$ $x$-Variablen
-\item $\frac{2}{3} n \left(n-1\right) \left(n-2\right)$ $z$-Variablen
-\end{itemize}
-beschrieben.
-\end{Bem}
-
-Wieder beweist man analog zum Beweis von Satz \ref{sa:baum_erweitert_1}, diesmal unter Nutzung des Beweises von Satz \ref{sa:asymmetrisch_erweitert4}:
+Man beweist analog zum Beweis von Satz \ref{sa:baum_erweitert_1}, diesmal unter Nutzung des Beweises von Satz \ref{sa:asymmetrisch_erweitert4}:
 
 \begin{Sa}
 \label{sa:asymmetrisch_erweitert4_baum}
@@ -2566,572 +2295,13 @@ z
 \right) \in P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ ist.
 \end{bew}
 
-\section{Der Zusammenhang zwischen $P^{K_n, spt, symm, 0}$ und $P^{K_n, spt, asymm, 1}$}
-
-Angesichts der Gleichungs-/Ungleichungsstruktur von $P^{K_n, spt, asymm, 1}$ könnte man vermuten, dass gilt:
-\begin{equation}
-\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 1}. \label{eq:lift_polytop}
-\end{equation}
-
-In diesem Abschnitt werden wir zeigen, dass dies \emph{nicht} der Fall ist.
-
-Aber zuerst ein Satz, welcher aufzeigt, dass zumindest ein kleiner Teil dieser Vermutung (dass nämlich eine spezielle für $P^{K_n, spt, symm, 0}$ gültige Gleichung auch für $P^{K_n, spt, asymm, 1}$ erfüllt ist) gilt und Bedingungen liefert, die notwendig sind, damit wir einen Punkt aus $P^{K_n, spt, asymm, 1}$ nach $P^{K_n, spt, symm, 0}$ "`hochliften"' können (d. h. zu einem Punkt $\left(\begin{array}{c}
-x \\
-z
-\end{array}\right) \in P^{K_n, spt, asymm, 1}$ einen Punkt $\left(\begin{array}{c}
-x \\
-\widetilde{z}
-\end{array}\right) \in P^{K_n, spt, symm, 0}$ finden, welcher  $\widetilde{z}_{\left(v, w\right), u} = z_{\left(v, w\right), u}$ für $\left(v, w, u\right)\in \left[n\right]^{\underline{3}^{1,2\not>3}}$ erfüllt).
-
-Letzteres werden wir dann nutzen, um zu zeigen, dass \eqref{eq:lift_polytop} für $n \geq 4$ \emph{nicht} gilt.
-
-\begin{Sa}
-\label{sa:P_p^asymm_vs_P_p^2}
-Sei $\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in P^{K_n, spt, asymm, 1}.
-$
-
-Dann gilt:
-\begin{equation}
-x_{\left\{n-1, n\right\}}+\sum_{u\in \left[n-2\right]} z_{\left(n, u\right), n-1} = 1. \label{eq:asymm_zusaetzlich_gueltig}
-\end{equation}
-
-Sei $\left(\begin{array}{c}
-x \\
-\widetilde{z}
-\end{array}\right)\in P^{K_n, spt, symm, 0}$, wobei $\widetilde{z}_{\left(v, w\right), u} = z_{\left(v, w\right), u}$ für $\left(v, w, u\right)\in \left[n\right]^{\underline{3}^{1,2\not>3}}$ sei (mit anderen Worten: es ist möglich dem Punkt $\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)$ nach $P^{K_n, spt, symm, 0}$ "`hochzuliften"' und der hochgeliftete Punkt sei $\left(\begin{array}{c}
-x \\
-\widetilde{z}
-\end{array}\right)$).
-
-Dann gilt:
-\begin{eqnarray}
-\widetilde{z}_{\left(n-1, n\right), n-2} & = & 1 - x_{\left\{n-2, n-1\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \label{eq:z_n-1_n_n-2} \\
-\widetilde{z}_{\left(n, n-1\right), n-2} & = & 1 -x_{\left\{n-2, n\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2}. \label{eq:z_n_n-1_n-2}
-\end{eqnarray}
-Wenn wir für ein $\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in P^{K_n, spt, asymm, 1}
-$ gemäß dieser Konstruktion $\widetilde{z}_{\left(n-1, n\right), n-2}$  und $\widetilde{z}_{\left(n, n-1\right), n-2}$ bauen, so erfüllt dieses die für $P^{K_n, spt, symm, 0}$ gültigen Gleichungen
-\begin{eqnarray}
-x_{\left\{n-1, n\right\}} - \widetilde{z}_{\left(n-1, n\right), n-2}  - \widetilde{z}_{\left(n, n-1\right), n-2}
-& \stackrel{\eqref{eq:z_n-1_n_n-2}, \eqref{eq:z_n_n-1_n-2}}{=} & 
-x_{\left\{n-1, n\right\}} \nonumber \\
-& & - 1 + x_{\left\{n-2, n-1\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \nonumber \\
-& & - 1 + x_{\left\{n-2, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2} \nonumber \\
-& = & 0, \label{eq:z_n-1_n_n-2_plus_z_n_n-1_n-2}
-\end{eqnarray}
-sowie für $n\geq 4$\footnote{Diese Einschränkung wird ausschließlich deswegen vorgenommen, weil für $n\leq 2$ die Ungleichung nicht sinnvoll ist und für $n=3$ die stärkeren Ungleichungen
-\begin{eqnarray*}
-\widetilde{z}_{\left(n-1, n\right), n-2} & \geq & 0 \\
-\widetilde{z}_{\left(n, n-1\right), n-2} & \geq & 0
-\end{eqnarray*}
-gelten (vgl. Beweis von Satz \ref{sa:proj_P_p^2_neq_P_p^asymm}).} haben wir
-\begin{eqnarray}
-\widetilde{z}_{\left(n-1, n\right), n-2} & \geq & -1 \label{eq:z_n-1_n_n-2_geq-1} \\
-\widetilde{z}_{\left(n, n-1\right), n-2} & \geq & -1. \label{eq:z_n_n-1_n-2_geq-1}
-\end{eqnarray}
-Der Schlupf in diesen Ungleichungen beträgt
-\begin{displaymath}
-x_{\left\{n-2, n\right\}} + x_{\left\{n-1, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2}
-\end{displaymath}
-bzw.
-\begin{displaymath}
-x_{\left\{n-2, n-1\right\}} + x_{\left\{n-1, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2}.
-\end{displaymath}
-
-Wegen $x, z\geq 0$ bedeutet dies: Gleichheit in diesen Ungleichungen ist für $\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in P^{K_n, spt, asymm, 1}$ genau dann erfüllt, wenn
-\begin{eqnarray*}
-x_{\left\{n-2, n\right\}} & = & 0 \\
-x_{\left\{n-1, n\right\}} & = & 0 \\
-z_{\left(n, u\right), n-2} & = & 0\ \forall u\in \left[n-3\right]
-\end{eqnarray*}
-bzw.
-\begin{eqnarray*}
-x_{\left\{n-2, n-1\right\}} & = & 0 \\
-x_{\left\{n-1, n\right\}} & = & 0 \\
-z_{\left(n-1, u\right), n-2} & = & 0\ \forall u\in \left[n-3\right].
-\end{eqnarray*}
-gilt.
-\end{Sa}
-
-\begin{Bem}
-Sollte es uns also gelingen, für $n \geq 4$ einen Punkt aus $P^{K_n, spt, asymm, 1}$ zu finden, welcher die die Ungleichung \eqref{eq:z_n-1_n_n-2_geq-1} oder \eqref{eq:z_n_n-1_n-2_geq-1} mit Gleichheit erfüllt (wofür Satz \ref{sa:P_p^asymm_vs_P_p^2} eine notwendige und hinreichende Bedingung enthält), so hätten wir \eqref{eq:lift_polytop} widerlegt. Dies wird weiter hinten unsere Beweismethode darstellen.
-\end{Bem}
-
-\begin{bew}
-Zu Gleichung \eqref{eq:asymm_zusaetzlich_gueltig}:
-\begin{displaymath}
-x_{\left\{n-1, n\right\}}+\sum_{u\in \left[n-2\right]} z_{\left(n, u\right), n-1} = 1.
-\end{displaymath}
-
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-x_{\left\{n-1, n\right\}}+\sum_{u\in \left[n-2\right]} z_{\left(n, u\right), n-1}
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & x_{\left\{n-1, n\right\}}+\sum_{u\in \left[n-2\right]} \left(x_{\left\{u, n\right\}} - z_{\left(u, n\right), n-1}\right) \\
-& = & \sum_{u\in \left[n-1\right]} x_{\left\{u, n\right\}} + \sum_{u\in \left[n-2\right]} \left(- z_{\left(u, n\right), n-1}\right) \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_2}}{=}  & \sum_{u\in \left[n-1\right]} \left(1-\sum_{\widetilde{u}\in \left[n-1\right]\backslash \left\{u\right\}} z_{\left(u, \widetilde{u}\right), n} \right) \\
-& & + \sum_{u\in \left[n-2\right]} \left( -1 + x_{\left\{u, n-1\right\}} + \sum_{\widetilde{u} \in \left[n-2\right] \backslash \left\{u\right\}} z_{\left(u, \widetilde{u}\right), n-1} \right) \\
-& = & 1 -\sum_{\left(u, \widetilde{u}\right)\in \left[n-1\right]^{\underline{2}}} z_{\left(u, \widetilde{u}\right), n} \\
-& & + \sum_{\left(u, \widetilde{u}\right)\in \left[n-2\right]^{\underline{2}}} z_{\left(u, \widetilde{u}\right), n-1} + \sum_{u\in \left[n-2\right]} x_{\left\{u, n-1\right\}} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & 1 - \sum_{\left\{u, \widetilde{u}\right\}\in {\left[n-1\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}} \\
-& & + \sum_{\left\{u, \widetilde{u}\right\}\in {\left[n-2\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}} + \sum_{u\in \left[n-2\right]} x_{\left\{u, n-1\right\}} \\
-& = & 1.
-\end{eqnarray*}
-}
-
-Aus der für $P^{K_n, spt, symm, 0}$ gültigen Gleichung \eqref{spt_erweitert_primal2_2} folgt:
-\begin{eqnarray*}
-\widetilde{z}_{\left(n-1, n\right), n-2} & = & 1 - x_{\left\{n-2, n-1\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2}  \\
-\widetilde{z}_{\left(n, n-1\right), n-2} & = & 1 -x_{\left\{n-2, n\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2}.
-\end{eqnarray*}
-Somit muss, wenn wir $\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in P^{K_n, spt, asymm, 1}$ zu einem Punkt $\left(\begin{array}{c}
-x \\
-\widetilde{z}
-\end{array}\right)\in P^{K_n, spt, symm, 0}$ hochliften, diese Gleichung erfüllt sein.
-
-Zu Gleichung \eqref{eq:z_n-1_n_n-2_plus_z_n_n-1_n-2}:
-\begin{eqnarray*}
-x_{\left\{n-1, n\right\}} - \widetilde{z}_{\left(n-1, n\right), n-2}  - \widetilde{z}_{\left(n, n-1\right), n-2}
-& = & 
-x_{\left\{n-1, n\right\}} \\
-& & - 1 + x_{\left\{n-2, n-1\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \\
-& & - 1 + x_{\left\{n-2, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2} \\
-& = & 0:
-\end{eqnarray*}
-
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-x_{\left\{n-1, n\right\}} - \widetilde{z}_{\left(n-1, n\right), n-2}  & & \\
-- \widetilde{z}_{\left(n, n-1\right), n-2}
-& = & 
-x_{\left\{n-1, n\right\}} \\
-& & - 1 + x_{\left\{n-2, n-1\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \\
-& & - 1 + x_{\left\{n-2, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2} \\
-& = & x_{\left\{n-1, n\right\}} + x_{\left\{n-2, n-1\right\}} + x_{\left\{n-2, n\right\}} -2 \\
-& & + \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} + \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & x_{\left\{n-1, n\right\}} + x_{\left\{n-2, n-1\right\}} + x_{\left\{n-2, n\right\}} -2 \\
-& & + \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n-1\right\}} - z_{\left(u, n-1\right), n-2}\right) \\
-& & + \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n\right\}} - z_{\left(u, n\right), n-2}\right) \\
-& = & x_{\left\{n-1, n\right\}} + x_{\left\{n-2, n-1\right\}} + x_{\left\{n-2, n\right\}} -2 \\
-& & + \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n-1\right\}} + x_{\left\{u, n\right\}} \right) \\
-& & + \sum_{u\in \left[n-3\right]} \left( - z_{\left(u, n-1\right), n-2} - z_{\left(u, n\right), n-2}\right) \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_2}}{=} & x_{\left\{n-1, n\right\}} + x_{\left\{n-2, n-1\right\}} + x_{\left\{n-2, n\right\}} -2 \\
-& & + \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n-1\right\}} + x_{\left\{u, n\right\}} \right) \\
-& & + \sum_{u\in \left[n-3\right]} \left(-1+x_{\left\{u, n-2\right\}} +\sum_{\widetilde{u} \in \left[n-3\right] \backslash \left\{u\right\}} z_{\left(u, \widetilde{u}\right), n-2} \right) \\
-& = &  -\left(n-1\right) + x_{\left\{n-1, n\right\}} + x_{\left\{n-2, n-1\right\}} + x_{\left\{n-2, n\right\}} \\
-& & + \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n-2\right\}} + x_{\left\{u, n-1\right\}} + x_{\left\{u, n\right\}} \right) \\
-& & + \sum_{\left(u, \widetilde{u}\right)\in \left[n-3\right]^{\underline{2}}} z_{\left(u, \widetilde{u}\right), n-2} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & -\left(n-1\right) + x_{\left\{n-1, n\right\}} + x_{\left\{n-2, n-1\right\}} + x_{\left\{n-2, n\right\}}  \\
-& & + \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n-2\right\}} + x_{\left\{u, n-1\right\}} + x_{\left\{u, n\right\}} \right) \\
-& & + \sum_{\left\{u, \widetilde{u}\right\} \in {\left[n-3\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}} \\
-& = & -\left(n-1\right) + \sum_{\left\{u, \widetilde{u}\right\} \in {\left[n\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}}
-\end{eqnarray*}
-}
-
-Da wir aus dem Beweis von Satz \ref{sa:spt_erw_asymmetrisch} wissen, dass
-\begin{displaymath}
-\sum_{\left\{u, \widetilde{u}\right\} \in {\left[n\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}} = n-1
-\end{displaymath}
-ist, folgt die Aussage. \\
-
-Zu Ungleichung \eqref{eq:z_n-1_n_n-2_geq-1}: $\widetilde{z}_{\left(n-1, n\right), n-2} \geq -1$:
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-\widetilde{z}_{\left(n-1, n\right), n-2} & = & 1 - x_{\left\{n-2, n-1\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & 1 - x_{\left\{n-2, n-1\right\}} - \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n-1\right\}} - z_{\left(u, n-1\right), n-2}\right) \\
-& = & 1 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n-1\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(u, n-1\right), n-2} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_2}}{=}  & 1 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n-1\right\}} \\
-& & + \sum_{u\in \left[n-3\right]} \left(1 - x_{\left\{u, n-2\right\}} - z_{\left(u, n\right), n-2}- \sum_{\widetilde{u}\in \left[n-3\right]\backslash \left\{u\right\}} z_{\left(u, \widetilde{u}\right), n-2}\right) \\
-& = & n-2 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n-1\right\}} \\
-& & + \sum_{u\in \left[n-3\right]} \left( - x_{\left\{u, n-2\right\}} - z_{\left(u, n\right), n-2}- \sum_{\widetilde{u}\in \left[n-3\right]\backslash \left\{u\right\}} z_{\left(u, \widetilde{u}\right), n-2}\right) \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & n-2 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n-1\right\}} \\
-& & + \sum_{u\in \left[n-3\right]} \left( - x_{\left\{u, n-2\right\}} - x_{\left\{u, n\right\}} + z_{\left(n, u\right), n-2} \right) - \sum_{\left\{u, \widetilde{u} \right\} \in {\left[n-3\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}} \\
-& = & n-2 - \sum_{\left\{u, \widetilde{u}\right\} \in {\left[n\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}} + x_{\left\{n-2, n\right\}} + x_{\left\{n-1, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2} \\
-& \stackrel{\textnormal{Satz \ref{sa:spt_erw_asymmetrisch}}}{=} & -1 + x_{\left\{n-2, n\right\}} + x_{\left\{n-1, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2} \\
-& \stackrel{x, z\geq 0}{\geq} & -1.
-\end{eqnarray*}
-}
-
-Zu Ungleichung \eqref{eq:z_n_n-1_n-2_geq-1}: $\widetilde{z}_{\left(n, n-1\right), n-2} \geq -1$:
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-\widetilde{z}_{\left(n, n-1\right), n-2} & = & 1 -x_{\left\{n-2, n\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & 1 - x_{\left\{n-2, n\right\}} - \sum_{u\in \left[n-3\right]} \left(x_{\left\{u, n\right\}} - z_{\left(u, n\right), n-2}\right) \\
-& = & 1 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(u, n\right), n-2} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_2}}{=} & 1 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n\right\}} \\
-& & + \sum_{u\in \left[n-3\right]} \left(1 - x_{\left\{u, n-2\right\}} - z_{\left(u, n-1\right), n-2}- \sum_{\widetilde{u}\in \left[n-3\right]\backslash \left\{u\right\}} z_{\left(u, \widetilde{u}\right), n-2}\right) \\
-& = & n-2 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n\right\}} \\
-& & + \sum_{u\in \left[n-3\right]} \left( - x_{\left\{u, n-2\right\}} - z_{\left(u, n-1\right), n-2}- \sum_{\widetilde{u}\in \left[n-3\right]\backslash \left\{u\right\}} z_{\left(u, \widetilde{u}\right), n-2}\right) \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & n-2 - \sum_{u\in \left[n-2\right]} x_{\left\{u, n\right\}} \\
-& & + \sum_{u\in \left[n-3\right]}  \left( - x_{\left\{u, n-2\right\}} - x_{\left\{u, n-1\right\}} + z_{\left(n-1, u\right), n-2} \right) - \sum_{\left\{u, \widetilde{u}\right\} \in {\left[n-3\right] \choose 2}} x_{\left\{u, \widetilde{u}\right\}} \\
-& = & n-2 - \sum_{\left(u, \widetilde{u}\right) \in \left[n\right]^{\underline{2}}} x_{\left\{u, \widetilde{u}\right\}} + x_{\left\{n-2, n-1\right\}} + x_{\left\{n-1, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \\
-& \stackrel{\textnormal{Satz \ref{sa:spt_erw_asymmetrisch}}}{=} & -1 +  x_{\left\{n-2, n-1\right\}} + x_{\left\{n-1, n\right\}} + \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \\
-& \stackrel{x, z\geq 0}{\geq} & -1.
-\end{eqnarray*}
-}
-\end{bew}
-
-Nun wollen wir die Vermutung
-\begin{displaymath}
-\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 1}.
-\end{displaymath}
-für $n\geq 4$ widerlegen und im Anschluss für $n\leq 3$ zeigen.
-
-\begin{Le}
-\label{le:keine_proj_P_p^2_P_p^asymm_1}
-Für $n\geq 4$ existiert ein $\left(
-\begin{array}{c}
-x \\
-z
-\end{array}
-\right) \in P^{K_n, spt, asymm, 1}$ mit 
-\begin{displaymath}
-1 - x_{\left\{n-2, n-1\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} = -1.
-\end{displaymath}
-\end{Le}
-\begin{bew}
-Für $n=4$ setze
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & := & \begin{cases}
-1 & \left\{v, w\right\} \in \left\{\left\{1, 3\right\}, \left\{1, 4\right\}, \left\{2, 3\right\}\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & := & \begin{cases}
-1 & \left(v, w, u\right) \in \left\{\left(1, 4, 2\right), \left(2, 3, 4\right), \left(3, 1, 2\right), \left(3, 1, 4\right), \left(4, 1, 3\right)\right\} \\
-0 & \textnormal{sonst.}
-\end{cases}
-\end{eqnarray*}
-
-Nach Betrachtung dieses Sonderfalls können wir voraussetzen, dass $n\geq 5$ ist.
-
-Setze für $\left\{v, w\right\}\in {\left[n\right] \choose 2}$ bzw. $\left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1, 2 \not> 3}}$:
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & := & \begin{cases}
-\frac{1}{2} & \left\{v, w\right\} \in \left\{\left\{1, 2\right\}, \left\{1, n-2\right\}, \left\{1, n\right\}\right\} \\
-1 & \left\{v, w\right\} = \left\{1, u\right\} \textnormal{ mit } u\notin \left\{2, n-2, n\right\} \\
-\frac{1}{2} & \left\{v, w\right\} \in \left\{\left\{2, n-1\right\}, \left\{2, n\right\}\right\} \\
-\frac{1}{2} & \left\{v, w\right\} = \left\{n-2, n-1\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & := & \begin{cases}
-\frac{1}{2} & \left(v, w, u\right) = \left(1, n-1, n\right) \\
-\frac{1}{2} & \left(v, w, u\right) = \left(1, n, 2\right) \\
-\frac{1}{2} & \left(v, w, u\right) = \left(1, n, n-2\right) \\
-\frac{1}{2} & \left(v, w\right) = \left(2, 1\right) \\
-\frac{1}{2} & \left(v, w\right) = \left(2, n\right) \wedge u\neq n-1 \\
-1 & 3 \leq v \leq n-3 \wedge w = 1 \\
-\frac{1}{2} & \left(v, w\right) = \left(n-2, 1\right) \\
-\frac{1}{2} & \left(v, w, u\right) = \left(n-2, n-1, n\right) \\
-1 & \left(v, w\right) = \left(n-1, 1\right) \wedge u \neq n \\
-\frac{1}{2} & \left(v, w, u\right) = \left(n-1, 1, n\right) \\
-\frac{1}{2} & \left(v, w\right) = \left(n-1, 2\right) \\
-\frac{1}{2} & \left(v, w\right) = \left(n, 1\right) \wedge u\geq 3 \wedge u \neq n-2 \\
-\frac{1}{2} & \left(v, w, u\right) = \left(n, 2, n-1\right) \\
-0 & \textnormal{sonst.}
-\end{cases}
-\end{eqnarray*}
-}
-
-Es reicht aus, die Gültigkeit von \eqref{eq:spt_erweitert_asymm_prim_1} und \eqref{eq:spt_erweitert_asymm_prim_2} zu zeigen.
-
-\paragraph{Zu \eqref{eq:spt_erweitert_asymm_prim_1}:} ~ \\
-
-Es ist zu zeigen, dass
-\begin{displaymath}
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}
-\end{displaymath}
-erfüllt ist.
-
-Sei daher $\left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}$ -- ohne Einschränkung gelte im Folgenden $v<w$.
-
-\subparagraph{Fall 1: $v = 1 \wedge w\in \left\{2, n-2\right\}$} Dann gilt $x_{\left\{1, w\right\}} = \frac{1}{2}$, $z_{\left(1, w\right), u} = 0$ und $z_{\left(w, 1\right), u} = \frac{1}{2}$.
-
-\subparagraph{Fall 2: $\left(v, w\right) = \left(1, n-1\right)$} Es gilt $x_{\left\{1, n-1\right\}} = 1$. Falls $u=n$ ist, gilt $z_{\left(1, n-1\right), n} = z_{\left(n-1, 1\right), n} = \frac{1}{2}$. Für $u\neq n$ ist $z_{\left(1, n-1\right), u} = 0$ und $z_{\left(n-1, 1\right), u} = 1$.
-
-\subparagraph{Fall 3: $\left(v, w\right) = \left(1, n\right) \wedge u\in \left\{2, n-2\right\}$} Dann gilt $x_{\left\{1, n\right\}} = \frac{1}{2}$, $z_{\left(1, n\right), u} = \frac{1}{2}$ und $z_{\left(n, 1\right), u} = 0$.
-
-\subparagraph{Fall 4: $\left(v, w\right) = \left(1, n\right) \wedge u\notin \left\{2, n-2\right\}$} Dann ist sicher $u\geq 3$. Es gilt $x_{\left\{1, n\right\}} = \frac{1}{2}$, $z_{\left(1, n\right), u} = 0$ und $z_{\left(n, 1\right), u} = \frac{1}{2}$.
-
-\subparagraph{Fall 5: $v = 1 \wedge w\notin \left\{2, n-2, n-1, n\right\}$} Dann gilt $x_{\left\{1, n\right\}} = 1$, $z_{\left(1, w\right), u} = 0$ und (weil sicher $w\geq 3$ und $w\neq n-1$ erfüllt ist) $z_{\left(w, 1\right), u} = 1$.
-
-\subparagraph{Fall 6: $\left(v, w\right) = \left(2, n-1\right)$} Dann haben wir $x_{\left\{2, n-1\right\}} = \frac{1}{2}$, $z_{\left(2, n-1\right), u} = 0$ und $z_{\left(n-1, 2\right), u} = \frac{1}{2}$.
-
-\subparagraph{Fall 7: $\left(v, w\right) = \left(2, n\right)$} Dann ist $x_{\left\{2, n\right\}} = \frac{1}{2}$. Falls $u\neq n-1$ ist, gilt: $z_{\left(2, n\right), u} = \frac{1}{2}$ und $z_{\left(n, 2\right), u} = 0$. Für $u=n-1$ ist $z_{\left(2, n\right), n-1} = 0$ und $z_{\left(n, 2\right), n-1} = \frac{1}{2}$.
-
-\subparagraph{Fall 8: $\left(v, w, u\right) = \left(n-2, n-1, n\right)$} Dann ist $x_{\left\{n-2, n-1\right\}} = \frac{1}{2}$, $z_{\left(n-2, n-1\right), n} = \frac{1}{2}$ und $z_{\left(n-1, n-2\right), n} = \frac{1}{2}$.
-
-\subparagraph{Fall 9: $v\notin \left\{1, 2, n-2\right\}$} In diesem Fall ist $x_{\left\{v, w\right\}} = 0$. Wegen $\left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}$ gilt sicher $v\leq n-3$. Somit haben wir $z_{\left(v, w\right), u} = 0$ (weil wir oben $v<w$ vorausgesetzt haben, kann nicht der Fall "`$z_{\left(v, w\right), u} = 0$ für $3 \leq v \leq n-3 \wedge w = 1$"' eintreten).
-
-Es bleibt also sicherzustellen, dass auch $z_{\left(w, v\right), u} = 0$ ist.
-
-Es gilt sicher $v\geq 3$ und wegen der Annahme $v<w$ ist $w\geq 4$. Man überzeugt sich anhand der Definition von $z$, dass hier in der Tat $z_{\left(w, v\right), u} = 0$ erfüllt ist.
-
-\paragraph{Zu \eqref{eq:spt_erweitert_asymm_prim_2}:} ~ \\
-
-Zu zeigen ist
-\begin{displaymath}
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} = 1\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^<
-\end{displaymath}
-
-Sei daher im Folgenden $\left(v, w\right)\in {[n]^{\underline{2}}}^<$.
-
-\subparagraph{Fall 1: $v = 1 \wedge w \in \left\{2, n-2, n\right\}$} Hier gilt $x_{\left\{1, w\right\}} = \frac{1}{2}$ und von den $z_{\left(v, u\right), w}$ ist als einziges $z_{ \left(1, n\right), 2}$ bzw. $z_{ \left(1, n\right), n-2}$ bzw. $z_{ \left(1, n-1\right), n}$ gleich $\frac{1}{2}$ (die anderen sind $0$).
-
-\subparagraph{Fall 2: $v = 1 \wedge w \notin \left\{2, n-2, n\right\}$} Dann ist $x_{\left\{1, w\right\}} = 1$ und es gilt $z_{\left(v, u\right), w} = 0$ für alle $u \in \left[n\right]$ mit $\left(v, u, w\right) \in \left[n\right]^{\underline{3}^{1, 2 \not> 3}}$.
-
-\subparagraph{Fall 3: $v = 2 \wedge w \in \left\{n-1, n\right\}$} Dann gilt $x_{\left\{2, w\right\}} = \frac{1}{2}$ und von den $z_{\left(v, u\right), w}$ ist als einziges $z_{ \left(2, 1\right), w}=\frac{1}{2}$ (die anderen sind $0$).
-
-\subparagraph{Fall 4: $v = 2 \wedge w \notin \left\{n-1, n\right\}$} Dann gilt $x_{\left\{2, w\right\}} = 0$ und für die $z_{\left(v, u\right), w}$ gilt: $z_{ \left(2, 1\right), w}=z_{ \left(2, n\right), w}=\frac{1}{2}$ (die anderen $z_{\left(v, u\right), w}$ sind $0$).
-
-\subparagraph{Fall 5: $3 \leq v \leq n-3$} In diesem Fall haben wir $x_{\left\{v, w\right\}} = 0$ und genau für $u = 1$ gilt $z_{\left(v, u\right), w} = 1$ (sonst 0).
-
-\subparagraph{Fall 6: $\left(v, w\right) = \left(n-2, n-1\right)$} Dann ist $x_{\left\{n-2, n-1\right\}} = \frac{1}{2}$ und von den $z_{\left(v, u\right), w}$ ist nur $z_{\left(n-2, 1\right), n-1} = \frac{1}{2}$ (alle sonstigen  $z_{\left(v, u\right), w}$ nehmen den Wert $0$ an).
-
-\subparagraph{Fall 7: $\left(v, w\right) = \left(n-2, n\right)$} Hier ist $x_{\left\{n-2, n\right\}} = 0$. Für die $z_{\left(v, u\right), w}$ gilt: $z_{\left(n-2, n-1\right), n} = z_{\left(n-2, 2\right), n} = \frac{1}{2}$ (die restlichen sind $0$).
-
-\subparagraph{Fall 8: $\left(v, w\right) = \left(n-1, n\right)$} Hier ist $x_{\left\{n-1, n\right\}} = 0$. Für die $z_{\left(v, u\right), w}$ gilt: $z_{\left(n-1, 1\right), n} = z_{\left(n-2, 1\right), n} = \frac{1}{2}$ (die restlichen sind $0$).
-\end{bew}
-
-\begin{Bem}
-\label{bem:keine_proj_P_p^2_P_p^asymm_1}
-Ein weiterer Punkt für $n=5$, der ebenfalls die Gleichung $1 - x_{\left\{n-2, n-1\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} = -1$ erfüllt, aber dessen sämtliche Komponenten $0$-$1$-wertig sind, ist
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & := & \begin{cases}
-1 & \left\{v, w\right\} \in \left\{\left\{1, 2\right\}, \left\{1, 4\right\}, \left\{1, 5\right\}, \left\{3, 4\right\}\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & := & \begin{cases}
-1 & \left(v, w, u\right) \in \parbox[t]{10cm}{$\left\{\left(1, 5, 3\right), \left(2, 1, 3\right), \left(2, 1, 4\right), \left(2, 1, 5\right), \left(3, 4, 5\right), \right.$ \\ $\left.\left(4, 1, 2\right), \left(4, 1, 3\right), \left(4, 1, 5\right), \left(5, 1, 2\right), \left(5, 1, 4\right)\right\}$} \\
-0 & \textnormal{sonst.}
-\end{cases}
-\end{eqnarray*}
-\end{Bem}
-
-\begin{Le}
-\label{le:keine_proj_P_p^2_P_p^asymm_2}
-Für $n\geq 4$ existiert ein 0/1-wertiges $\left(
-\begin{array}{c}
-x \\
-z
-\end{array}
-\right) \in P^{K_n, spt, asymm, 1}$ mit 
-\begin{displaymath}
-1 -x_{\left\{n-2, n\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2}, = -1.
-\end{displaymath}
-\end{Le}
-\begin{bew}
-Für $n=4$ setze
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & := & \begin{cases}
-1 & \left\{v, w\right\} \in \left\{\left\{1, 3\right\}, \left\{1, 4\right\}, \left\{2, 4\right\}\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & := & \begin{cases}
-1 & \left(v, w, u\right) \in \left\{\left(1, 3, 2\right), \left(2, 4, 3\right), \left(3, 1, 4\right), \left(4, 1, 2\right), \left(4, 1, 3\right)\right\} \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{eqnarray*}
-
-Für $n\geq 5$ setze für $\left\{v, w\right\}\in {\left[n\right] \choose 2}$ bzw. $\left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1, 2 \not> 3}}$:
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & := & \begin{cases}
-1 & \left\{v, w\right\} = \left\{1, u\right\} \textnormal{ mit } u\notin \left\{2, n-1\right\} \\
-1 & \left\{v, w\right\} \in \left\{\left\{2, n-1\right\}, \left\{2, n\right\}\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & := & \begin{cases}
-1 & \left(v, w\right) = \left(1, n\right) \wedge u\in \left\{2, n-1\right\} \\
-1 & \left(v, w, u\right) = \left(2, n-1, n-2\right) \\
-1 & \left(v, w\right) = \left(2, n\right) \wedge u \notin \left\{n-2, n-1\right\} \\
-1 & 3 \leq v \leq n-2 \wedge w = 1 \\
-1 & \left(v, w\right) = \left(n-1, 2\right) \wedge u\neq n-2 \\
-1 & \left(v, w\right) = \left(n, 1\right) \wedge u \notin \left\{2, n-1\right\} \\
-1 & \left(v, w, u\right) = \left(n, 2\right) \wedge u \in \left\{n-2, n-1\right\} \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{eqnarray*}
-}
-
-Es reicht aus, die Gültigkeit von \eqref{eq:spt_erweitert_asymm_prim_1} und \eqref{eq:spt_erweitert_asymm_prim_2} zu zeigen.
-
-\paragraph{Zu \eqref{eq:spt_erweitert_asymm_prim_1}:} ~ \\
-
-Es ist zu zeigen, dass
-\begin{displaymath}
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}
-\end{displaymath}
-erfüllt ist.
-
-Sei daher $\left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}$ -- ohne Einschränkung gelte im Folgenden $v<w$.
-
-\subparagraph{Fall 1: $v = 1 \wedge w\in \left\{2, n-1\right\}$} Dann gilt $x_{\left\{1, w\right\}} = z_{\left(1, w\right), u} = z_{\left(w, 1\right), u} = 0$.
-
-\subparagraph{Fall 2: $\left(v, w\right) = \left(1, n\right) \wedge u\in \left\{2, n-1\right\}$} Dann gilt $x_{\left\{1, n\right\}} = 1$, $z_{\left(1, n\right), u} = 1$ und $z_{\left(n, 1\right), u} = 0$.
-
-\subparagraph{Fall 3: $\left(v, w\right) = \left(1, n\right) \wedge  u\notin \left\{2, n-1\right\}$} Hier haben wir $x_{\left\{1, n\right\}} = 1$, $z_{\left(1, n\right), u} = 0$ und $z_{\left(n, 1\right), u} = 1$.
-
-\subparagraph{Fall 4: $v = 1 \wedge w\notin \left\{2, n-1,n\right\}$} Dann gilt $x_{\left\{1, w\right\}} = 1$, $z_{\left(1, w\right), u} = 0$ und (weil sicher $3 \leq w \leq n-2$ erfüllt ist) $z_{\left(w, 1\right), u} = 1$.
-
-\subparagraph{Fall 5: $\left(v, w\right) = \left(2, n-1\right)$} Dann haben wir $x_{\left\{2, n-1\right\}} = 1$, Falls $u=n-2$ ist, gilt $z_{\left(2, n-1\right), n-2} = 1$ und  $z_{\left(n-1, 2\right), n-2} = 0$. Sonst ist $z_{\left(2, n-1\right), u} = 0$ und $z_{\left(n-1, 2\right), u} = 1$.
-
-\subparagraph{Fall 6: $\left(v, w\right) = \left(2, n\right)$} Dann ist $x_{\left\{2, n\right\}} = 1$. Falls $u\notin \left\{n-2, n-1\right\}$ ist, gilt: $z_{\left(2, n\right), u} = 1$ und $z_{\left(n, 2\right), u} = 0$. Für $u \in \left\{n-2, n-1\right\}$ ist $z_{\left(2, n\right), u} = 0$ und $z_{\left(n, 2\right), u} = 1$.
-
-\subparagraph{Fall 7: $v = 2 \wedge w \leq n-2$} Es gilt $x_{\left\{2, w\right\}} = 0$, $z_{\left(2, w\right), u} = 0$ und $z_{\left(w, 2\right), u} = 0$.
-
-\subparagraph{Fall 8: $v \geq 3$} In diesem Fall ist $x_{\left\{v, w\right\}} = 0$. Wegen $v<w$ ist sicher $z_{\left(v, w\right), u} = z_{\left(w, v\right), u} = 0$.
-
-\paragraph{Zu \eqref{eq:spt_erweitert_asymm_prim_2}:} ~ \\
-
-Zu zeigen ist
-\begin{displaymath}
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} = 1\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^<.
-\end{displaymath}
-
-Sei daher im Folgenden $\left(v, w\right)\in {[n]^{\underline{2}}}^<$.
-
-\subparagraph{Fall 1: $v = 1 \wedge w \in \left\{2, n-1\right\}$} Hier gilt $x_{\left\{1, w\right\}} = 0$ und von den $z_{\left(v, u\right), w}$ ist als einziges $z_{ \left(1, n\right), w}$ gleich $1$ (die anderen sind $0$).
-
-\subparagraph{Fall 2: $v = 1 \wedge w \notin \left\{2, n-1\right\}$} Dann ist $x_{\left\{1, w\right\}} = 1$ und $z_{\left(v, u\right), w}$ ist $0$ für alle $u$ mit $\left(1, u, w\right) \in \left[n\right]^{\underline{3}^{1, 2 \not> 3}}$.
-
-\subparagraph{Fall 3: $v = 2 \wedge w \in \left\{n-1, n\right\}$} Dann gilt $x_{\left\{2, w\right\}} = 1$ und die $z_{\left(v, u\right), w}$ sind alle gleich $0$.
-
-\subparagraph{Fall 4: $v = 2 \wedge w \notin \left\{n-1, n\right\}$} Dann gilt $x_{\left\{2, w\right\}} = 0$ und für die $z_{\left(v, u\right), w}$ gilt:
-
-Falls $w=n-2$ ist, gilt $z_{ \left(2, n-1\right), n-2} = 1$ und sonst $z_{ \left(2, n-1\right), n-2} = 0$.
-
-Für $w\neq n-2$ ist $z_{\left(2, n\right), w}=1$ und die anderen $z_{\left(2, u\right), w}$ sind $0$.
-
-\subparagraph{Fall 5: $3 \leq v \leq n-2$} In diesem Fall haben wir $x_{\left\{v, w\right\}} = 0$ und genau für $u = 1$ gilt $z_{\left(v, u\right), w} = 1$ (sonst 0).
-
-\subparagraph{Fall 6: $\left(v, w\right) = \left(n-1, n\right)$} Dann ist $x_{\left\{n-1, n\right\}} = 0$ und von den $z_{\left(n-1, u\right), n}$ ist nur $z_{\left(n-1, 2\right), n} =1$ (der Rest $0$).
-\end{bew}
-
-\begin{Bem}
-\label{bem:keine_proj_P_p^2_P_p^asymm_2}
-Ein weiteres Beispiel für $n = 5$ mit $1 -x_{\left\{n-2, n\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2}, = -1$ ist
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} & := & \begin{cases}
-1 & \left\{v, w\right\} \in \left\{\left\{1, 2\right\}, \left\{1, 4\right\}, \left\{1, 5\right\}, \left\{3, 5\right\}\right\} \\
-0 & \textnormal{sonst}
-\end{cases} \\
-z_{\left(v, w\right), u} & := & \begin{cases}
-1 & \left(v, w, u\right) \in \parbox[t]{10cm}{$\left\{\left(1, 4, 3\right), \left(2, 1, 3\right), \left(2, 1, 4\right), \left(2, 1, 5\right), \left(3, 5, 4\right), \right.$ \\ $\left.\left(4, 1, 2\right), \left(4, 1, 5\right), \left(5, 1, 2\right), \left(5, 1, 3\right), \left(5, 1, 4\right)\right\}$} \\
-0 & \textnormal{sonst.}
-\end{cases}
-\end{eqnarray*}
-\end{Bem}
-
-\begin{Sa}
-\label{sa:proj_P_p^2_neq_P_p^asymm}
-Für $n\geq 4$ gilt:
-\begin{displaymath}
-\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}} P^{K_n, spt, symm, 0} \neq P^{K_n, spt, asymm, 1}.
-\end{displaymath}
-Für $n\leq 3$ ist jedoch
-\begin{displaymath}
-\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 1}
-\end{displaymath}
-erfüllt.
-\end{Sa}
-\begin{bew}
-Sei wie vorher $\left(
-\begin{array}{c}
-x \\
-z
-\end{array}
-\right)
-\in P^{K_n, spt, asymm, 1}$ und $\left(
-\begin{array}{c}
-x \\
-\widetilde{z}
-\end{array}
-\right)
-\in P^{K_n, spt, symm, 0}$ mit $\widetilde{z}_{\left(v_1, v_2\right), v_3} = z_{\left(v_1, v_2\right), v_3}$ für $\left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}}$.
-
-Wegen \eqref{eq:z_n-1_n_n-2} und \eqref{eq:z_n_n-1_n-2} gilt
-\begin{eqnarray*}
-\widetilde{z}_{\left(n-1, n\right), n-2} & = & 1 - x_{\left\{n-2, n-1\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n-1, u\right), n-2} \\
-\widetilde{z}_{\left(n, n-1\right), n-2} & = & 1 -x_{\left\{n-2, n\right\}} - \sum_{u\in \left[n-3\right]} z_{\left(n, u\right), n-2}.
-\end{eqnarray*}
-
-Nach Lemmata \ref{le:keine_proj_P_p^2_P_p^asymm_1} und \ref{le:keine_proj_P_p^2_P_p^asymm_2} gibt es für $n\geq 4$ einen Punkt aus $P^{K_n, spt, asymm, 1}$, für den diese Terme negativ werden. Da jedoch
-\begin{eqnarray*}
-\widetilde{z}_{\left(n-1, n\right), n-2} & \geq & 0 \\
-\widetilde{z}_{\left(n, n-1\right), n-2} & \geq & 0
-\end{eqnarray*}
-erfüllt ist, haben wir einen Widerspruch zur Annahme, dass 
-\begin{displaymath}
-\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 1}
-\end{displaymath}
-gilt.
-
-Dass für $n\leq 2$
-\begin{displaymath}
-\proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 1}
-\end{displaymath}
-gilt, ist offensichtlich. Daher werden wir dies nur für $n=3$ beweisen:
-
-Sei (wie schon vorher) $\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in P^{K_n, spt, asymm, 1}$
-und $\left(\begin{array}{c}
-x \\
-\widetilde{z}
-\end{array}\right)\in P^{K_n, spt, symm, 0}$
-mit $\widetilde{z}_{\left(v, w\right), u} = z_{\left(v, w\right), u}$ für $\left(v, w, u\right)\in \left[n\right]^{\underline{3}^{1,2\not>3}}$.
-
-Wegen \eqref{eq:z_n-1_n_n-2} und \eqref{eq:z_n_n-1_n-2} ist
-\begin{eqnarray*}
-\widetilde{z}_{\left(2, 3\right), 1} & = & 1 - x_{\left\{1, 2\right\}} \\
-\widetilde{z}_{\left(3, 2\right), 1} & = & 1 - x_{\left\{1, 3\right\}}.
-\end{eqnarray*}
-
-Die Gültigkeit von der fehlenden Gleichungen aus \eqref{spt_erweitert_primal2_2} folgt direkt nach Konstruktion und
-\begin{displaymath}
-x_{\left\{2, 3\right\}} - \widetilde{z}_{\left(2, 3\right), 1}  - \widetilde{z}_{\left(3, 2\right), 1} = 0
-\end{displaymath}
-ist eine direkte Konsequenz aus \eqref{eq:z_n-1_n_n-2_plus_z_n_n-1_n-2}.
-
-Somit ist nur noch sicherzustellen, dass 
-\begin{eqnarray*}
-\widetilde{z}_{\left(2, 3\right), 1} & := & 1 - x_{\left\{1, 2\right\}} \\
-& \geq & 0 \\
-\widetilde{z}_{\left(3, 2\right), 1} & := & 1 - x_{\left\{1, 3\right\}} \\
-& \geq & 0
-\end{eqnarray*}
-erfüllt ist.
-
-Da jedoch $P^{K_n, spt, asymm, 1}$ eine erweiterte Formulierung des Spannbaum-Polytops bildet, ist $x\leq 1$, woraus die Aussage direkt folgt.
-\end{bew}
-
 \section{Der Zusammenhang zwischen $P^{K_n, spt, symm, 0}$ und $P^{K_n, spt, asymm, 4}$}
 
-Nun wollen anschauen, ob eine analoge Aussage, die Satz \ref{sa:proj_P_p^2_neq_P_p^asymm} für $P^{K_n, spt, asymm, 1}$ trifft, für $P^{K_n, spt, asymm, 4}$ erfüllt ist. Mit anderen Worten: gilt
- \begin{equation}
+Nun wollen anschauen, ob für $P^{K_n, spt, asymm, 4}$ die Aussage
+\begin{equation}
 \proj_{\mathbb{R}^{\left[n\right] \choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2<3}}}} P^{K_n, spt, symm, 0} = P^{K_n, spt, asymm, 4}? \label{eq:proj_asymm4}
 \end{equation}
+erfüllt ist.
 
 Für $n=2$ ist es trivial nachzurechnen, dass Gleichung \eqref{eq:proj_asymm4} gilt.
 
@@ -3569,109 +2739,6 @@ mit $\left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}$:
 \begin{eqnarray*}
 2 \underbrace{x_{\left\{v_1, v_2\right\}}}_{= 2} + \underbrace{\sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u}}_{= \left(n-3\right) \cdot 0 + 1\cdot \left(-2\right)} & = & 2.
 \end{eqnarray*}
-\end{bew}
-
-\section{Die Notwendigkeit von $x_{\left\{n-1, n\right\}} \geq 0$ für $P^{K_n, spt, asymm, 1}$}
-
-\begin{Le}
-\label{le:xn-1, ngeq0}
-Bedingung \eqref{eq:spt_erweitert_asymm_x_n-1n} ($x_{\left\{n-1, n\right\}} \geq 0$) ist in $P^{K_n, spt, asymm, 1}$ für $n\geq 4$ tatsäch\-lich notwendig -- sonst haben wir keine erweiterte Formulierung des Spannbaum-Polytops. Für $n\leq 3$ ist sie in dem Sinne verzichtbar, dass $P^{K_n, spt, asymm, 1}$ beim Weglassen unverändert bleibt.
-\end{Le}
-\begin{bew}
-Dass Bedingung \eqref{eq:spt_erweitert_asymm_x_n-1n} für $n\leq 2$ verzichtbar ist, ist offensichtlich. Daher hier nur Beweis für $n=3$.
-
-Es gilt:
-\begin{eqnarray*}
-x_{\left\{2, 3\right\}} & \stackrel{\eqref{eq:spt_erweitert_asymm_prim_2}}{=} & 1 - z_{\left(2, 1\right), 3} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_1}}{=} & 1 + z_{\left(1, 2\right), 3} - x_{\left\{1, 2\right\}} \\
-& \stackrel{\eqref{eq:spt_erweitert_asymm_prim_2}}{=} & 1 + z_{\left(1, 2\right), 3} + z_{\left(1, 3\right), 2} -1 \\
-& = & z_{\left(1, 2\right), 3} + z_{\left(1, 3\right), 2} \\
-& \stackrel{z\geq 0}{\geq} & 0.
-\end{eqnarray*}
-
-Nun zu \eqref{eq:spt_erweitert_asymm_x_n-1n} ist unverzichtbar für $n\geq 4$:
-
-Setze für $\left\{v, w\right\} \in {[n]\choose 2}$ mit $v<w$:
-\begin{displaymath}
-x_{\left\{v, w\right\}} := 
-\begin{cases}
-- (n-3) & \left\{v, w\right\} = \left\{n-1, n\right\} \\
-1 & v < n-1 \wedge w = n-1 \\
-1 & v < n-1 \wedge w = n \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-und für $\left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}}$:
-\begin{displaymath}
-z_{\left(v, w\right), u} := 
-\begin{cases}
-1 & v < n-1 \wedge w = n \wedge u < n-1\\
-1 & v = n-1 \\
-1 & v = n \wedge u=n-1 \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-Wir überprüfen die Gleichungen \eqref{eq:spt_erweitert_asymm_prim_1} und \eqref{eq:spt_erweitert_asymm_prim_2}:
-
-Zu \eqref{eq:spt_erweitert_asymm_prim_1}:
-
-Sei $\left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}$ und es gelte ohne Einschränkung $v<w$.
-
-Als erstes möchten wir anmerken, dass hieraus $v < n-1$ folgt: wegen $v<w$ muss sicher $v<n$ sein. Falls $v = n-1$ wäre, so wäre $w=n$ und es gäbe kein $u\in \left[n\right]$ mit $\left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}$.
-
-\paragraph{Fall 1: $w < n-1$} 
-Dann ist $x_{\left\{v, w\right\}} = 0$, $z_{\left(v, w\right), u} = 0$,  $z_{\left(w, v\right), u} = 0$ und es gilt sicherlich
-\begin{displaymath}
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} = 0.
-\end{displaymath}
-
-\paragraph{Fall 2: $w=n-1$}
-Hier haben wir $x_{\left\{v, n-1\right\}} = 1$, $z_{\left(v, n-1\right), u} = 0$ und $z_{\left(n-1, v\right), u} = 1$ und es gilt
-\begin{displaymath}
-x_{\left\{v, n-1\right\}} - z_{\left(v, n-1\right), u} - z_{\left(n-1, v\right), u} = 0.
-\end{displaymath}
-
-\paragraph{Fall 3: $w = n \wedge u < n-1$}
-Dann gilt $x_{\left\{v, n\right\}} = 1$, $z_{\left(v, n\right), u} = 1$ und $z_{\left(n, v\right), u} = 0$ und damit
-\begin{displaymath}
-x_{\left\{v, n\right\}} - z_{\left(v, n\right), u} - z_{\left(n, v\right), u} = 0.
-\end{displaymath}
-
-\paragraph{Fall 4: $w = n \wedge u = n-1$}
-Hier ist $x_{\left\{v, n\right\}} = 1$, $z_{\left(v, n\right), n-1} = 0$ und $z_{\left(n, v\right), n-1} = 1$ und es gilt
-\begin{displaymath}
-x_{\left\{v, n\right\}} - z_{\left(v, n\right), n-1} - z_{\left(n, v\right), n-1} = 0.
-\end{displaymath}
-
-Zu \eqref{eq:spt_erweitert_asymm_prim_2}:
-
-Sei $\left(v, w\right)\in {[n]^{\underline{2}}}^<$.
-
-\paragraph{Fall 1: $v < n-1 \wedge w < n-1$}
-In diesem Fall ist $x_{\left\{v, w\right\}} = 0$. Für genau ein $u\in[n]\backslash\left\{v, w\right\}$ (nämlich $u=n$) gilt: $z_{\left(v, u\right), w} = 1$. Hieraus folgt
-\begin{displaymath}
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} = 1.
-\end{displaymath}
-
-\paragraph{Fall 2: $v < n-1 \wedge w = n-1$}
-Dann ist $x_{\left\{v, n-1\right\}} = 1$ und es gilt für alle $u\in[n]\backslash\left\{v, n-1\right\}$: $z_{\left(v, u\right), n-1} = 0$, woraus
-\begin{displaymath}
-x_{\left\{v, n-1\right\}} + \sum_{u\in[n]\backslash\left\{v, n-1\right\}} z_{\left(v, u\right), n-1} = 1
-\end{displaymath}
-folgt.
-
-\paragraph{Fall 3: $v < n-1 \wedge w = n$}
-Hier haben wir $x_{\left\{v, n\right\}} = 1$ und es gilt für alle $u\in[n]\backslash\left\{v, n\right\}$: $z_{\left(v, u\right), n} = 0$, also
-\begin{displaymath}
-x_{\left\{v, n\right\}} + \sum_{u\in[n]\backslash\left\{v, n\right\}} z_{\left(v, u\right), n} = 1.
-\end{displaymath}
-
-\paragraph{Fall 4: $\left(v, w\right) = \left(n-1, n\right)$}
-Dann ist $x_{\left\{n-1, n\right\}} = -\left(n-3\right)$ und für alle $u\in[n]\backslash\left\{n-1, n\right\}$ gilt: $z_{\left(n-1, u\right), n} = 1$. Dann ist sicher
-\begin{displaymath}
-x_{\left\{n-1, n\right\}} + \sum_{u\in[n]\backslash\left\{n-1, n\right\}} z_{\left(n-1, u\right), n} = 1
-\end{displaymath}
-erfüllt.
 \end{bew}
 
 \chapter{Nicht-ganzzahlige Ecken von $P^{K_n, spt, symm, 0}$ und $P^{K_n, spt, symm, xy}$}
@@ -5245,80 +4312,6 @@ Somit erhält man (Gleichung \eqref{eq:P^xy_2}):
 woraus man unter Nutzung von $y_{\left\{v_1, v_2\right\}, u} \geq 0 \ \forall \left(\left\{v_1, v_2\right\}, u\right) \in EV_n$ erhält: $y_{\left\{v_1, v_2\right\}, u} = 0$.
 \end{bew}
 
-\section{Die Einbettung der aufspannenden Bäume in $P^{K_n, spt, asymm, 1}$}
-
-Nun kann man sich die Frage stellen, inwieweit die Einbettung der aufspannenden Bäume in $P^{K_n, spt, asymm, 1}$ eindeutig ist. Diese Frage lässt sich negativ beantworten.
-
-Betrachte dazu den Vektor für $n=4$ aus dem Beweis von Lemma \ref{le:keine_proj_P_p^2_P_p^asymm_1}, für $n=5$ das Beispiel aus Bemerkung \ref{bem:keine_proj_P_p^2_P_p^asymm_1}, für alle $n\geq 4$ die Vektoren aus dem Beweis von Lemma \ref{le:keine_proj_P_p^2_P_p^asymm_2}, sowie für $n=5$ auch Bemerkung \ref{bem:keine_proj_P_p^2_P_p^asymm_2}.
-
-An dieser Stelle wollen wir lediglich die beiden Beispiele für $n=4$ nochmals wiedergeben:
-
-\begin{Bsp}
-Sei $T=\left\{\left\{1, 3\right\}, \left\{1, 4\right\}, \left\{2, 3\right\}\right\}$ und $x=\chi\left(T\right)$. Dann existiert neben dem "`kanonischen"' $z$
-\begin{displaymath}
-z_{\left(v, w\right), u} = \begin{cases}
-1 & \left(v, w, u\right) \in \left\{\left(1, 3, 2\right), \left(2, 3, 1\right), \left(2, 3, 4\right), \left(3, 1, 4\right), \left(4, 1, 2\right), \left(4, 1, 3\right)\right\} \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-auch noch
-\begin{displaymath}
-z_{\left(v, w\right), u} = \begin{cases}
-1 & \left(v, w, u\right) \in \left\{\left(1, 4, 2\right), \left(2, 3, 4\right), \left(3, 1, 2\right), \left(3, 1, 4\right), \left(4, 1, 3\right)\right\} \\
-0 & \textnormal{sonst,}
-\end{cases}
-\end{displaymath}
-so dass $\left(\begin{array}{c}
-x \\
-z\end{array}\right) \in P^{K_n, spt, asymm, 1}$ ist.
-
-Mittels Konvexkombinationen lässt sich eine durch $\lambda \in \left[0, 1\right]$ indizierte Familie von $z$
-\begin{displaymath}
-z_{\left(v, w\right), u} = \begin{cases}
-1 & \left(v, w, u\right) \in \left\{ \left(2, 3, 4\right), \left(3, 1, 4\right), \left(4, 1, 3\right) \right\} \\
-\lambda & \left(v, w, u\right) \in \left\{ \left(1, 3, 2\right), \left(2, 3, 1\right), \left(4, 1, 2\right) \right\} \\
-1-\lambda & \left(v, w, u\right) \in \left\{\left(1, 4, 2\right), \left(3, 1, 2\right) \right\} \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-mit $\left(\begin{array}{c}
-x \\
-z\end{array}\right) \in P^{K_n, spt, asymm, 1}$ bauen.
-\end{Bsp}
-
-\begin{Bsp}
-Sei $T=\left\{\left\{1, 3\right\}, \left\{1, 4\right\}, \left\{2, 4\right\}\right\}$ und $x=\chi\left(T\right)$. Dann existiert neben dem "`kanonischen"' $z$
-\begin{displaymath}
-z_{\left(v, w\right), u} = \begin{cases}
-1 & \left(v, w, u\right) \in  \left\{\left(1, 4, 2\right), \left(2, 4, 1\right), \left(2, 4, 3\right), \left(3, 1, 2\right), \left(3, 1, 4\right), \left(4, 1, 3\right)\right\} \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-auch noch folgendes
-\begin{displaymath}
-z_{\left(v, w\right), u} = \begin{cases}
-1 & \left(v, w, u\right) \in \left\{\left(1, 3, 2\right), \left(2, 4, 3\right), \left(3, 1, 4\right), \left(4, 1, 2\right), \left(4, 1, 3\right)\right\} \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-so dass $\left(\begin{array}{c}
-x \\
-z\end{array}\right) \in P^{K_4, spt, asymm, 1}$ ist.
-
-Mittels Konvexkombinationen lässt sich eine durch $\lambda \in \left[0, 1\right]$ indizierte Familie von $z$
-\begin{displaymath}
-z_{\left(v, w\right), u} = \begin{cases}
-1 & \left(v, w, u\right) \in \left\{ \left(2, 4, 3\right), \left(3, 1, 4\right), \left(4, 1, 3\right) \right\} \\
-\lambda & \left(v, w, u\right) \in \left\{ \left(1, 4, 2\right), \left(2, 4, 1\right), \left(3, 1, 2\right) \right\} \\
-1-\lambda & \left(v, w, u\right) \in \left\{\left(1, 3, 2\right), \left(4, 1, 2\right) \right\} \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-mit $\left(\begin{array}{c}
-x \\
-z\end{array}\right) \in P^{K_n, spt, asymm, 1}$ bauen.
-\end{Bsp}
-
 \section{Die Einbettung der aufspannenden Bäume in $P^{K_n, spt, asymm, 4}$}
 
 \begin{Sa}
@@ -5817,119 +4810,6 @@ Dieses besitzt als Lösung genau die Nullösung.
 Um die Eindeutigkeit einzusehen, setze die Lösung aus Lemma \ref{le:loesung_transponiert_nsymmxy} in Gleichung \eqref{eq:loesung_transponiert_nsymmxy_1} ein.
 \end{bew}
 
-\subsection{Untersuchung von $P^{K_n, spt, asymm, 1}$}
-
-$P^{K_n, spt, asymm, 1}$ ist nach Satz \ref{sa:spt_erw_asymmetrisch} durch folgende Gleichungen und Ungleichungen beschrieben:
-\begin{eqnarray*}
-P^{K_n, spt, asymm, 1} & = & \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in \mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{\left[n\right]^{\underline{3}^{1,2\not>3}}}: \nonumber\right. \\
- x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0 \ \forall \left(\left\{v, w\right\}, u\right)\in EV_n^{\not>}\  \left(q_{\left\{v, w\right\}, u}\right) \\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = & 1\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^< \left(r_{\left(v, w\right)}\right) \\
-x_{\left\{n-1, n\right\}} & \geq & 0 \\
-z_{\left(v, w\right), u} & \geq & \left. 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}^{1,2\not>3}} \right\}.
-\end{eqnarray*}
-
-Somit ist folgendes homogenes lineare Gleichungssystem zu betrachten:
-\begin{eqnarray*}
-\sum_{u=v+1, u\neq w}^n q_{\left\{v, w\right\}, u} + r_{\left(v, w\right)} & = & 0\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^<\ \left(x_{\left\{v, w\right\}}\right) \\
--q_{\left\{v, w\right\}, u} + r_{\left(v, u\right)} & = & 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}^{1<3}} \ \left(z_{\left(v, w\right), u}\right) \\
--q_{\left\{v, w\right\}, u} & = & 0\ \forall \left(v, w, u\right)\in \left[n\right]^{\underline{3}^{2<3<1}} \ \left(z_{\left(v, w\right), u}\right).
-\end{eqnarray*}
-
-\begin{Le}
-\label{le:lsg_P_asymm1_part}
-Betrachte das homogene lineare Gleichungssystem
-\begin{eqnarray}
--q_{\left\{v, w\right\}, u} + r_{\left(v, u\right)} & = & 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}^{1<3}} \ \left(z_{\left(v, w\right), u}\right) \label{eq:asymm_qr2_1} \\
--q_{\left\{v, w\right\}, u} & = & 0\ \forall \left(v, w, u\right)\in \left[n\right]^{\underline{3}^{2<3<1}} \ \left(z_{\left(v, w\right), u}\right) \label{eq:asymm_qr2_2}
-\end{eqnarray}
-mit
-\begin{displaymath}
-\left(\begin{array}{c}
-q \\
-r
-\end{array}\right) \in 
-\mathbb{R}^{EV_n^{\not>}}\times {\mathbb{R}^{\underline{2}}}^<.
-\end{displaymath}
-
-Jede Lösung dieses linearen Gleichungssystems lässt sich dann folgendermaßen darstellen:
-
-Sei $\lambda\in\mathbb{R}$ vorgegeben.
-Setze
-\begin{eqnarray*}
-r_{\left(i, j\right)} & := & \begin{cases}
-0 & j<n \\
-\lambda & j=n
-\end{cases}\\
-q_{\left\{i, j\right\},k} & := & \begin{cases}
-0 & k<n \\
-\lambda & k=n.
-\end{cases}
-\end{eqnarray*}
-\end{Le}
-\begin{bew}
-Sei $u\neq n$ und $v<u$. Dann ist (Gleichung \eqref{eq:asymm_qr2_2})
-\begin{displaymath}
--q_{\left\{n, v\right\}, u} = 0.
-\end{displaymath}
-
-Gleichzeitig gilt (Gleichung \eqref{eq:asymm_qr2_1}):
-\begin{displaymath}
--q_{\left\{v, n\right\}, u} + r_{\left(v, u\right)} = 0,
-\end{displaymath}
-also
-\begin{displaymath}
-r_{\left(v, u\right)} = 0.
-\end{displaymath}
-
-Daraus folgt (Gleichung \eqref{eq:asymm_qr2_1}), dass für $u < n$ (woraus $v<u$ oder $w<u$ nach Konstruktion von $EV_n^{\not>}$ folgt) gilt:
-\begin{displaymath}
-q_{\left\{v, w\right\}, u} = 0.
-\end{displaymath}
-
-Nun zum Fall $u=n$. Es gilt für $v\neq v'$ mit $v, v' < n$ (Gleichung \eqref{eq:asymm_qr2_1}):
-\begin{displaymath}
--q_{\left\{v, v'\right\}, n} + r_{\left(v, n\right)} = 0,
-\end{displaymath}
-aber auch
-\begin{displaymath}
--q_{\left\{v, v'\right\}, n} + r_{\left(v', n\right)} = 0,
-\end{displaymath}
-Somit ist
-\begin{eqnarray*}
-r_{\left(v, n\right)} & = & r_{\left(v', n\right)} \\
-r_{\left(v, n\right)} & = & q_{\left\{v, v'\right\}, n}.
-\end{eqnarray*}
-
-Nachrechnen ergibt, dass diese Variablenbelegungen tatsächlich Lösungen sind.
-\end{bew}
-
-\begin{Kor}
-\label{kor:linearisiert_C_asymm_vereinfacht}
-Betrachte das homogene lineare Gleichungssystem
-\begin{eqnarray*}
-\sum_{u=v+1, u\neq w}^n q_{\left\{v, w\right\}, u} + r_{\left(v, w\right)} & = & 0\ \forall \left(v, w\right)\in {[n]^{\underline{2}}}^<\ \left(x_{\left\{v, w\right\}}\right) \\
--q_{\left\{v, w\right\}, u} + r_{\left(v, u\right)} & = & 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}^{1<3}} \ \left(z_{\left(v, w\right), u}\right) \\
--q_{\left\{v, w\right\}, u} & = & 0\ \forall \left(v, w, u\right)\in \left[n\right]^{\underline{3}^{2<3<1}} \ \left(z_{\left(v, w\right), u}\right)
-\end{eqnarray*}
-mit
-\begin{displaymath}
-\left(\begin{array}{c}
-q \\
-r
-\end{array}\right) \in 
-\mathbb{R}^{EV_n^{\not>}}\times {\mathbb{R}^{\underline{2}}}^<.
-\end{displaymath}
-
-Dieses homogene lineare Gleichungssystem hat ausschließlich die Nulllösung.
-\end{Kor}
-\begin{bew}
-Einsetzen der Lösung aus Lemma \ref{le:lsg_P_asymm1_part}.
-\end{bew}
-
 \subsection{Untersuchung von $P^{K_n, spt, asymm, 4}$}
 
 \label{sec:untersuchung_Pnasymm4}
@@ -6008,7 +4888,6 @@ Nun nehmen wir alle Resultate zusammen und berechnen die Dimensionen der Polytop
 \dim P^{K_n, spt, symm, 0} & = & \frac{\left(n-1\right)^2 \left(n-2\right)}{2} \\
 \dim P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}} & = & \frac{n \left(n-1\right)\left(n-2\right)}{2} \\
 \dim P^{K_n, spt, symm, xy} & = & \frac{n \left(n-1\right)\left(n-2\right)}{3} \\
-\dim P^{K_n, spt, asymm, 1} & = & \frac{n \left(n-1\right)\left(n-2\right)}{3} \\
 \dim P^{K_n, spt, asymm, 4} & = & \frac{\left(n+3\right)\left(n-1\right)\left(n-2\right)}{6}
 \end{eqnarray*}
 \end{Sa}
@@ -6021,7 +4900,6 @@ Für die Anzahl an Variablen erhalten wir ${n \choose 2} = \frac{n \left(n-1\rig
 \begin{itemize}
 \item $n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, symm, 0}$ (bezüglich Beschreibung $\mathcal{I}^{n, symm, 0}_2$; vgl. Bemerkung \ref{bem:spt_erweitert_dual2}) und  $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ (vg. Bemerkung \ref{bem:spt_erw_symmetrisch})
 \item $\frac{1}{2} n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, symm, xy}$ (vgl. Bemerkung \ref{bem:gleichungen_Pxy})
-\item $\frac{2}{3} n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, asymm, 1}$ (vgl. Bemerkung \ref{bem:gleichungen_asymm})
 \item $\frac{1}{3} n \left(n-1\right) \left(n-2\right)$ für $P^{K_n, spt, asymm, 4}$ (vgl. Bemerkung \ref{bem:asymm_erw4_eigenschaften}).
 \end{itemize}
 
@@ -6030,14 +4908,13 @@ Als Anzahl an Gleichungen haben wir
 \item $\frac{1}{2} n \left(n-1\right) \left(n-2\right) + n \left(n-1\right)$ für $P^{K_n, spt, symm, 0}$ (bezüglich Beschreibung $\mathcal{I}^{n, symm, 0}_2$; vgl. Bemerkung \ref{bem:spt_erweitert_dual2})
 \item $\frac{1}{2} n \left(n-1\right) \left(n-2\right) + \frac{1}{2} n \left(n-1\right)$ für $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ (vg. Bemerkung \ref{bem:spt_erw_symmetrisch})
 \item $\frac{1}{6} n \left(n-1\right) \left(n-2\right) + \frac{1}{2} n \left(n-1\right)$ für $P^{K_n, spt, symm, xy}$ (vgl. Bemerkung \ref{bem:gleichungen_Pxy})
-\item $\frac{1}{3} n \left(n-1\right) \left(n-2\right) + \frac{1}{2} n \left(n-1\right)$ für $P^{K_n, spt, asymm, 1}$ (vgl. Bemerkung \ref{bem:gleichungen_asymm})
 \item $\frac{1}{6} n \left(n-1\right) \left(n-2\right) + \left(n-1\right)$ für $P^{K_n, spt, asymm, 4}$ (vgl. Bemerkung \ref{bem:asymm_erw4_eigenschaften}).
 \end{itemize}
 
 Für die Dimension des Kerns von $A^T$ (mit $A$ Matrix der Gleichungen) erhalten wir
 \begin{itemize}
 \item $n-1$ (vgl. Korollar \ref{kor:kern}) für $P^{K_n, spt, symm, 0}$ (bezüglich Beschreibung $\mathcal{I}^{n, symm, 0}_2$)
-\item $0$ für $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ (vgl.  Korollar \ref{kor:linearisiert_C_symm_vereinfacht}), $P^{K_n, spt, symm, xy}$ (vgl. Korollar \ref{kor:loesung_transponiert_nsymmxy}), $P^{K_n, spt, asymm, 1}$ (vgl. Korollar \ref{kor:linearisiert_C_asymm_vereinfacht}) und $P^{K_n, spt, asymm, 4}$ (vgl. Lemma \ref{le:linearisiert_asymm4_vereinfacht})
+\item $0$ für $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ (vgl.  Korollar \ref{kor:linearisiert_C_symm_vereinfacht}), $P^{K_n, spt, symm, xy}$ (vgl. Korollar \ref{kor:loesung_transponiert_nsymmxy}) und $P^{K_n, spt, asymm, 4}$ (vgl. Lemma \ref{le:linearisiert_asymm4_vereinfacht})
 \end{itemize}
 
 Somit gilt: 
@@ -6056,12 +4933,6 @@ Zu $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$:
 Für $P^{K_n, spt, symm, xy}$ ergibt sich
 \begin{eqnarray*}
 \dim P^{K_n, spt, symm, xy} & = & \frac{n \left(n-1\right)}{2}+\frac{1}{6} n \left(n-1\right)(n-2) -\left(\frac{n \left(n-1\right)\left(n-2\right)}{2}+\frac{n \left(n-1\right)}{2}\right) \\
-& = & \frac{n \left(n-1\right)\left(n-2\right)}{3}.
-\end{eqnarray*}
-
-Für $P^{K_n, spt, asymm, 1}$ erhält man
-\begin{eqnarray*}
-\dim P^{K_n, spt, asymm, 1} & = & \frac{n \left(n-1\right)}{2}+\frac{2}{3} n \left(n-1\right)(n-2)  -\left(\frac{n \left(n-1\right)\left(n-2\right)}{3}+\frac{n \left(n-1\right)}{2}\right) \\
 & = & \frac{n \left(n-1\right)\left(n-2\right)}{3}.
 \end{eqnarray*}
 
