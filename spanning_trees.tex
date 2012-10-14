@@ -669,8 +669,10 @@ Dies bildet den Beweis des folgenden Lemmas:
 $P^{K_n, spt, symm, 0}$ wird äquivalent durch folgende Gleichungen und Ungleichungen beschrieben:
 \begin{eqnarray}
 \left\{(x, z)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}:\right. & & \nonumber \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n \label{eq:spt_erweitert_2_1}\\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = & 1\ \forall \left(v, w\right)\in [n]^{\underline{2}} \label{eq:spt_erweitert_2_2} \\
+x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n \label{eq:spt_erweitert_2_1} 
+\\
+x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = & 1\ \forall \left(v, w\right)\in [n]^{\underline{2}} \label{eq:spt_erweitert_2_2} 
+\\
 x_{\left\{v, w\right\}} & \geq & 0\ \forall \left\{v, w\right\}\in {[n] \choose 2} \nonumber \\
 z_{\left(v, w\right), u} & \geq & \left.0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}} \nonumber \right\}.
 \end{eqnarray}
@@ -696,8 +698,8 @@ z
 \end{array}\right)\textnormal{ erfüllt }\mathcal{I}^{n, symm, 0}_2\right\} \nonumber \\
 \shortintertext{mit}
 \mathcal{I}^{n, symm, 0}_2 & := \left\{ \right. \nonumber \\
-x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} & = 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n \label{spt_erweitert_primal2_1} \\
-x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} z_{\left(v_1, u\right), v_2} & = 1\ \forall \left(v_1, v_2\right)\in [n]^{\underline{2}} \label{spt_erweitert_primal2_2} \\
+x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} & = 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n \label{eq:spt_erweitert_primal2_1} \\
+x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} z_{\left(v_1, u\right), v_2} & = 1\ \forall \left(v_1, v_2\right)\in [n]^{\underline{2}} \label{eq:spt_erweitert_primal2_2} \\
 z_{\left(v_1, v_2\right), v_3} & \geq \left.0\ \forall \left(v_1, v_2, v_3\right)\in [n]^{\underline{3}} \right\}. \label{eq:spt_erweitert_z}
 \end{align}
 \end{Le}
@@ -706,8 +708,8 @@ z_{\left(v_1, v_2\right), v_3} & \geq \left.0\ \forall \left(v_1, v_2, v_3\right
 \label{bem:spt_erweitert_dual2}
 In der Formulierung von $P^{K_n, spt, symm, 0}$ durch $\mathcal{I}^{n, symm, 0}_2$ wird dieses Polytop durch
 \begin{itemize}
-\item $\frac{1}{2} n \left(n-1\right) \left(n-2\right)$ Gleichungen \eqref{spt_erweitert_primal2_1}
-\item $n \left(n-1\right)$ Gleichungen \eqref{spt_erweitert_primal2_2}
+\item $\frac{1}{2} n \left(n-1\right) \left(n-2\right)$ Gleichungen \eqref{eq:spt_erweitert_primal2_1}
+\item $n \left(n-1\right)$ Gleichungen \eqref{eq:spt_erweitert_primal2_2}
 \item $n \left(n-1\right) \left(n-2\right)$ Nichtnegativitätsbedingungen für $z$-Variablen (Ungleichungen \eqref{eq:spt_erweitert_z})
 \end{itemize}
 in
@@ -766,11 +768,11 @@ Sei für die restlichen Ungleichungen $S\subseteq \left[n\right]$.
 \begin{eqnarray*}
 x\left(E\left(S\right)\right) & = & \sum_{\left\{u, v\right\} \in {S \choose 2}} x_{\left\{u, v\right\}} \\
 & = & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} x_{\left\{u, v\right\}} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
-& \stackrel{\eqref{eq:spt_erweitert_2_1}}{=} & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
+& \stackrel{\eqref{eq:spt_erweitert_primal2_1}}{=} & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
 & = & \frac{1}{\left|S\right|} \left(\sum_{\left(u, v, w\right) \in S^{\underline{3}}} z_{\left(u, v\right), w} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
 & \stackrel{z \geq 0}{\leq} & \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} \left( x_{\left\{u, v\right\}} + \sum_{w \in \left[n\right] \backslash \left\{u, v\right\}} z_{\left(u, w\right), v} 
 \right) \\
-& \stackrel{\eqref{eq:spt_erweitert_2_2}}{=} & \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} 1 \\
+& \stackrel{\eqref{eq:spt_erweitert_primal2_2}}{=} & \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} 1 \\
 & = & \left|S\right|-1.
 \end{eqnarray*}
 }
@@ -794,6 +796,8 @@ Diese Bedingung "`$\left\{v, w\right\}\in T \wedge u\in R_{T\backslash \left\{\l
 \end{Bem}
 
 \section{Eine Folgerung aus $P^{K_n, spt, symm, 0}$}
+
+\label{chap:neu_symm}
 
 Nun wollen wir ein Resultat beweisen, welches sich als Folgerung aus der Tatsache ergibt, dass $P^{K_n, spt, symm, 0}$ eine erweiterte Formulierung des Spannbaum-Polytops darstellt.
 
@@ -861,27 +865,83 @@ eine untere Schranke an das Gewicht eines gewichtsmaximalen aufspannenden Baums 
 
 \chapter{Neue symmetrische erweiterte Formulierungen}
 
-\label{chap:neu_symm}
+\section{$P^{K_n, spt, symm, pre-xy}$}
 
-Nun wollen wir Beobachtungen notieren, welche wir nutzen werden, um $P^{K_n, spt, symm, 0}$ unter Beibehaltung der Symmetrie so zu vereinfachen, dass das Ergebnis weiterhin eine erweiterte Formulierung des Spannbaum-Polytops bleibt.
+Wenn wir uns den Beweis von Satz \ref{sa:proj_spt_erw} genau anschauen, so stellen wir folgendes fest:
+\begin{itemize}
+\item Im Schritt
+\begin{displaymath}
+\frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} x_{\left\{u, v\right\}} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) 
+\stackrel{\eqref{eq:spt_erweitert_2_1}}{=} \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right)
+\end{displaymath}
+wurde die Bedingung \eqref{eq:spt_erweitert_2_1}
+\begin{displaymath}
+x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} = 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n
+\end{displaymath}
+nicht direkt benutzt. Stattdessen reicht folgende schwächere Bedingung
+\begin{eqnarray}
+x_{\left\{v_1, v_2\right\}} + x_{\left\{v_2, v_3\right\}} + x_{\left\{v_3, v_1\right\}} 
+- z_{\left(v_1, v_2\right), v_3} - z_{\left(v_2, v_1\right), v_3} & & \nonumber \\
+- z_{\left(v_2, v_3\right), v_1} - z_{\left(v_3, v_2\right), v_1} 
+- z_{\left(v_3, v_1\right), v_2} - z_{\left(v_1, v_3\right), v_2}
+& = & 0\ \forall \left\{v_1, v_2, v_3\right\}\in {\left[n\right] \choose 3}, \label{eq:erw_symm_eq_neu1}
+\end{eqnarray}
+welche man offenbar durch Addition der durch $\left(\left\{v_1, v_2\right\}, v_3\right)$, $\left(\left\{v_2, v_3\right\}, v_1\right)$, $\left(\left\{v_3, v_1\right\}, v_2\right)$ indizierten Gleichungen \eqref{eq:spt_erweitert_2_1} erhält, aus:
+\begin{eqnarray*}
+\frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} x_{\left\{u, v\right\}} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) 
+& = & \frac{1}{\left|S\right|} \left(\frac{1}{2} \cdot \frac{1}{3} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(x_{\left\{u, v\right\}} + x_{\left\{u, w\right\}} + x_{\left\{v, w\right\}}\right) \right. \\
+& & \left. + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
+& \stackrel{\eqref{eq:erw_symm_eq_neu1}}{=} & \frac{1}{\left|S\right|} \left(\frac{1}{2} \cdot \frac{1}{3} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right.  \right. \\
+& & \left. + z_{\left(v, w\right), u} + z_{\left(w, v\right), u} + z_{\left(w, u\right), v} + z_{\left(u, w\right), v} \right) \\
+& & \left. + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
+& = &  \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) \right. \\
+& & \left.+ \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right).
+\end{eqnarray*}
+\item Im Schritt
+\begin{displaymath}
+\frac{1}{\left|S\right|} \left(\sum_{\left(u, v, w\right) \in S^{\underline{3}}} z_{\left(u, v\right), w} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
+\stackrel{z \geq 0}{\leq} \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} \left( x_{\left\{u, v\right\}} + \sum_{w \in \left[n\right] \backslash \left\{u, v\right\}} z_{\left(u, w\right), v} 
+\right)
+\end{displaymath}
+wurde die Bedingung \eqref{eq:spt_erweitert_z}
+\begin{displaymath}
+z_{\left(v_1, v_2\right), v_3} \geq 0\ \forall \left(v_1, v_2, v_3\right)\in [n]^{\underline{3}}
+\end{displaymath}
+nicht direkt verwendet, sondern die schwächere Bedingung
+\begin{equation}
+z_{\left(v_1, w\right), v_2} + z_{\left(v_2, w\right), v_1} \geq 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_n \label{eq:erw_symm_eq_z}
+\end{equation}
+reicht aus.
 
-\section{$P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$}
-
-Die erste Beobachtung ist die, dass im Beweis von Satz \ref{sa:proj_spt_erw} im Schritt
+Der entsprechende Schritt im Beweis sieht dann folgendermaßen aus:
+\begin{eqnarray*}
+\frac{1}{\left|S\right|} \left(\sum_{\left(u, v, w\right) \in S^{\underline{3}}} z_{\left(u, v\right), w} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) & = & \frac{1}{\left|S\right|} \left(
+\sum_{v \in S} \sum_{\left(u, w\right) \in \left(S \backslash \left\{v\right\}\right)^{\underline{2}}} z_{\left(u, v\right), w} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
+& = & \frac{1}{\left|S\right|} \left(
+\sum_{v \in S} \sum_{\left\{u, w\right\} \in {S \backslash \left\{v\right\} \choose 2}} \left(z_{\left(u, v\right), w} + z_{\left(w, v\right), u}\right) \right. \\
+& & \left. + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
+& \stackrel{\eqref{eq:erw_symm_eq_z}}{\leq} & \frac{1}{\left|S\right|} \left(
+\sum_{v \in \left[n\right]} \sum_{\left\{u, w\right\} \in {S \backslash \left\{v\right\} \choose 2}} \left(z_{\left(u, v\right), w} + z_{\left(w, v\right), u}\right) \right. \\
+& & \left. + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
+& = & \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} \left( x_{\left\{u, v\right\}} + \sum_{w \in \left[n\right] \backslash \left\{u, v\right\}} z_{\left(u, w\right), v} 
+\right).
+\end{eqnarray*}
+\item Im Schritt
 \begin{displaymath}
 \frac{1}{\left|S\right|} \left(\sum_{\left(u, v\right) \in S^{\underline{2}}} \left( x_{\left\{u, v\right\}} + \sum_{w \in \left[n\right] \backslash \left\{u, v\right\}} z_{\left(u, w\right), v} 
 \right)\right)
 \stackrel{\eqref{eq:spt_erweitert_2_2}}{=}
 \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} 1
 \end{displaymath}
-die Gleichung \eqref{eq:spt_erweitert_2_2}
+wird die Gleichung \eqref{eq:spt_erweitert_2_2}
 \begin{displaymath}
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} = 1\ \forall \left(v, w\right)\in [n]^{\underline{2}}
+x_{\left\{v_2, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} z_{\left(v_1, u\right), v_2} = 1\ \forall \left(v_1, v_2\right)\in [n]^{\underline{2}}
 \end{displaymath}
-nicht direkt verwendet wurde, sondern eine Gleichung ausreicht, welche man erhält, indem man für vorgegebenes $v$, $w$ die durch $\left(v, w\right)$ und $\left(w, v\right)$ indizierten Gleichungen \eqref{eq:spt_erweitert_2_2} aufaddiert:
+nicht direkt verwendet, sondern die schwächere Gleichung
 \begin{equation}
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) = 2\ \forall \left\{v, w\right\}\in {[n] \choose 2}. \label{eq:erw_symm_eq_neu1}
+2 x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} \left(z_{\left(v_1, u\right), v_2} + z_{\left(v_2, u\right), v_1} \right) = 2\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2}, \label{eq:erw_symm_eq_neu2}
 \end{equation}
+welche man durch Addition der durch $\left(v, w\right)$ und $\left(w, v\right)$ indizierten Gleichungen \eqref{eq:spt_erweitert_2_2} erhält, reicht aus.
 
 Der entsprechende Schritt sieht dann folgendermaßen aus:
 \begin{eqnarray*}
@@ -890,116 +950,36 @@ Der entsprechende Schritt sieht dann folgendermaßen aus:
 & = & 
 \frac{1}{\left|S\right|} \sum_{\left\{u, v\right\} \in {S \choose 2}} \left(2 x_{\left\{u, v\right\}}\right. \\
 & & \left.+ \sum_{w \in \left[n\right] \backslash \left\{u, v\right\}} \left(z_{\left(u, w\right), v} + z_{\left(v, w\right), u}\right)\right) \\
-& \stackrel{\eqref{eq:erw_symm_eq_neu1}}{=} &
+& \stackrel{\eqref{eq:erw_symm_eq_neu2}}{=} &
 \frac{1}{\left|S\right|} \sum_{\left\{u, v\right\} \in {S \choose 2}} 2.
 \end{eqnarray*}
+\end{itemize}
 
-Somit gilt:
+Wenn wir nun noch zu dieser vereinfachten Gleichungs- und Ungleichungsfamilie Nichtnegativitätsbedingungen für die $x$-Variablen hinzufügen, so erhalten wir, wie wir soeben gesehen haben, eine vereinfachte erweiterte Formulierung des Spannbaum-Polytops. Dies notieren wir als Satz:
+
 \begin{Sa}
-\label{sa:spt_erw_symmetrisch}
-\begin{align}
-P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}} & := \left\{
+\label{sa:pre_Pxy}
+\begin{eqnarray*}
+P^{K_n, spt, symm, pre-xy} := \left\{
 \left(\begin{array}{c}
 x \\
 z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n \label{eq:spt_erweitert_symm_prim_1} \\
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) & = 2\ \forall \left\{v, w\right\}\in {[n] \choose 2} \label{eq:spt_erweitert_symm_prim_2} \\
-z_{\left(v, w\right), u} & \left.\geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}}\right\} \label{eq:spt_erweitert_symm_z}
-\end{align}
-bildet eine symmetrische erweiterte Formulierung des Spannbaum-Polytops.
+\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \nonumber\right. & & \\
+x_{\left\{v_1, v_2\right\}} + x_{\left\{v_2, v_3\right\}} + x_{\left\{v_3, v_1\right\}} 
+- z_{\left(v_1, v_2\right), v_3} - z_{\left(v_2, v_1\right), v_3} & & \nonumber \\
+- z_{\left(v_2, v_3\right), v_1} - z_{\left(v_3, v_2\right), v_1} 
+- z_{\left(v_3, v_1\right), v_2} - z_{\left(v_1, v_3\right), v_2}
+& = & 0\ \forall \left\{v_1, v_2, v_3\right\}\in {\left[n\right] \choose 3} \\
+2 x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} \left(z_{\left(v_1, u\right), v_2} + z_{\left(v_2, u\right), v_1} \right) & = & 2\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \\
+x_{\left\{v_1, v_2\right\}} & \geq & 0 \ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \\
+z_{\left(v_1, w\right), v_2}+z_{\left(v_2, w\right), v_1} & \geq & 0 \left. \ \forall \left(\left\{v_1, v_2\right\}, w\right) \in EV_n \nonumber \right\}
+\end{eqnarray*}
+bildet eine erweiterte Formulierung des Spannbaum-Polytops.
 \end{Sa}
 
-Obgleich das Argument bereits gegeben wurde, um den Beweis von Satz \ref{sa:proj_spt_erw} an Satz \ref{sa:spt_erw_symmetrisch} zu adaptieren, werden wir ihn der Übersicht halber nochmals aufschreiben.
+\section{$P^{K_n, symm, xy}$}
 
-Doch zuvor noch eine Bemerkung über die Anzahl an Gleichungen und Ungleichungen:
-
-\begin{Bem}
-\label{bem:spt_erw_symmetrisch}
-In der vorliegenden Formulierung wird $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ durch
-\begin{itemize}
-\item $\frac{1}{2} n \left(n-1\right) \left(n-2\right)$ Gleichungen \eqref{eq:spt_erweitert_symm_prim_1}
-\item $\frac{1}{2} n \left(n-1\right)$ Gleichungen \eqref{eq:spt_erweitert_symm_prim_2}
-\item $n \left(n-1\right) \left(n-2\right)$ Nichtnegativitätsbedingungen für $z$-Variablen (Ungleichungen \eqref{eq:spt_erweitert_symm_z})
-\end{itemize}
-in
-\begin{itemize}
-\item $\frac{1}{2} n \left(n-1\right)$ $x$-Variablen
-\item $n \left(n-1\right) \left(n-2\right)$ $z$-Variablen
-\end{itemize}
-beschrieben.
-\end{Bem}
-
-\begin{bew}
-Dass der charakteristische Vektor jedes aufspannenden Baums enthalten ist, folgt unmittelbar aus dem von Satz \ref{sa:proj_spt_erw} unter Beachtung, dass Gleichung \eqref{eq:spt_erweitert_symm_prim_2} die Summe zweier Gleichungen aus \eqref{eq:spt_erweitert_2_2} ist.
-
-Somit ist nur die umgekehrte Inklusion zu zeigen. Die Bedingung $x_{\left\{v, w\right\}} \geq 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2}$ folgt für $n\geq 3$ sofort aus \eqref{eq:spt_erweitert_symm_prim_1} unter Nutzung von $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}}$ (für $n=2$ leitet man einfach $x_{\left\{1, 2\right\}} = 1$ her).
-
-Sei für die restlichen Ungleichungen $S\subseteq \left[n\right]$ mit $\left|S\right|\geq 2$. Dann haben wir
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-x\left(E(S)\right) & = & \sum_{\left\{u, v\right\} \in {S \choose 2}} x_{\left\{u, v\right\}} \\
-& = & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} x_{\left\{u, v\right\}} + \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right) \\
-& \stackrel{\eqref{eq:spt_erweitert_symm_prim_1}}{=} & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) + \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right) \\
-& = & \frac{1}{2 \left|S\right|} \left(\sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(w, v\right), u}\right) + 2 \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right) \\
-& \stackrel{z \geq 0}{\leq} & \frac{1}{2 \left|S\right|} \left(\sum_{\left(u, w\right) \in S^{\underline{2}}} \left(2 x_{\left\{u, w\right\}} + \sum_{v \in \left[n\right] \backslash \left\{u, w\right\}}  \left(z_{\left(u, v\right), w} + z_{\left(w, v\right), u}\right)
-\right)\right) \\
-& \stackrel{\eqref{eq:spt_erweitert_symm_prim_2}}{=} & \frac{1}{2 \left|S\right|} \left(\sum_{\left(u, w\right) \in S^{\underline{2}}} 2\right) \\
-& = & \left|S\right|-1.
-\end{eqnarray*}
-}
-
-Die Gleichung $x\left({\left[n\right] \choose 2}\right) = n-1$ folgt offensichtlich aus dieser Ungleichungskette unter Beachtung, dass für $S=\left[n\right]$ die Bedingung $z\geq 0$ nicht benutzt wurde.
-\end{bew}
-
-\section{Verbesserungen von $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$}
-
-\subsection{Zwischenformulierungen}
-
-\label{sec:vereinf_symm_erw_formulierung}
-
-Die zweite Beobachtung ist die, dass im Beweis von Satz \ref{sa:proj_spt_erw} bzw. Satz \ref{sa:spt_erw_symmetrisch} für den Beweis $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}}$ nicht direkt verwendet wurde, sondern die schwächere Bedingung
-\begin{displaymath}
-z_{\left(v, w\right), u}+z_{\left(u, w\right), v} \geq 0\ \forall \left(v, w, u\right)\in \left[n\right]^{\underline{3}}\ \left(\textnormal{bzw. }\forall \left(\left\{v, u\right\}, w\right) \in EV_n\right)
-\end{displaymath}
-ausreicht.
-
-Um daraus eine erweiterte Formulierung zu erhalten, müssen wir lediglich sichern, dass weiterhin $x_{\left\{v, w\right\}}\geq 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2}$ gilt (dies wurde in genannten Beweisen aus der Nichtnegativität der $z$-Variablen gefolgert). Dies kann man trivial dadurch erreichen, indem man $x_{\left\{v, w\right\}}\geq 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2}$ einfach zusätzlich fordert.
-
-Diese Tatsachen beachtend folgert man durch nochmalige Betrachtung der Beweise von Satz \ref{sa:proj_spt_erw} bzw. Satz \ref{sa:spt_erw_symmetrisch} sofort folgendes Lemma:
-
-\begin{Le}
-\label{le:neue_symmetrische_erw_formulierungen}
-\begin{eqnarray*}
-P^{K_n, spt, symm, z_{\left(v, w\right), u}+z_{\left(u, w\right), v} \geq 0} & := & \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n \\
-x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), w} & = & 1\ \forall \left(v, w\right)\in [n]^{\underline{2}} \\
-x_{\left\{v, w\right\}} & \geq & 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2} \\
-z_{\left(v, w\right), u}+z_{\left(u, w\right), v} & \geq & \left. 0\ \forall \left(\left\{v, u\right\}, w\right) \in EV_n \nonumber \right\}
-\end{eqnarray*}
-und
-\begin{eqnarray}
-P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}, z_{\left(v, w\right), u}+z_{\left(u, w\right), v} \geq 0} & := & \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \nonumber\right. \\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n \label{eq:xy_aufsummiert} \\
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) & = & 2\ \forall \left\{v, w\right\}\in {[n] \choose 2} \nonumber \\
-x_{\left\{v, w\right\}} & \geq & 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2} \nonumber \\
-z_{\left(v, w\right), u}+z_{\left(u, w\right), v} & \geq & 0 \left. \ \forall \left(\left\{v, u\right\}, w\right) \in EV_n \nonumber \right\}
-\end{eqnarray}
-bilden erweiterte Formulierungen des Spannbaum-Polytops.
-\end{Le}
-
-\subsection{$P^{K_n, symm, xy}$}
-
-Nun wollen wir $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}, z_{\left(v, w\right), u}+z_{\left(u, w\right), v} \geq 0}$ weiter betrachten und hieraus eine erweiterte Formulierung, die wir mit $P^{K_n, symm, xy}$ bezeichnen wollen, herleiten.
+Nun wollen wir $P^{K_n, spt, symm, pre-xy}$ weiter betrachten und hieraus eine erweiterte Formulierung, die wir mit $P^{K_n, symm, xy}$ bezeichnen wollen, herleiten.
 
 \begin{Def}
 \label{def:P_p^symm_xy}
@@ -1035,185 +1015,16 @@ in
 beschrieben.
 \end{Bem}
 
-\begin{Bem}
-\label{bem:P_p^symm_xy_vs_P_p^anderes}
-Wenn wir das Polytop $P^{K_n, spt, symm, xy}$ betrachten, fallen als Unterschiede gegenüber $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}, z_{\left(v, w\right), u}+z_{\left(u, w\right), v} \geq 0}$ auf:
-\begin{itemize}
-\item Um die durch $\left\{v, w, u\right\}$ indizierte Gleichung \eqref{eq:sum_x_minus_sum_y} zu erzeugen, wurden die Gleichungen \eqref{eq:xy_aufsummiert}, welche durch $\left(\left\{u, v\right\}, w\right)$, $\left(\left\{v, w\right\}, u\right)$ und $\left(\left\{w, u\right\}, v\right)$ indiziert werden, aufaddiert.
-\item Im daraus resultierenden Gleichungs-/Ungleichungssystem wurden die $z$-Variablen eliminiert, indem $y_{\left\{v, u\right\}, w} := z_{\left(v, w\right), u}+z_{\left(u, w\right), v}$ gesetzt wurde.
-\end{itemize}
-\end{Bem}
-
-Dass die Ungleichungsbeschreibung von $P^{K_n, spt, symm, xy}$ eine erweiterte Formulierung des \linebreak Spann\-baum-Polytops bildet, ist Aussage des folgenden Satzes, für den wir in den folgenden Unterkapiteln drei unterschiedliche Beweise liefern werden:
+Dass die Ungleichungsbeschreibung von $P^{K_n, spt, symm, xy}$ eine erweiterte Formulierung des \linebreak Spann\-baum-Polytops bildet, ist Aussage des folgenden Satzes, für den wir in den folgenden Unterkapiteln zwei unterschiedliche Beweise liefern werden:
 
 \begin{Sa}
 \label{sa:P_p^xy}
 $P^{K_n, spt, symm, xy}$ bildet eine erweiterte Formulierung des Spannbaum-Polytops.
 \end{Sa}
 
-\subsubsection{Herleitung von Satz \ref{sa:P_p^xy} mittels dualer Programme}
+\subsection{Beweis von Satz \ref{sa:P_p^xy} durch Betrachtung vorhergehender Beweise}
 
-Wenn wir das durch die Ungleichungsbeschreibung von $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}, z_{\left(v, w\right), u}+z_{\left(u, w\right), v} \geq 0}$ aus Lemma \ref{le:neue_symmetrische_erw_formulierungen} induzierte lineare Programm
-\begin{align*}
-\max \sum_{e\in {\left[n\right] \choose 2}} c_e x_e & \\
-\shortintertext{über }
-\left\{ \left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \right.
-\\
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n\ \left(q_{\left\{v, w\right\}, u}\right) \\
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) & = 2\ \forall \left\{v, w\right\}\in {[n] \choose 2} \ \left(r_{\left\{v, w\right\}}\right) \\
-x_{\left\{v, w\right\}} & \geq 0 \ \forall \left\{v, w\right\} \in {\left[n\right] \choose 2} \\
-z_{\left(v, w\right), u}+z_{\left(u, w\right), v} & \left. \geq 0\ \forall \left(\left\{v, u\right\}, w\right) \in EV_n \ \left(s_{\left\{v, u\right\}, w}\right) \right\}
-\end{align*}
-dualisieren, erhalten wir folgendes duales Programm:
-\begin{align}
-\min \sum_{e\in {\left[n\right] \choose 2}} 2 r_e & \nonumber \\
-\shortintertext{über }
-\left\{ \left(\begin{array}{c}
-q \\
-r \\
-s
-\end{array}\right)\in \mathbb{R}^{EV_n} \times \mathbb{R}^{[n]\choose 2} \times \mathbb{R}^{EV_n}: \right. \nonumber
-\\
-\sum_{u\in[n]\backslash\left\{v, w\right\}} q_{\left\{v, w\right\}, u} + 2 r_{\left\{v, w\right\}} & \geq c_{\left\{v, w\right\}}\ \forall \left\{v, w\right\}\in {[n] \choose 2}\ \left(x_{\left\{v, w\right\}}\right) \nonumber \\
--q_{\left\{v, w\right\}, u} + r_{\left\{v, u\right\}} - s_{\left\{v, u\right\}, w} & = 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}} \ \left(z_{\left(v, w\right), u}\right) \label{eq:q_symmetrie} \\
-s_{\left\{v, w\right\}, u} & \left.\geq 0 \ \forall \left(\left\{v, w\right\}, u\right\} \in EV_n\right\}. \nonumber
-\end{align}
-
-Nun betrachten wir dieses duale Programm genauer:
-\begin{eqnarray*}
-q_{\left\{w, v\right\}, u} & = & q_{\left\{v, w\right\}, u} \\
-& \stackrel{\eqref{eq:q_symmetrie}}{=} & r_{\left\{v, u\right\}} - s_{\left\{v, u\right\}, w} \\
-& = & r_{\left\{u, v\right\}} - s_{\left\{u, v\right\}, w} \\
-& \stackrel{\eqref{eq:q_symmetrie}}{=} & q_{\left\{u, w\right\}, v} \\
-& = & q_{\left\{w, u\right\}, v} \\
-& \stackrel{\eqref{eq:q_symmetrie}}{=} & r_{\left\{w, v\right\}} - s_{\left\{w, v\right\}, u} \\
-& = & r_{\left\{v, w\right\}} - s_{\left\{v, w\right\}, u} \\
-& \stackrel{\eqref{eq:q_symmetrie}}{=} & q_{\left\{v, u\right\}, w} \\
-& = & q_{\left\{u, v\right\}, w} \\
-\end{eqnarray*}
-Somit hängt für einen zulässigen Punkt des dualen Programms der Wert der $q$-Variablen nur von den drei gewählten Indizes (ohne Beachtung der Reihenfolge der Indizes) ab -- wir können also $q_{\left\{v, w\right\}, u}$ durch eine neue Variable $q_{\left\{v, w, u\right\}}$ ersetzen, ohne dass sich der Optimalwert des dualen linearen Programms ändert. Damit erhalten wir das folgende lineare Programm:
-\begin{align}
-\min \sum_{e\in {\left[n\right] \choose 2}} 2 r_e & \nonumber \\
-\shortintertext{über }
-\left\{ \left(\begin{array}{c}
-q \\
-r \\
-s
-\end{array}\right)\in \mathbb{R}^{EV_n} \times \mathbb{R}^{[n]\choose 2} \times \mathbb{R}^{EV_n}: \right. \nonumber
-\\
-\sum_{u\in[n]\backslash\left\{v, w\right\}} q_{\left\{v, w, u\right\}} + 2 r_{\left\{v, w\right\}} & \geq c_{\left\{v, w\right\}}\ \forall \left\{v, w\right\}\in {[n] \choose 2}\ \left(x_{\left\{v, w\right\}}\right) \nonumber \\
--q_{\left\{v, w, u\right\}} + r_{\left\{v, u\right\}} - s_{\left\{v, u\right\}, w} & = 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}} \ \left(z_{\left(v, w\right), u}\right) \label{eq:z_dual_symm} \\
-s_{\left\{v, w\right\}, u} & \left.\geq 0 \ \forall \left(\left\{v, w\right\}, u\right\} \in EV_n\right\}. \label{eq:s_geq_0}
-\end{align}
-
-Wenn wir nun die $s_{\left\{v, w\right\}, u} \geq 0 \ \forall \left(\left\{v, w\right\}, u\right\} \in EV_n$-Bedingung \eqref{eq:s_geq_0} eliminieren (auch dies ändert nichts am Optimalwert, da Gleichung \eqref{eq:z_dual_symm} symmetrisch bezüglich Vertauschung von $v$ und $u$ ist), so erhalten wir
-\begin{align}
-\min \sum_{e\in {\left[n\right] \choose 2}} 2 r_e & \nonumber \\
-\shortintertext{über }
-\left\{ \left(\begin{array}{c}
-q \\
-r
-\end{array}\right)\in \mathbb{R}^{EV_n} \times \mathbb{R}^{[n]\choose 2}: \right. \nonumber
-\\
-\sum_{u\in[n]\backslash\left\{v, w\right\}} q_{\left\{v, w, u\right\}} + 2 r_{\left\{v, w\right\}} & \geq c_{\left\{v, w\right\}}\ \forall \left\{v, w\right\}\in {[n] \choose 2}\ \left(x_{\left\{v, w\right\}}\right) \nonumber \\
--q_{\left\{v, w, u\right\}} + r_{\left\{v, u\right\}} & \left.\geq 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}} \ \left(z_{\left(v, w\right), u}\right)\right\}. \label{eq:q_r_symm}
-\end{align}
-
-Da offensichtlich auch Ungleichung \eqref{eq:q_r_symm} symmetrisch unter Vertauschung von $v$ und $u$ ist (wodurch jede Gleichung aus \eqref{eq:q_r_symm} doppelt auftaucht), führen wir eine neue Dualvariable (des dualen Problems -- also in Bezug auf die erweiterte Formulierung des Spannbaum-Polytops Primalvariable) $y_{\left\{v, u\right\}, w}$ mit $\left(\left\{v, u\right\}, w\right) \in EV_n$ ein und erhalten:
-\begin{align*}
-\min \sum_{e\in {\left[n\right] \choose 2}} 2 r_e & \\
-\shortintertext{über }
-\left\{ \left(\begin{array}{c}
-q \\
-r
-\end{array}\right)\in \mathbb{R}^{EV_n} \times \mathbb{R}^{[n]\choose 2}: \right.
-\\
-\sum_{u\in[n]\backslash\left\{v, w\right\}} q_{\left\{v, w, u\right\}} + 2 r_{\left\{v, w\right\}} & \geq c_{\left\{v, w\right\}}\ \forall \left\{v, w\right\}\in {[n] \choose 2}\ \left(x_{\left\{v, w\right\}}\right) \\
--q_{\left\{v, w, u\right\}} + r_{\left\{v, u\right\}} & \left.\geq 0\ \forall \left(\left\{v, u\right\}, w\right)\in EV_n \ \left(y_{\left\{v, u\right\}, w}\right)\right\}.
-\end{align*}
-
-Wenn wir dieses lineare Programm wieder rückdualisieren, so erhalten wir
-\begin{align*}
-\max \sum_{e\in {\left[n\right] \choose 2}} c_e x_e & \nonumber \\
-\shortintertext{über }
-\left\{ \left(\begin{array}{c}
-x \\
-y
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{EV_n}: \right.
-\nonumber \\
-\sum_{i=1}^3 \left(x_{\left\{v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right\}} -  y_{\left\{v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right\}, v_{i \stackrel{\left[3\right]}{+} 2}}\right) & = 0\ \forall \left\{v_1, v_2, v_3\right\}\in {[n] \choose 3}\ \left(q_{\left\{v_1, v_2, v_3\right\}}\right) \\
-2 x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} & = 2\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \ \left(r_{\left\{v_1, v_2\right\}}\right) \\
-x_{\left\{v_1, v_2\right\}} & \geq 0 \ \forall \left\{v_1, v_2\right\} \in {\left[n\right] \choose 2} \\
-y_{\left\{v_1, v_2\right\}, u} & \geq \left.0 \ \forall \left(\left\{v_1, v_2\right\}, u\right) \in EV_n\right\}.
-\end{align*}
-
-Das Polytop dieses linearen Programms ist exakt $P^{K_n, spt, symm, xy}$.
-
-Alle der betrachteten linearen Programme haben (unter Nutzung von Eigenschaften der LP-Dualität) den selben Optimalwert. Somit hat das finale lineare Programm für ein vorgegebenes $c \in \mathbb{R}^{\left[n\right] \choose 2}$ den selben Optimalwert wie der eines maximalen aufspannenden Baums mit Kantengewichten $c$ (da das initiale lineare Programm eine erweiterte Formulierung des Spannbaum-Polytops darstellt). Das heißt aber, dass $P^{K_n, spt, symm, xy}$, das Polytop des finalen linearen Programms, ebenso eine erweiterte Formulierung des Spannbaum-Polytops darstellt -- die Aussage von Satz \ref{sa:P_p^xy}.
-
-\subsubsection{Beweis von Satz \ref{sa:P_p^xy} durch Betrachtung vorhergehender Beweise}
-
-Der nächste Beweis, dass $P^{K_n, spt, symm, xy}$ eine erweiterte Formulierung des Spannbaum-Polytops darstellt, ergibt sich aus Betrachtung des (impliziten) Beweises von Lemma \ref{le:neue_symmetrische_erw_formulierungen}, welches aussagt, dass $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}, z_{\left(v, w\right), u}+z_{\left(u, w\right), v} \geq 0}$ eine erweiterte Formulierung des Spannbaum-Poly\-tops bildet.
-
-Wenn wir uns den Beweis von Satz \ref{sa:spt_erw_symmetrisch} (auf welchem der Beweis von Lemma \ref{le:neue_symmetrische_erw_formulierungen} basiert) nochmals anschauen, so stellen wir fest, dass im Schritt
-\begin{eqnarray*}
-\frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} x_{\left\{u, v\right\}} + \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right)
-& \stackrel{\eqref{eq:spt_erweitert_symm_prim_1}}{=} & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) \right. \\
-& & \left.+ \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right)
-\end{eqnarray*}
-Gleichung \eqref{eq:spt_erweitert_symm_prim_1}
-\begin{eqnarray*}
-x_{\left\{v, w\right\}} - z_{\left(v, w\right), u} - z_{\left(w, v\right), u} & = & 0\ \forall \left(\left\{v, w\right\}, u\right)\in EV_n
-\end{eqnarray*}
-nicht direkt verwendet wird, sondern stets implizit die Summe der durch $\left(\left\{v, w\right\}, u\right)$, \linebreak $\left(\left\{w, u\right\}, v\right)$ und $\left(\left\{u, v\right\}, w\right)$ indizierten Gleichungen dieser Serie verwendet wird.
-
-Um dies einzusehen, summieren wir die entsprechenden Gleichungen auf und erhalten
-\begin{eqnarray}
-x_{\left\{u, v\right\}} + x_{\left\{v, w\right\}} + x_{\left\{w, u\right\}} 
-- z_{\left(u, v\right), w} - z_{\left(v, u\right), w} & & \nonumber \\
-- z_{\left(v, w\right), u} - z_{\left(w, v\right), u} 
-- z_{\left(w, u\right), v} - z_{\left(u, w\right), v}
-& = & 0\ \forall \left\{u, v, w\right\}\in {\left[n\right] \choose 3}. \label{eq:pre_Pxy_1}
-\end{eqnarray}
-
-Wir zeigen nun, dass für den oben in Erinnerung gerufenen Beweisschritt die Gleichungsserie \eqref{eq:pre_Pxy_1} anstelle von Gleichungsserie \eqref{eq:spt_erweitert_symm_prim_1} ausreicht:
-\begin{eqnarray*}
-\frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} x_{\left\{u, v\right\}}\right. & & \\
-\left. + \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right) & = & \frac{1}{\left|S\right|} \left(\frac{1}{2} \cdot \frac{1}{3} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(x_{\left\{u, v\right\}} + x_{\left\{v, w\right\}} + x_{\left\{w, u\right\}}\right) %\right. \\
-%& & \left. 
-+ \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right) \\
-& \stackrel{\eqref{eq:pre_Pxy_1}}{=} & \frac{1}{\left|S\right|} \left(\frac{1}{2} \cdot \frac{1}{3} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w} + z_{\left(v, w\right), u} \right.\right. \\
-& & \left. + z_{\left(w, v\right), u} + z_{\left(w, u\right), v} + z_{\left(u, w\right), v}\right) %\\
-%& & 
-\left. + \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right) \\
-& = & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) + \sum_{\left(u, w\right) \in S^{\underline{2}}} x_{\left\{u, w\right\}} \right).
-\end{eqnarray*}
-
-Somit gilt:
-\begin{Le}
-\label{le:pre_Pxy}
-\begin{eqnarray*}
-P^{K_n, spt, symm, pre-xy} := \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \nonumber\right. & & \\
-x_{\left\{u, v\right\}} + x_{\left\{v, w\right\}} + x_{\left\{w, u\right\}} 
-- z_{\left(u, v\right), w} - z_{\left(v, u\right), w} & & \nonumber \\
-- z_{\left(v, w\right), u} - z_{\left(w, v\right), u} 
-- z_{\left(w, u\right), v} - z_{\left(u, w\right), v}
-& = & 0\ \forall \left\{u, v, w\right\}\in {\left[n\right] \choose 3} \\
-2 x_{\left\{v, w\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} \left(z_{\left(v, u\right), w} + z_{\left(w, u\right), v} \right) & = & 2\ \forall \left\{v, w\right\}\in {[n] \choose 2} \\
-x & \geq & 0 \\
-z_{\left(v, w\right), u}+z_{\left(u, w\right), v} & \geq & 0 \left. \ \forall \left(\left\{v, u\right\}, w\right) \in EV_n \nonumber \right\}
-\end{eqnarray*}
-bildet eine erweiterte Formulierung des Spannbaum-Polytops.
-\end{Le}
-
-Nun wollen wir aus Lemma \ref{le:pre_Pxy} folgern, dass $P^{K_n, spt, symm, xy}$ eine erweiterte Formulierung des Spannbaum-Polytops bildet.
+Wir wollen aus Satz \ref{sa:pre_Pxy} folgern, dass $P^{K_n, spt, symm, xy}$ eine erweiterte Formulierung des Spannbaum-Polytops bildet.
 
 Dazu benutzen wir folgendes Lemma:
 \begin{Le} \label{le:variablen_eliminieren}
@@ -1271,7 +1082,7 @@ S^{-1}_r x'^2
 \end{array}\right) \in Q$.
 \end{bew}
 
-Somit folgt Satz \ref{sa:P_p^xy} aus Lemma \ref{le:pre_Pxy} und Lemma \ref{le:variablen_eliminieren}, wobei in Lemma \ref{le:variablen_eliminieren} gesetzt werde:
+Somit folgt Satz \ref{sa:P_p^xy} aus Satz \ref{sa:pre_Pxy} und Lemma \ref{le:variablen_eliminieren}, wobei in Lemma \ref{le:variablen_eliminieren} gesetzt werde:
 \begin{itemize}
 \item $d_1 := \left|{\left[n\right] \choose 2}\right|$
 \item $d_2 := \left|[n]^{\underline{3}}\right|$
@@ -1284,14 +1095,14 @@ e^{EV_n}_{\left\{v_1, v_2\right\}, u} & \mapsto & e^{[n]^{\underline{3}}}_{\left
 \end{eqnarray*}
 definierten linearen Abbildung.
 
-\subsubsection{Ein direkter Beweis von Satz \ref{sa:P_p^xy}}
+\subsection{Ein direkter Beweis von Satz \ref{sa:P_p^xy}}
 
 \label{sec:P_p^xy_direkt}
 
 Nun wollen wir noch einen direkten Beweis von Satz \ref{sa:P_p^xy} angeben:
 
 \begin{bew}
-Dass sich jeder aufspannende Baum in $P^{K_n, spt, symm, xy}$ einbetten lässt, folgt aus Bemerkung \ref{bem:P_p^symm_xy_vs_P_p^anderes}, sowie den Beweisen von Satz \ref{sa:proj_spt_erw} und Satz \ref{sa:spt_erw_symmetrisch}.
+Dass sich jeder aufspannende Baum in $P^{K_n, spt, symm, xy}$ einbetten lässt, folgt aus der Herleitung der Gleichungen.
 
 Kurz zusammengefasst: setze $x$ als den charakteristischen Vektor des aufspannenden Baums $T$ und $y$ mittels
 \begin{displaymath}
@@ -1871,23 +1682,6 @@ x\left(E(S)\right) & = & \sum_{\left\{u, v\right\} \in {S \choose 2}} x_{\left\{
 Die Einbettung eines Waldes in $P^{K_n, for, symm, 0}$ ist im Allgemeinen \emph{nicht} eindeutig.
 \end{Kor}
 
-Als nächstes entwickeln wir eine zu $P^{K_n, spt, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ analoge erweiterte Formulierung des Wald-Polytops, die wir mit $P^{K_n, for, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}}$ bezeichnen wollen.
-
-Auch hier zeigt man absolut analog zum Beweis von Satz \ref{sa:baum_erweitert_1}, nur diesmal unter Nutzung des Beweises von Satz \ref{sa:spt_erw_symmetrisch}:
-\begin{Sa}
-\begin{align*}
-P^{K_n, for, symm, r_{\left(v, w\right)}+r_{\left(w, v\right)}} & := \left\{
-\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \nonumber\right. \\
-x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} & = 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n \\
-2 x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} \left(z_{\left(v_1, u\right), v_2} + z_{\left(v_2, u\right), v_1} \right) & \leq 2\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \\
-z_{\left(v_1, v_2\right), v_3} & \geq 0 \nonumber \left. \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}\right\}
-\end{align*}
-bildet eine erweiterte Formulierung des Wald-Polytops $P^{K_n, for}$.
-\end{Sa}
-
 Analog zum Beweis von Satz \ref{sa:baum_erweitert_1} unter Nutzung des Beweises von Satz \ref{sa:P_p^xy} beweist man
 \begin{Sa}
 \label{sa:wald_xy}
@@ -2281,15 +2075,15 @@ Setze dazu
 \widetilde{z}_{\left(3, 2\right), 1} & = & 1 - x_{\left(1, 3\right)}.
 \end{eqnarray*}
 
-$\widetilde{z}_{\left(v_1, v_2\right), v_3} \geq 0 \ \forall \left(v_1, v_2, v_3\right) \in \left[3\right]^{\underline{3}}$ ist trivialerweise erfüllt -- somit sind nur Gleichungen \eqref{spt_erweitert_primal2_1} und \eqref{spt_erweitert_primal2_2} zu überprüfen.
+$\widetilde{z}_{\left(v_1, v_2\right), v_3} \geq 0 \ \forall \left(v_1, v_2, v_3\right) \in \left[3\right]^{\underline{3}}$ ist trivialerweise erfüllt -- somit sind nur Gleichungen \eqref{eq:spt_erweitert_primal2_1} und \eqref{eq:spt_erweitert_primal2_2} zu überprüfen.
 
-Gleichung \eqref{spt_erweitert_primal2_2}
+Gleichung \eqref{eq:spt_erweitert_primal2_2}
 \begin{eqnarray*}
 x_{\left\{v_1, v_2\right\}} + \sum_{u\in[3]\backslash\left\{v_1, v_2\right\}} \widetilde{z}_{\left(v_1, u\right), v_2} & = & 1\ \forall \left(v_1, v_2\right)\in [3]^{\underline{2}}
 \end{eqnarray*}
 gilt nach Konstruktion wegen Gleichung \eqref{eq:spt_erweitert_asymm4_prim_2,5}.
 
-Somit müssen wir nur absichern, dass Gleichung \eqref{spt_erweitert_primal2_1}
+Somit müssen wir nur absichern, dass Gleichung \eqref{eq:spt_erweitert_primal2_1}
 \begin{eqnarray*}
 x_{\left\{v_1, v_2\right\}} - \widetilde{z}_{\left(v_1, v_2\right), u} - \widetilde{z}_{\left(v_2, v_1\right), u} & = 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_3
 \end{eqnarray*}
@@ -3875,7 +3669,7 @@ z
 \in P^{K_n, spt, symm, 0}$ erfüllt ist.
 \end{Sa}
 \begin{bew}
-Aus Gleichung \eqref{spt_erweitert_primal2_1} folgt mit $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}}$ für ein beliebiges $u \in \left[n\right] \backslash \left\{v, w\right\}$:
+Aus Gleichung \eqref{eq:spt_erweitert_primal2_1} folgt mit $z_{\left(v, w\right), u} \geq 0 \ \forall \left(v, w, u\right) \in \left[n\right]^{\underline{3}}$ für ein beliebiges $u \in \left[n\right] \backslash \left\{v, w\right\}$:
 \begin{displaymath}
 z_{\left(v, w\right), u} = 0 \textnormal{ für } \left\{v, w\right\}\notin T
 \end{displaymath}
@@ -3913,7 +3707,7 @@ Im Fall $\widetilde{w}\neq w^*$ ist nichts zu zeigen, da dann $z_{\left(v, \wide
 
 Sei somit $\widetilde{w} = w^*$ (und somit $\widetilde{u}\neq w^*$).
 
-Mit Gleichung \eqref{spt_erweitert_primal2_2} folgt:
+Mit Gleichung \eqref{eq:spt_erweitert_primal2_2} folgt:
 \begin{eqnarray*}
 1 & = & x_{\left\{v, \widetilde{u}\right\}} + \sum_{u\in[n]\backslash\left\{v, \widetilde{u}\right\}} z_{\left(v, u\right), \widetilde{u}} \\
 & = & z_{\left(v, w^*\right), \widetilde{u}}
@@ -3927,7 +3721,7 @@ Wie schon oben angemerkt, reicht es, den Fall $\left\{v, \widetilde{w}\right\}\i
 
 \subparagraph{Fall 1:} $\left\{v, \widetilde{u}\right\}\in T$
 
-Betrachte Gleichung \eqref{spt_erweitert_primal2_2}
+Betrachte Gleichung \eqref{eq:spt_erweitert_primal2_2}
 \begin{eqnarray*}
 1 & = & x_{\left\{v, \widetilde{u}\right\}} + \sum_{u\in[n]\backslash\left\{v, \widetilde{u}\right\}} z_{\left(v, u\right), \widetilde{u}} \\
 & = & 1 + \sum_{u\in[n]\backslash\left\{v, \widetilde{u}\right\}: \left\{v, u\right\}\in T} z_{\left(v, u\right), \widetilde{u}}
@@ -3956,7 +3750,7 @@ k & \textnormal{für } v \textnormal{ ist Wurzel von } T_A \\
 \end{cases}
 \end{displaymath}
 
-Es folgt aus Gleichung \eqref{spt_erweitert_primal2_2}:
+Es folgt aus Gleichung \eqref{eq:spt_erweitert_primal2_2}:
 \begin{eqnarray}
 1 & = & x_{\left\{v, \widetilde{u}\right\}} + \sum_{u\in[n]\backslash\left\{v, w\right\}} z_{\left(v, u\right), \widetilde{u}} \nonumber \\
 & = & \sum_{i=1}^{\widetilde{k}} z_{\left(v, w_i\right), \widetilde{u}} \label{eq:case2sum}
@@ -3964,7 +3758,7 @@ Es folgt aus Gleichung \eqref{spt_erweitert_primal2_2}:
 
 \subparagraph{Fall 2a:} $\widetilde{u}\in T_{w_j}$ ($1\leq j \leq k$) und $\widetilde{w} = w_j$
 
-Es gilt nach \eqref{spt_erweitert_primal2_1} und wegen $w_j \prec^+ v$:
+Es gilt nach \eqref{eq:spt_erweitert_primal2_1} und wegen $w_j \prec^+ v$:
 \begin{eqnarray}
 z_{\left(v, w_j\right), \widetilde{u}} & = & x_{\left\{v, w_j\right\}} - z_{\left(w_j, v\right), \widetilde{u}} \nonumber \\
 & \stackrel{\textnormal{Ind.-vor.}}{=} & 1. \label{eq:z_v_w_j_u1}
@@ -3983,7 +3777,7 @@ Also ist für $\widetilde{w} = w_l$ wegen $z\geq 0$ $z_{\left(v, w_l\right), \wi
 
 \subparagraph{Fall 2c:} $\widetilde{u}\in T_{w_{k+1}}$ und $\widetilde{w}=w_j$ mit $j\neq k+1$
 
-Aus Gleichung \eqref{spt_erweitert_primal2_1} folgt unter Beachtung von $w_j \prec^+ v$:
+Aus Gleichung \eqref{eq:spt_erweitert_primal2_1} folgt unter Beachtung von $w_j \prec^+ v$:
 \begin{eqnarray}
 z_{\left(v, w_j\right), \widetilde{u}} & = & x_{\left\{v, w_j\right\}} - z_{\left(w_j, v\right), \widetilde{u}} \nonumber \\
 & \stackrel{\textnormal{Ind.-vor.}}{=} & 0.  \label{eq:z_v_w_j_u2}
