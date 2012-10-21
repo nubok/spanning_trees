@@ -92,6 +92,7 @@ Sei $S$ eine Menge und $n\in\mathbb{Z}_{\geq 0}$. Dann definieren wir
 \item $EV_n$ als Abkürzung für $\left({[n]\choose 2} \times [n]\right) \backslash \bigcup\limits_{\left\{v_1, v_2\right\} \in {[n]\choose 2}} \left(\left\{v_1, v_2\right\}, v_1\right) \cup \left(\left\{v_1, v_2\right\}, v_2\right)$
 \item Für $n \geq 1$ definieren wir $a +_{\left[n\right]} b$ bzw. $a  -_{\left[n\right]} b$ als Abkürzung für $a + b \mod n$ bzw. $a - b \mod n$, wobei das Ergebnis in $\left[n\right]$ liegt (im Gegensatz zur "`normalen"' Addition bzw. Subtraktion modulo $n$)
 \item $E \left(S\right) := {S \choose 2} \cap E$ und $A\left(S\right) := S^{\underline{2}} \cap A$
+\item Für $T$ mit $S \cap T = \emptyset$ wollen wir $\delta\left(S, T\right) := \bigcup_{s \in S, t \in T} \left\{\left\{s, t\right\}\right\}$ definieren
 \end{itemize}
 \end{Def}
 
@@ -1782,6 +1783,35 @@ in
 \end{itemize}
 beschrieben.
 \end{Bem}
+
+\chapter{Erweiterte Formulierungen auf Basis von Multicut-Ungleichungen und des Konnektor-Polytops}
+
+\begin{Sa}
+\label{sa:asymmetrisch_erweitert4}
+\begin{align}
+P^{K_n, sptkon, asymm, 4} := \left\{
+\left(\begin{array}{c}
+x \\
+z
+\end{array}\right)\in \mathbb{R}^{[n]\choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1, 2<3}}}: \nonumber\right. \\
+x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), w} - z_{\left(v_2, v_1\right), w} & = 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_n^< \label{eq:sptkon_erweitert_asymm4_prim_1} \\
+x_{\left\{v_1, v_2\right\}} + \sum_{u\in[v_2-1]\backslash\left\{v_1\right\}} z_{\left(v_1, u\right), v_2} & \leq 1\ \forall \left(v_1, v_2\right)\in {[n-1]^{\underline{2}}}^<  \label{eq:sptkon_erweitert_asymm4_prim_2} \\
+x_{\left\{v, n\right\}} + \sum_{u\in[n-1]\backslash\left\{v\right\}} z_{\left(v, u\right), n} & = 1\ \forall v \in [n-1] \label{eq:sptkon_erweitert_asymm4_prim_2,5} \\
+x_{\left\{v, n\right\}} & \geq 0 \ \forall v\in \left[n-1\right] \label{eq:sptkon_erweitert_asymm4_x_n} \\
+z_{\left(v_1, v_2\right), v_3} & \left. \geq 0 \ \forall \left(v_1, v_2, v_3\right)\in \left[n\right]^{\underline{3}^{1, 2<3}} \right\} \label{eq:sptkon_erweitert_asymm4_z}
+\end{align}
+bildet eine erweiterte Formulierung des Spannbaum-Polytops.
+\end{Sa}
+\begin{bew}
+\begin{eqnarray*}
+\sum_{\left\{P_1, P_2\right\} \in {\mathcal{P} \choose 2}} \sum_{\left\{v_1, v_2\right\} \in {\delta\left(P_1, P_2\right)}} x_{\left\{v_1, v_2\right\}} & = & \sum_{\left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}} x_{\left\{v_1, v_2\right\}} - \sum_{P \in \mathcal{P}} \sum_{\left\{v_1, v_2\right\} \in {P \choose 2}} x_{\left\{v_1, v_2\right\}} \\
+& \stackrel{42}{=} & \sum_{v \in \left[n-1\right]} x_{\left\{v, n\right\}} + \sum_{\left\{v_1, v_2\right\} \in {\left[n-1\right] \choose 2}} \left(z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n}\right) \\
+& & - \sum_{P \in \mathcal{P}} \left(\sum_{v \in P \backslash \left\{\max P\right\}} x_{\left\{v, \max P\right\}} \right. \\
+& & \left.+ \sum_{\left\{v_1, v_2\right\} \in P \backslash \left\{\max P\right\}} \left(z_{\left(v_1, v_2\right), \max P} + z_{\left(v_2, v_1\right), \max P}\right)\right) \\
+& \stackrel{z \geq 0}{\geq} & \sum_{v \in \left[n-1\right]} x_{\left\{v, n\right\}} + \sum_{v \in \left[n-1\right]} \sum_{u \in \left[n-1\right] \backslash \left\{u\right\}} z_{\left(v, u\right), n} \\
+& & - \sum_{P \in \mathcal{P}} \left(\sum_{v \in P \backslash \left\{\max P\right\}} x_{\left\{v, \max P\right\}} + \sum_{v \in P \backslash \left\{\max P\right\}} \sum_{u \in \left[\max P -1\right] \backslash \left\{v\right\}} z_{\left(v, u\right), \max P} \right)
+\end{eqnarray*}
+\end{bew}
 
 \chapter{Erweiterte Formulierungen des Branching- und Arboreszenz-Polytops}
 
