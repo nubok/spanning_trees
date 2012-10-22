@@ -7,4 +7,4 @@ Zu beachten ist, dass dies *nicht* die Diplomarbeit darstellt, sondern ein darau
 
 Zur Lizenz: die Inhalte sind unter CC-BY Deutschland (http://creativecommons.org/licenses/by/3.0/de/) lizenziert.
 
-Seht diesen Tag als Geschenk von mir, Wolfgang Keller, an die Menschheit. Wenn ihr ebenfalls etwas Gutes tun wollt und keine Idee habt, was, so kämpft gegen die Schulpflicht.
+Seht diesen Tag als Geschenk von mir, Wolfgang Keller, an die Menschheit. Wenn ihr ebenfalls etwas Gutes tun wollt und keine Idee habt, was, so kämpft gegen die Schulpflicht. Sie stellt ein Gefängnis für unsere Kinder dar. Danke.
