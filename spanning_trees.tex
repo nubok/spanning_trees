@@ -1638,6 +1638,7 @@ z
 \end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \right. \nonumber \\
 x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} & = 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n \label{eq:fst_erweitert_2_1} \\
 x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} z_{\left(v_1, u\right), v_2} & \leq 1\ \forall \left(v_1, v_2\right)\in [n]^{\underline{2}} \label{eq:fst_erweitert_2_2} \\
+x_{\left\{1, 2\right\}} & \geq 0 \textnormal{ (nur, falls $n=2$ ist)} \label{eq:wald_xgeq0} \\
 z_{\left(v_1, v_2\right), v_3} & \geq 0 \nonumber \left. \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}\right\}
 \end{align}
 bildet eine erweiterte Formulierung des Wald-Polytops $P^{K_n, for}$.
@@ -1658,7 +1659,7 @@ Man überprüft leicht, dass mit dieser Belegung Gleichung \eqref{eq:fst_erweite
 
 Unter Beachtung von $x \leq x\left(T\right)$ und $z \leq z\left(T\right)$ folgt die Gültigkeit von \eqref{eq:fst_erweitert_2_2}.
 
-$x_{\left\{v_1, v_2\right\}} \geq 0 \ \forall \left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}$ folgt aus Gleichung \eqref{eq:fst_erweitert_2_1} unter Beachtung von $z_{\left(v_1, v_2\right), v_3} \geq 0 \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}$.
+$x_{\left\{v_1, v_2\right\}} \geq 0 \ \forall \left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}$ folgt für $n \geq 3$ aus Gleichung \eqref{eq:fst_erweitert_2_1} unter Beachtung von $z_{\left(v_1, v_2\right), v_3} \geq 0 \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}$ (für $n=2$ ist dies Inhalt von Ungleichung \eqref{eq:wald_xgeq0}).
 
 Für die restlichen Ungleichungen sei $S \subseteq \left[n\right]$ mit $\left|S\right| \geq 2$.
 
