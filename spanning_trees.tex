@@ -20,6 +20,7 @@
 \newtheorem{Le}[Def]{Lemma}
 \newtheorem{Sa}[Def]{Satz}
 \newtheorem{Kor}[Def]{Korollar}
+\newtheorem{Prop}[Def]{Proposition}
 \newtheorem{Pro}[Def]{Problem}
 \newtheorem{Bem}[Def]{Bemerkung}
 \newtheorem{Bsp}[Def]{Beispiel}
@@ -422,6 +423,14 @@ x\left(E\right) & = & \left|V\right|-1  \label{eq:spt2_sum_edges} \\
 x_e & \geq & \left. 0\ \forall e \in E \right\}. \nonumber
 \end{eqnarray}
 \end{Sa}
+
+\begin{Kor}
+\begin{eqnarray}
+{P^{G, con}}^+ =  \left\{ x \in \mathbb{R}^E: \right. & & \nonumber \\
+x\left(\delta_E\left(\mathcal{P}\right)\right) & \geq & \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \in \Pi\left(V\right) \\
+x_e & \geq & \left. 0\ \forall e \in E \right\}. \nonumber
+\end{eqnarray}
+\end{Kor}
 
 \begin{Bem}
 Wir bezeichnen die Ungleichungen \eqref{eq:cycle_elim1} und \eqref{eq:cycle_elim2} als "`Cycle-Elimination-Ungleichungen"' (cycle elimination constraints).
@@ -1549,173 +1558,167 @@ z_{\left(v_1, v_2\right), v_3} & \geq & 0 \left. \ \forall \left(v_1, v_2, v_3\r
 \end{eqnarray*}
 \end{Bsp}
 
-\section{Vereinfachte erweiterte Formulierungen des Wald-Polytops}
+\chapter{Vereinfachte erweiterte Formulierungen des Wald- und Konnektor-Polytops}
 
-\label{sec:wald_erw}
+\label{sec:erw_all}
 
-Im vorherigen Abschnitt haben wir ein Framework entwickelt, um aus einer erweiterten Formulierung des Spannbaum-Polytops eine erweiterte Formulierung des Wald- bzw. Konnektor-Polytops zu entwickeln.
+\section{Symmetrische erweiterte Formulierungen}
 
-Nun ist es so, dass es für die in dieser Arbeit vorgestellten erweiterten Formulierungen des Spannbaum-Polytops einen Ansatz gibt, aus ihnen eine erweiterte Formulierung des Wald-Polytops zu gewinnen, ohne zusätzliche Variablen einzuführen. Unter anderem hierdurch bedingt bildet der Ansatz, der nun vorgestellt werden soll, in gewisser Hinsicht die "`natürliche"' Verallgemeinerung der vorgestellten erweiterten Formulierungen des Spannbaum-Polytops auf das Wald-Polytop.
-
-\subsection{Vereinfachte symmetrische erweiterte Formulierungen des Wald-Polytops}
-
-Betrachten wir als ersten Schritt, wie sich $P^{K_n, spt, symm, 0}$ auf Wälder verallgemeinern lässt. Hierzu sei dem Leser angeraten, vorher den Beweis von Satz \ref{sa:proj_spt_erw} nochmals zu rekapitulieren.
 
 \begin{Sa}
-\label{sa:baum_erweitert_1}
-\begin{align}
-P^{K_n, for, symm, 0} := \left\{\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \right. \nonumber \\
-x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} & = 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n \label{eq:fst_erweitert_2_1} \\
-x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} z_{\left(v_1, u\right), v_2} & \leq 1\ \forall \left(v_1, v_2\right)\in [n]^{\underline{2}} \label{eq:fst_erweitert_2_2} \\
-x_{\left\{1, 2\right\}} & \geq 0 \textnormal{ (nur, falls $n=2$ ist)} \label{eq:wald_xgeq0} \\
-z_{\left(v_1, v_2\right), v_3} & \geq 0 \nonumber \left. \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}\right\}
-\end{align}
-bildet eine erweiterte Formulierung des Wald-Polytops $P^{K_n, for}$.
-\end{Sa}
-
-\begin{bew}
-An dieser Stelle werden wir den Beweis ausführlich ausführen. Spätere Beweise erfolgen absolut analog -- nur wird dann die Gültigkeit der Cycle-Elimination-Ungleichungen auf Basis eines anderen Beweises als des Beweises von Satz \ref{sa:proj_spt_erw} gezeigt.
-
-Um zu demonstrieren, dass sich jeder Wald $F$ einbetten lässt, sei $x$ der charakteristische Vektor des Waldes $F$, $T$ ein beliebiger, aber fester aufspannender Baum von $K_n$ mit $F \subseteq T$ und charakteristischem Vektor $x\left(T\right)$, sowie $z\left(T\right)$ der z-Vektor der kanonischen Einbettung von $T$ in $P^{K_n, spt, symm, 0}$. Setze $z\in \mathbb{R}^{[n]^{\underline{3}}}$ mittels
-\begin{displaymath}
-z_{\left(v_1, v_2\right), v_3} := \begin{cases}
-1 & \left\{v_1, v_2\right\}\in F\wedge v_3 \in R_{T\backslash \left\{\left\{v_1, v_2\right\}\right\}}\left(v_2\right) \\
-0 & \textnormal{sonst}
-\end{cases}
-\end{displaymath}
-
-Man überprüft leicht, dass mit dieser Belegung Gleichung \eqref{eq:fst_erweitert_2_1} stets erfüllt ist.
-
-Unter Beachtung von $x \leq x\left(T\right)$ und $z \leq z\left(T\right)$ folgt die Gültigkeit von \eqref{eq:fst_erweitert_2_2}.
-
-$x_{\left\{v_1, v_2\right\}} \geq 0 \ \forall \left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}$ folgt für $n \geq 3$ aus Gleichung \eqref{eq:fst_erweitert_2_1} unter Beachtung von $z_{\left(v_1, v_2\right), v_3} \geq 0 \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}$ (für $n=2$ ist dies Inhalt von Ungleichung \eqref{eq:wald_xgeq0}).
-
-Für die restlichen Ungleichungen sei $S \subseteq \left[n\right]$ mit $\left|S\right| \geq 2$.
-
-Dann haben wir mit nahezu exakt der selben Argumentation wie im Beweis von Satz \ref{sa:proj_spt_erw} (man ersetze lediglich, wenn Gleichung \eqref{eq:spt_erweitert_2_1} bzw. \eqref{eq:spt_erweitert_2_2} verwendet wird, diese durch \eqref{eq:fst_erweitert_2_1}\footnote{Man beachte, das Gleichung \eqref{eq:spt_erweitert_2_1} identisch zu \eqref{eq:fst_erweitert_2_1} ist.} bzw. \eqref{eq:fst_erweitert_2_2} und baue im Beweis ein entsprechendes Ungleichheitszeichen statt eines Gleichheitszeichens ein):
-
-{
-\allowdisplaybreaks
-\begin{eqnarray*}
-x\left(E(S)\right) & = & \sum_{\left\{u, v\right\} \in {S \choose 2}} x_{\left\{u, v\right\}} \\
-& = & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} x_{\left\{u, v\right\}} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
-& \stackrel{\eqref{eq:fst_erweitert_2_1}}{=} & \frac{1}{\left|S\right|} \left(\frac{1}{2} \sum_{\left(u, v, w\right) \in S^{\underline{3}}} \left(z_{\left(u, v\right), w} + z_{\left(v, u\right), w}\right) + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
-& = & \frac{1}{\left|S\right|} \left(\sum_{\left(u, v, w\right) \in S^{\underline{3}}} z_{\left(u, v\right), w} + \sum_{\left(u, v\right) \in S^{\underline{2}}} x_{\left\{u, v\right\}} \right) \\
-& \stackrel{z \geq 0}{\leq} & \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} \left( x_{\left\{u, v\right\}} + \sum_{w \in \left[n\right] \backslash \left\{u, v\right\}} z_{\left(u, w\right), v} 
-\right) \\
-& \stackrel{\eqref{eq:fst_erweitert_2_2}}{\leq} & \frac{1}{\left|S\right|} \sum_{\left(u, v\right) \in S^{\underline{2}}} 1 \\
-& = & \left|S\right|-1.
-\end{eqnarray*}
-}
-\end{bew}
-
-\begin{Kor}
-Die Einbettung eines Waldes in $P^{K_n, for, symm, 0}$ ist im Allgemeinen \emph{nicht} eindeutig.
-\end{Kor}
-
-Analog zum Beweis von Satz \ref{sa:baum_erweitert_1} unter Nutzung des Beweises von Satz \ref{sa:P_p^xy} beweist man
-\begin{Sa}
-\label{sa:wald_xy}
-\begin{align}
-P^{K_n, for, symm, xy} := \left\{ \left(\begin{array}{c}
+\label{sa:erw_all_symm}
+Das Polytop
+\begin{eqnarray}
+\left\{
+\left(\begin{array}{c}
 x \\
 y
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{EV_n}: \right.
-\nonumber \\
-\sum_{i=1}^3 \left(x_{\left\{v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right\}} -  y_{\left\{v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right\}, v_{i \stackrel{\left[3\right]}{+} 2}}\right) & = 0\ \forall \left\{v_1, v_2, v_3\right\}\in {[n] \choose 3} \label{eq:symm_xy_forest_1} \\
-2 x_{\left\{v_1, v_2\right\}} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} & \leq 2\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \label{eq:symm_xy_forest_2} \\
-x_{\left\{v_1, v_2\right\}} & \geq 0\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \nonumber \\
-y_{\left\{v_1, v_2\right\}, u} & \geq 0\ \forall \left(\left\{v_1, v_2\right\}, u\right) \in EV_n \left.\right\} \nonumber
-\end{align}
-bildet eine erweiterte Formulierung des Wald-Polytops $P^{K_n, for}$.
+\end{array}\right)\in \mathbb{R}^{[n]\choose 2} \times\mathbb{R}^{EV_n}:\right.
+\nonumber & & \\
+\sum_{u \in \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right) & & \nonumber \\
++ 3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right) & = & 6 \ \forall \left\{v_1, v_2, v_3\right\}\in {[n] \choose 3} \label{eq:simpl_sum} \\
+2 x_{\left\{v_1, v_2\right\}} + \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} & \substack{= \\ \leq \\ \geq} & 2 \label{eq:simpl_sum2} \\
+x_{\left\{v_1, v_2\right\}} & \geq & 0 \ \forall \left\{v_1, v_2\right\} \in {\left[n\right] \choose 2} \nonumber \\
+y_{\left\{v_1, v_2\right\}, u} & \geq & \left.0 \ \forall \left(\left\{v_1, v_2\right\}, u\right) \in EV_n\right\} \nonumber
+\end{eqnarray}
+bildet eine erweiterte Formulierung von $\substack{P^{K_n, spt} \\ P^{K_n, for} \\ {P^{K_n, con}}^+}$.
 \end{Sa}
 
-Dennoch wollen wir die eine Richtung des Beweises nochmals kurz wiedergeben:
+\begin{Prop}
+\label{prop:erw_all_symm}
+Sei $\left(
+\begin{array}{c}
+x \\
+y
+\end{array}
+\right)$ ein Punkt eines Polyeders aus Satz \ref{sa:erw_all_symm} und sei $S \subseteq \left[n\right]$. Dann gilt
+\begin{displaymath}
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} \geq \left(\left|S\right| - 1\right) \cdot \left(\left|S\right| - 2\right)
+\end{displaymath}
+mit Gleichheit im Falle $S=\left[n\right]$.
+\end{Prop}
 \begin{bew}
-Die Gültigkeit der Cycle-Elimination-Ungleichungen beweist man wie Satz \ref{sa:P_p^xy} in Kapitel \ref{sec:P_p^xy_direkt} -- man ersetze lediglich die Gleichung \eqref{eq:kante_minus_sum_z} durch Ungleichung \eqref{eq:symm_xy_forest_2}.
-
-Dass sich jeder Wald einbetten lässt, kann man analog den vorhergehenden Beweisen für erweiterte Formulierungen des Wald-Polytops beweisen.
-
-Hier wollen wir jedoch nochmals Einbettungen explizit angeben. Sei $F$ ein Wald und $T$ ein Baum mit $F \subseteq T$. Sei $y\left(T\right)$ der y-Vektor der kanonischen Einbettung von $T$.
-
-Sei $\left\{v_1, v_2, v_3\right\} \in {\left[n\right] \choose 3}$.
-
-Falls $\left\{v_1, v_2\right\}, \left\{v_1, v_3\right\}, \left\{v_2, v_3\right\} \notin   F$ ist setze
 \begin{eqnarray*}
-y_{\left\{v_1, v_2\right\}, v_3} & = & 0 \\
-y_{\left\{v_1, v_3\right\}, v_2} & = & 0 \\
-y_{\left\{v_2, v_3\right\}, v_1} & = & 0.
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} & = & \sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}} \left(
+3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right)
+\right. \\
+& & + \sum_{u \in  \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right) \\
+& & \left.- 2 \sum_{u \in \left[n\right] \backslash S} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right)\right) \\
+& \stackrel{y \geq 0}{\geq} & \sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}} \left(
+3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right)
+\right. \\
+& & \left.+ \sum_{u \in  \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right)\right) \\
+& \stackrel{\eqref{eq:simpl_sum}}{=} & \left(\left|S\right| - 1\right) \cdot \left(\left|S\right| - 2\right).
 \end{eqnarray*}
-
-Für $\left\{v_1, v_2\right\} \in F, \left\{v_1, v_3\right\}, \left\{v_2, v_3\right\} \notin  F$ (ohne Einschränkung) setze
-\begin{eqnarray*}
-y_{\left\{v_1, v_2\right\}, v_3} & = & 0 \\
-y_{\left\{v_1, v_3\right\}, v_2} & = & \begin{cases}
-1 & v_3\in R_{T\backslash \left\{\left\{v_1, v_2\right\}\right\}}\left(v_2\right) \\
-0 & \textnormal{sonst}
-\end{cases} \\
-y_{\left\{v_2, v_3\right\}, v_1} & = & \begin{cases}
-1 & v_3\in R_{T\backslash \left\{\left\{v_1, v_2\right\}\right\}}\left(v_1\right) \\
-0 & \textnormal{sonst}
-\end{cases}.
-\end{eqnarray*}
-
-Für $\left\{v_1, v_2\right\}, \left\{v_1, v_3\right\} \in F, \left\{v_2, v_3\right\} \notin  F$ (ohne Einschränkung) setze
-\begin{eqnarray*}
-y_{\left\{v_1, v_2\right\}, v_3} & = & 0 \\
-y_{\left\{v_1, v_3\right\}, v_2} & = & 0 \\
-y_{\left\{v_2, v_3\right\}, v_1} & = & 2.
-\end{eqnarray*}
-
-Da wieder $y \leq y\left(T)\right)$ ist, folgt Ungleichung \eqref{eq:symm_xy_forest_2}.
 \end{bew}
 
-\begin{Kor}
-Die Einbettung eines Waldes in $P^{K_n, for, symm, xy}$ ist im Allgemeinen \emph{nicht} eindeutig.
-\end{Kor}
+\begin{bew} (Satz \ref{sa:erw_all_symm}) Die Einbettungen sind klar:
+\begin{itemize}
+\item Für einen Wald ergänze ihn zu einem Baum und setze $y$ entsprechend seiner kanonischen Einbettung.
+\item Für ein Element aus $x + r \in {P^{K_n, con}}^+$ ($x$ -- charakteristischer Vektor eines Konnektors, $r \in \mathbb{R}^{\left[n\right] \choose 2}_{\geq 0}$) reduziere den Konnektor, welcher zu $x$ gehört, zu einem Baum und setze $y$ entsprechend der kanonischen Einbettung dieses Baums.
+\end{itemize}
 
-\subsection{Vereinfachte asymmetrische erweiterte Formulierungen des Wald-Polytops}
+Sei $S \subseteq \left[n\right]$. Dann gilt:
+\begin{eqnarray*}
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} x_{\left\{v_1, v_2\right\}} & \stackrel{\eqref{eq:simpl_sum2}}{\substack{= \\ \leq}} & \frac{\left|S\right| \cdot \left(\left|S\right| - 1\right)}{2} - \frac{1}{2} \underbrace{\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u}}_{\stackrel{\textnormal{Prop. \ref{prop:erw_all_symm}}}{\geq} \left(\left|S\right| - 1\right) \cdot \left(\left|S\right| - 2\right)} \\
+& \leq & \frac{\left|S\right| \cdot \left(\left|S\right| - 1\right)}{2} - \frac{1}{2} \left(\left|S\right| - 1\right) \cdot \left(\left|S\right| - 2\right) \\
+& = & \left|S\right| - 1.
+\end{eqnarray*}
 
-Aus Platzgründen wollen wir in diesem Unterkapitel lediglich die zu der erweiterten Formulierung $P^{K_n, spt, asymm, 4}$ des Spannbaum-Polytops $P^{K_n, spt}$ korrespondierende erweiterte Formulierung $P^{K_n, for, asymm, 4}$ des Wald-Polytops $P^{K_n, for}$ angeben. Es ist jedoch einfach möglich, auch aus $P^{K_n, spt, asymm, 3}$ eine erweiterte Formulierung von  $P^{K_n, for}$ mittels einer analogen Konstruktion zu erhalten. 
+Sei umgekehrt $\mathcal{P}$ eine Partition von $\left[n\right]$. Dann gilt
+\begin{eqnarray*}
+\sum_{\left\{v_1, v_2\right\} \in \delta\left(\mathcal{P}\right)} x_{\left\{v_1, v_2\right\}} & \stackrel{\eqref{eq:simpl_sum2}}{\substack{= \\ \geq}} & \frac{n \cdot \left(n - 1\right)}{2} - \sum_{P \in \mathcal{P}} \frac{\left|P\right| \cdot \left(\left|P\right| - 1\right)}{2} \\
+& &  - \frac{1}{2} \sum_{\left\{P_1, P_2\right\} \in {\mathcal{P} \choose 2}} \sum_{\substack{v_1 \in P_1, \\
+v_2 \in P_2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} \\
+& = & \frac{n \cdot \left(n - 1\right)}{2} - \sum_{P \in \mathcal{P}} \frac{\left|P\right| \cdot \left(\left|P\right| - 1\right)}{2} \\
+& &  - \frac{1}{2} \underbrace{\sum_{\left\{v_1, v_2\right\} \in {\left[n\right] \choose 2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u}}_{\stackrel{\textnormal{Prop. \ref{prop:erw_all_symm}}}{=} \left(n - 1\right) \cdot \left(n - 2\right)} \\
+& &  + \frac{1}{2} \sum_{P \in \mathcal{P}} \underbrace{\sum_{\left\{v_1, v_2\right\} \in {\mathcal{P} \choose 2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u}}_{\stackrel{\textnormal{Prop. \ref{prop:erw_all_symm}}}{\geq} \left(\left|P\right| - 1\right) \cdot \left(\left|P\right| - 2\right)} \\
+& \geq & \frac{n \cdot \left(n - 1\right)}{2} - \sum_{P \in \mathcal{P}} \frac{\left|P\right| \cdot \left(\left|P\right| - 1\right)}{2}  \\
+& & - \frac{\left(n - 1\right) \cdot \left(n - 2\right)}{2} + \sum_{P \in \mathcal{P}} \frac{\left(\left|P\right| - 1\right) \cdot \left(\left|P\right| - 2\right)}{2} \\
+& = & \left(n - 1\right) - \underbrace{\sum_{P \in \mathcal{P}} \left(\left|P\right| - 1\right)}_{= n - \left|\mathcal{P}\right|} \\
+& = & \left|\mathcal{P}\right| - 1.
+\end{eqnarray*}
+\end{bew}
 
-Analog zum Beweis von Satz \ref{sa:baum_erweitert_1} (selbe Einbettung von Wäldern) unter Nutzung des Beweises von Satz \ref{sa:asymmetrisch_erweitert3} (wobei man wie im Beweis von diesem Satz die Gleichungen umnummeriert und ggf. Gleichheits-Zeichen durch $\leq$-Zeichen ersetzt) beweist man:
-
-Man beweist analog zum Beweis von Satz \ref{sa:baum_erweitert_1}, diesmal unter Nutzung des Beweises von Satz \ref{sa:asymmetrisch_erweitert4}:
+\section{Asymmetrische erweiterte Formulierungen}
 
 \begin{Sa}
-\label{sa:asymmetrisch_erweitert4_baum}
-\begin{align}
-P^{K_n, for, asymm, 4} := \left\{
+\label{sa:asymmetrisch_erweitert_konnektor4}
+Das Polytop
+\begin{eqnarray}
+\left\{
 \left(\begin{array}{c}
 x \\
 z
 \end{array}\right)\in \mathbb{R}^{[n]\choose 2} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1, 2<3}}}: \nonumber\right. \\
-x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), w} - z_{\left(v_2, v_1\right), w} & = 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_n^< \label{eq:forest_erweitert_asymm4_prim_1} \\
-x_{\left\{v_1, v_2\right\}} + \sum_{u\in[v_2-1]\backslash\left\{v_1\right\}} z_{\left(v_1, u\right), v_2} & \leq 1\ \forall \left(v_1, v_2\right)\in {[n]^{\underline{2}}}^< \label{eq:forest_erweitert_asymm4_prim_2}  \\
-x_{\left\{v, n\right\}} & \geq 0 \ \forall v\in \left[n-1\right] \label{eq:forest_erweitert_asymm4_x_n} \\
-z_{\left(v_1, v_2\right), v_3} & \left. \geq 0 \ \forall \left(v_1, v_2, v_3\right)\in \left[n\right]^{\underline{3}^{1, 2<3}} \label{eq:forest_erweitert_asymm4_z} \right\}
-\end{align}
-bildet eine erweiterte Formulierung des Wald-Polytops $P^{K_n, for}$.
+z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n} - z_{\left(v_1, v_2\right), w} - z_{\left(v_2, v_1\right), w} & = & 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_{n-1}^< \label{eq:sptkon_erweitert_asymm4_prim_1_1} \\
+x_{\left\{v_1, v_2\right\}} - z_{\left(v_1, v_2\right), n} - z_{\left(v_2, v_1\right), n} & \substack{= \\ \leq \\ \geq} & 0\ \forall \left\{v_1, v_2\right\}\in {\left[n-1\right] \choose 2} \label{eq:sptkon_erweitert_asymm4_prim_1_2} \\
+z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n} + \sum_{u\in[v_2-1]\backslash\left\{v_1\right\}} z_{\left(v_1, u\right), v_2} & \leq & 1\ \forall \left(v_1, v_2\right)\in {[n-1]^{\underline{2}}}^<  \label{eq:sptkon_erweitert_asymm4_prim_2} \\
+x_{\left\{v, n\right\}} + \sum_{u\in[n-1]\backslash\left\{v\right\}} z_{\left(v, u\right), n} & \substack{= \\ \leq \\ \geq} & 1\ \forall v \in [n-1] \label{eq:sptkon_erweitert_asymm4_prim_2,5} \\
+x_{\left\{v, n\right\}} & \geq & 0 \ \forall v\in \left[n-1\right]\textnormal{, falls $P^{K_n, spt}$ oder ${P^{K_n, con}}^+$} \nonumber \\
+x_{\left\{v_1, v_2\right\}} & \geq & 0 \ \forall \left\{v_1, v_2\right\}\in {\left[n\right] \choose 2}\textnormal{, falls $P^{K_n, for}$} \nonumber \\
+z_{\left(v_1, v_2\right), v_3} & \geq & \left. 0 \ \forall \left(v_1, v_2, v_3\right)\in \left[n\right]^{\underline{3}^{1, 2<3}} \right\} \nonumber
+\end{eqnarray}
+bildet eine erweiterte Formulierung von $\substack{P^{K_n, spt} \\ P^{K_n, for} \\ {P^{K_n, con}}^+}$.
 \end{Sa}
 
-\begin{Bem}
-Die erweiterte Formulierung von $P^{K_n, for, asymm, 4}$ aus Satz \ref{sa:asymmetrisch_erweitert4_baum} wird durch
-\begin{itemize}
-\item $\frac{1}{6} n \left(n-1\right) \left(n-2\right)$ Gleichungen \eqref{eq:forest_erweitert_asymm4_prim_1}
-\item $\frac{1}{2} n \left(n-1\right)$ Ungleichungen \eqref{eq:forest_erweitert_asymm4_prim_2}
-\item $n-1$ Nichtnegativitätsbedingungen für $x$-Komponenten \eqref{eq:forest_erweitert_asymm4_x_n}
-\item $\frac{1}{3} n \left(n-1\right) \left(n-2\right)$ Nichtnegativitätsbedingungen für $z$-Komponenten \eqref{eq:forest_erweitert_asymm4_z}
-\end{itemize}
-in 
-\begin{itemize}
-\item $\frac{1}{2} n \left(n-1\right)$ $x$-Variablen
-\item $\frac{1}{3} n \left(n-1\right) \left(n-2\right)$ $z$-Variablen
-\end{itemize}
-beschrieben.
-\end{Bem}
+\begin{Prop}
+\label{prop:asymmetrisch_erweitert_konnektor4}
+Sei $\left(
+\begin{array}{c}
+x \\
+z
+\end{array}
+\right)$ ein Punkt eines Polyeders aus Satz \ref{sa:asymmetrisch_erweitert_konnektor4} und sei $S \subseteq \left[n-1\right]$. Dann gilt
+\begin{displaymath}
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \left(z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n}\right) \leq \left|S\right| - 1.
+\end{displaymath}
+\end{Prop}
+\begin{bew}
+\begin{eqnarray*}
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \left(z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n}\right) & \stackrel{\eqref{eq:sptkon_erweitert_asymm4_prim_1_1}}{=} & \sum_{\left\{v_1, v_2\right\} \in {S \backslash \left\{\max S\right\} \choose 2}} \left(z_{\left(v_1, v_2\right), \max S} + z_{\left(v_2, v_1\right), \max S}\right) \\
+& & + \sum_{v \in S \backslash \left\{\max S\right\}} \left(z_{\left(v, \max S\right), n} + z_{\left(\max S, v\right), n}\right) \\
+& = & \sum_{v_1 \in S \backslash \left\{\max S\right\}} \left(z_{\left(v_1, \max S\right), n} + z_{\left(\max S, v_1\right), n} \right. \\
+& & \left. + \sum_{v_2 \in S \backslash \left\{\max S, v_1\right\}} z_{\left(v_1, v_2\right), \max S}\right) \\
+& \stackrel{z \geq 0}{\leq} & \sum_{v_1 \in S \backslash \left\{\max S\right\}} \left(z_{\left(v_1, \max S\right), n} + z_{\left(\max S, v_1\right), n} \right. \\
+& & \left. + \sum_{v_2 \in \left[n\right] \backslash \left\{\max S, v_1\right\}} z_{\left(v_1, v_2\right), \max S}\right) \\
+& \stackrel{\eqref{eq:sptkon_erweitert_asymm4_prim_2}}{\leq} & \left|S\right| - 1.
+\end{eqnarray*}
+\end{bew}
+
+\begin{bew} (Satz \ref{sa:asymmetrisch_erweitert_konnektor4})
+Das Thema Einbettungen ist klar (analog Beweis Satz \ref{sa:erw_all_symm}).
+
+Sei $S \subseteq \left[n\right)$. Der erste Fall ist $n \notin S$
+\begin{eqnarray*}
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} x_{\left\{v_1, v_2\right\}} & \stackrel{\eqref{eq:sptkon_erweitert_asymm4_prim_1_2}}{\substack{= \\ \leq}} & \underbrace{\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \left(z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n}\right)}_{\stackrel{\textnormal{Prop. \ref{prop:asymmetrisch_erweitert_konnektor4}}}{\leq} \left|S\right| - 1} \\
+& \leq & \left|S\right| - 1.
+\end{eqnarray*}
+
+Der zweite Fall ist $n \in S$:
+\begin{eqnarray*}
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} x_{\left\{v_1, v_2\right\}} & = & \sum_{\left\{v_1, v_2\right\} \in {S\backslash \left\{n\right\} \choose 2}} x_{\left\{v_1, v_2\right\}} + \sum_{v \in S\backslash \left\{n\right\}} x_{\left\{v, n\right\}} \\
+& \stackrel{\eqref{eq:sptkon_erweitert_asymm4_prim_1_2}, \eqref{eq:sptkon_erweitert_asymm4_prim_2,5}}{\substack{= \\ \leq}} & \sum_{\left\{v_1, v_2\right\} \in {S\backslash \left\{n\right\} \choose 2}} \left(z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n}\right) + \sum_{v \in S\backslash \left\{n\right\}} \left(1-\sum_{u\in[n-1]\backslash\left\{v\right\}} z_{\left(v, u\right), n}\right) \\
+& = & \left|S\right| - 1 - \sum_{v \in S\backslash \left\{n\right\}} \sum_{u \in \left[n-1\right] \backslash S} z_{\left(v, u\right), n} \\
+& \stackrel{z \geq 0}{\leq} & \left|S\right| - 1.
+\end{eqnarray*}
+
+Sei $\mathcal{P}$ eine Partitionierung der Menge $\left[n\right]$, sei $P^n$ das Element von $\mathcal{P}$, welches $n$ enthält und sei $\mathcal{P}^{\backslash n} := \mathcal{P} \backslash \left\{ P^n \right\}$, sowie $\mathcal{P}^* := \left(\mathcal{P} \backslash \left\{ P^n \right\}\right) \cupdot \left\{\left\{P^n \backslash \left\{n\right\}\right\}\right\}$.
+
+\begin{eqnarray*}
+\sum_{\left\{P_1, P_2\right\} \in {\mathcal{P} \choose 2}} \sum_{\left\{v_1, v_2\right\} \in {\delta\left(P_1, P_2\right)}} x_{\left\{v_1, v_2\right\}} & \stackrel{\eqref{eq:sptkon_erweitert_asymm4_prim_1_2}, \eqref{eq:sptkon_erweitert_asymm4_prim_2,5}}{\substack{= \\ \geq}} & \sum_{\left\{P_1, P_2\right\} \in
+{\mathcal{P}^* \choose 2}} \sum_{\left\{v_1, v_2\right\} \in {\delta\left(P_1, P_2\right)}} \left(z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n}\right) \\
+& & + \sum_{P \in \mathcal{P}^{\backslash n}} \sum_{v \in P} \left(1 - \sum_{u\in[n-1]\backslash\left\{v\right\}} z_{\left(v, u\right), n}\right) \\
+& = & n - \left|P^n\right| + \sum_{P_1 \in \mathcal{P}^{\backslash n}} \sum_{v_1 \in P_1} \left(\sum_{P_2 \in \mathcal{P}^* \backslash \left\{P_1\right\}} \sum_{v_2 \in P_2} z_{\left(v_1, v_2\right), n} \right. \\
+& & \left. - \sum_{v_2\in[n-1]\backslash\left\{v_1\right\}} z_{\left(v_1, v_2\right), n} \right) \\
+& & + \sum_{v_1 \in P^n \backslash \left\{n\right\}} \sum_{P \in \mathcal{P} \backslash \left\{ P^n \right\}} \sum_{v_2 \in P} z_{\left(v_1, v_2\right), n} \\
+& = & n - \left|P^n\right| - \sum_{P \in \mathcal{P}^{\backslash n}} \underbrace{\sum_{\left\{v_1, v_2\right\} \in {P \choose 2}} \left(z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n}\right)}_{\stackrel{\textnormal{Prop. \ref{prop:asymmetrisch_erweitert_konnektor4}}}{\leq} \left|P\right| - 1} \\
+& & + \underbrace{\sum_{v_1 \in P^n \backslash \left\{n\right\}} \sum_{P \in \mathcal{P} \backslash \left\{ P^n \right\}} \sum_{v_2 \in P} z_{\left(v_1, v_2\right), n}}_{\stackrel{z \geq 0}{\geq} 0} \\
+& \geq & n - \left|P^n\right| - \sum_{P \in \mathcal{P}^{\backslash n}} \left(\left|P\right| - 1\right) \\
+& = & n - \left|P^n\right| - \sum_{P \in \mathcal{P}} \left|P\right| +  \left(\left|\mathcal{P}\right| - 1\right) \\
+& = & \left|\mathcal{P}\right| - 1.
+\end{eqnarray*}
+\end{bew}
 
 \chapter{Erweiterte Formulierungen des Branching- und Arboreszenz-Polytops}
 
@@ -1877,37 +1880,17 @@ z
 \end{array}\right) \in Q'$ sein.
 \end{bew}
 
-Somit erhalten wir aus Satz \ref{sa:grundlage_arboreszenz_erw} unter Nutzung der erweiterten Formulierungen des Spannbaum-Polytops über $K_n$
-\begin{itemize}
-\item $P^{K_n, spt, symm, 0}$
-\item $P^{K_n, spt, symm, xy}$ (Definition \ref{def:P_p^symm_xy}, Satz \ref{sa:P_p^xy})
-\item $P^{K_n, spt, asymm, 4}$ (Satz \ref{sa:asymmetrisch_erweitert4})
-\end{itemize}
-bzw. des Wald-Polytops über $K_n$
-\begin{itemize}
-\item $P^{K_n, for, symm, 0}$ (Satz \ref{sa:baum_erweitert_1})
-\item $P^{K_n, for, symm, xy}$ (Satz \ref{sa:wald_xy})
-\item $P^{K_n, for, asymm, 4}$ (Satz \ref{sa:asymmetrisch_erweitert4_baum})
-\end{itemize}
-folgendes Korollar:
+Somit erhalten wir unter Nutzung der erweiterten Formulierungen des Spannbaum-Polytops bzw. des Wald-Polytops über $K_n$ aus Kapitel \ref{sec:erw_all} folgendes Korollar:
 
 \begin{Kor}
 \begin{eqnarray*}
-P^{\vec{K}_n, arb, symm, 0} := \left\{\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \right. \nonumber \\
-x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} & = & 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n \\
-x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} z_{\left(v_1, u\right), v_2} & = & 1\ \forall \left(v_1, v_2\right)\in [n]^{\underline{2}} \\
-x\left(\delta^{in}\left(v\right)\right) & \leq & 1 \ \forall v \in V \\
-x_{\left(v_1, v_2\right)} & \geq & 0 \ \forall \left(v_1, v_2\right) \in \left[n\right]^{\underline{2}} \nonumber \\
-z_{\left(v_1, v_2\right), v_3} & \geq & 0\nonumber \left. \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}\right\} \\
 P^{\vec{K}_n, arb, symm, xy} := \left\{ \left(\begin{array}{c}
 x \\
 y
 \end{array}\right)\in\mathbb{R}^{[n]^{\underline{2}}}\times \mathbb{R}^{EV_n}: \right.
 \nonumber & & \\
-\sum_{i=1}^3 \left(x_{\left(v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right)} + x_{\left(v_{i \stackrel{\left[3\right]}{+} 1}, v_{i}\right)} -  y_{\left\{v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right\}, v_{i \stackrel{\left[3\right]}{+} 2}}\right) & = & 0\ \forall \left\{v_1, v_2, v_3\right\}\in {[n] \choose 3} \\
+\sum_{u \in \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right) & & \\
++ 3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right) & = & 6 \ \forall \left\{v_1, v_2, v_3\right\}\in {[n] \choose 3} \\
 2 \left(x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)}\right) + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} & = & 2\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \\
 x\left(\delta^{in}\left(v\right)\right) & \leq & 1 \ \forall v \in V \\
 x_{\left(v_1, v_2\right)} & \geq & 0 \ \forall \left(v_1, v_2\right) \in \left[n\right]^{\underline{2}} \nonumber \\
@@ -1917,30 +1900,23 @@ P^{\vec{K}_n, arb, asymm, 4} := \left\{
 x \\
 z
 \end{array}\right)\in \mathbb{R}^{[n]^{\underline{2}}} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1, 2<3}}}: \nonumber\right. & & \\
-x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} - z_{\left(v_1, v_2\right), w} - z_{\left(v_2, v_1\right), w} & = & 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_n^< \\
+z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n} - z_{\left(v_1, v_2\right), w} - z_{\left(v_2, v_1\right), w} & = & 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_{n-1}^< \\
+x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} - z_{\left(v_1, v_2\right), n} - z_{\left(v_2, v_1\right), n} & = & 0\ \forall \left\{v_1, v_2\right\}\in {\left[n-1\right] \choose 2} \\
 x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} + \sum_{u\in[v_2-1]\backslash\left\{v_1\right\}} z_{\left(v_1, u\right), v_2} & \leq & 1\ \forall \left(v_1, v_2\right)\in {[n-1]^{\underline{2}}}^<  \\
+z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n} + \sum_{u\in[v_2-1]\backslash\left\{v_1\right\}} z_{\left(v_1, u\right), v_2} & \leq & 1\ \forall \left(v_1, v_2\right)\in {[n-1]^{\underline{2}}}^< \\
 x_{\left(v, n\right)} + x_{\left(n, v\right)} + \sum_{u\in[n-1]\backslash\left\{v\right\}} z_{\left(v, u\right), n} & = & 1\ \forall v \in [n-1] \\
-x\left(\delta^{in}\left(v\right)\right) & \leq & 1 \ \forall v \in V \\
 x_{\left(v_1, v_2\right)} & \geq & 0 \ \forall \left(v_1, v_2\right) \in \left[n\right]^{\underline{2}} \nonumber \\
 z_{\left(v_1, v_2\right), u} & \geq & 0\nonumber \left. \ \forall \left(v_1, v_2, u\right) \in \left[n\right]^{\underline{3}^{1, 2 < 3}}\right\}
 \end{eqnarray*}
 bilden erweiterte Formulierungen des Arboreszenz-Polytops $P^{\vec{K}_n, arb}$ und
 \begin{eqnarray*}
-P^{\vec{K}_n, branch, symm, 0} := \left\{\left(\begin{array}{c}
-x \\
-z
-\end{array}\right)\in\mathbb{R}^{[n]\choose 2}\times \mathbb{R}^{[n]^{\underline{3}}}: \right. \nonumber \\
-x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} - z_{\left(v_1, v_2\right), u} - z_{\left(v_2, v_1\right), u} & = & 0\ \forall \left(\left\{v_1, v_2\right\}, u\right)\in EV_n \\
-x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} z_{\left(v_1, u\right), v_2} & \leq & 1\ \forall \left(v_1, v_2\right)\in [n]^{\underline{2}} \\
-x\left(\delta^{in}\left(v\right)\right) & \leq & 1 \ \forall v \in V \\
-x_{\left(v_1, v_2\right)} & \geq & 0 \ \forall \left(v_1, v_2\right) \in \left[n\right]^{\underline{2}} \nonumber \\
-z_{\left(v_1, v_2\right), v_3} & \geq & 0\nonumber \left. \ \forall \left(v_1, v_2, v_3\right) \in \left[n\right]^{\underline{3}}\right\} \\
 P^{\vec{K}_n, branch, symm, xy} := \left\{ \left(\begin{array}{c}
 x \\
 y
 \end{array}\right)\in\mathbb{R}^{[n]^{\underline{2}}}\times \mathbb{R}^{EV_n}: \right.
 \nonumber & & \\
-\sum_{i=1}^3 \left(x_{\left(v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right)} + x_{\left(v_{i \stackrel{\left[3\right]}{+} 1}, v_{i}\right)} -  y_{\left\{v_{i}, v_{i \stackrel{\left[3\right]}{+} 1}\right\}, v_{i \stackrel{\left[3\right]}{+} 2}}\right) & = & 0\ \forall \left\{v_1, v_2, v_3\right\}\in {[n] \choose 3} \\
+\sum_{u \in \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right) & & \nonumber \\
++ 3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right) & = & 6 \ \forall \left\{v_1, v_2, v_3\right\}\in {[n] \choose 3} \\
 2 \left(x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)}\right) + \sum_{u\in[n]\backslash\left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} & \leq & 2\ \forall \left\{v_1, v_2\right\}\in {[n] \choose 2} \\
 x\left(\delta^{in}\left(v\right)\right) & \leq & 1 \ \forall v \in V \\
 x_{\left(v_1, v_2\right)} & \geq & 0 \ \forall \left(v_1, v_2\right) \in \left[n\right]^{\underline{2}} \nonumber \\
@@ -1950,8 +1926,10 @@ P^{\vec{K}_n, branch, asymm, 4} := \left\{
 x \\
 z
 \end{array}\right)\in \mathbb{R}^{[n]^{\underline{2}}} \times \mathbb{R}^{\left[n\right]^{\underline{3}^{1, 2<3}}}: \nonumber\right. & & \\
-x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} - z_{\left(v_1, v_2\right), w} - z_{\left(v_2, v_1\right), w} & = & 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_n^< \\
-x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} + \sum_{u\in[v_2-1]\backslash\left\{v_1\right\}} z_{\left(v_1, u\right), v_2} & \leq & 1\ \forall \left(v_1, v_2\right)\in {[n]^{\underline{2}}}^< \\
+z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n} - z_{\left(v_1, v_2\right), w} - z_{\left(v_2, v_1\right), w} & = & 0\ \forall \left(\left\{v_1, v_2\right\}, w\right)\in EV_{n-1}^< \\
+x_{\left(v_1, v_2\right)} + x_{\left(v_2, v_1\right)} - z_{\left(v_1, v_2\right), n} - z_{\left(v_2, v_1\right), n} & \leq & 0\ \forall \left\{v_1, v_2\right\}\in {\left[n-1\right] \choose 2} \\
+z_{\left(v_1, v_2\right), n} + z_{\left(v_2, v_1\right), n} + \sum_{u\in[v_2-1]\backslash\left\{v_1\right\}} z_{\left(v_1, u\right), v_2} & \leq & 1\ \forall \left(v_1, v_2\right)\in {[n-1]^{\underline{2}}}^< \\
+x_{\left(v, n\right)} + x_{\left(n, v\right)} + \sum_{u\in[n-1]\backslash\left\{v\right\}} z_{\left(v, u\right), n} & \leq & 1\ \forall v \in [n-1] \\
 x\left(\delta^{in}\left(v\right)\right) & \leq & 1 \ \forall v \in V \\
 x_{\left(v_1, v_2\right)} & \geq & 0 \ \forall \left(v_1, v_2\right) \in \left[n\right]^{\underline{2}} \nonumber \\
 z_{\left(v_1, v_2\right), u} & \geq & 0\nonumber \left. \ \forall \left(v_1, v_2, u\right) \in \left[n\right]^{\underline{3}^{1, 2 < 3}}\right\}
@@ -2412,7 +2390,7 @@ A_3 x & = & b_3
 \end{displaymath}
 \end{Le}
 
-Welche Bedeutung hat dieses Lemma für die Arbeit? Es sagt nichts anderes aus, als dass wenn wir für eine der in der Arbeit entworfenen erweiterten Formulierungen des Spannbaum-Polytops eine Ecke gefunden haben, diese auch für die zugehörige erweiterte Formulierung des Wald-Polytops aus Kapitel \ref{sec:wald_erw} eine Ecke bildet.
+Welche Bedeutung hat dieses Lemma für die Arbeit? Es sagt nichts anderes aus, als dass wenn wir für eine der in der Arbeit entworfenen erweiterten Formulierungen des SpannbaumPolytops eine Ecke gefunden haben, diese auch für die zugehörige erweiterte Formulierung des Wald- oder Konnektor-Polytops aus Kapitel \ref{sec:erw_all} eine Ecke bildet.-
 
 \section{Symmetrien von Ecken}
 
@@ -4427,7 +4405,6 @@ Es stellen sich natürlich offene Fragen:
 \item Gibt es eine asymptotisch kleinere asymmetrische erweiterte Formulierung des Spannbaum-Polytops über dem Graphen $K_n$ als $P^{K_n, spt, asymm, 4}$?
 \item Analoge Fragen kann man natürlich auch für das Wald- und das Konnektor-Polytop stellen.
 \item In Kapitel \ref{sec:konnektor_wald_erw} haben wir in Korollar \ref{kor:erw_form_wald_konnektor} deutlich freie Bedingungen an Polytope gezeigt, welche das Entwickeln erweiterter Formulierungen für das Konnektor-Polytop und das Wald-Polytop erlauben. Für die konkreten Konstruktionen haben wir jedoch lediglich (für das Konnektor-Polytop) $x \geq 0$ weggelasen. Können wir diesen Freiraum nutzen, um bessere erweiterte Formulierungen des Wald- und Konnektor-Polytops zu entwickeln?
-\item Wir haben in Kapitel \ref{sec:wald_erw} gezeigt, wie wir aus einer erweiterten Formulierung des Spann\-baum-Poly\-tops eine erweiterte Formulierung des Wald-Polytops gewinnen können, ohne zusätzliche Variablen einzuführen (in Abgrenzung zu Kapitel \ref{sec:konnektor_wald_erw}). Gibt es einen analogen Prozess auch für das Konnektor-Polytop?
 \item Wenn wir ein lineares Programm dadurch erzeugen, dass wir $\left\langle c, x\right\rangle$ ($c \in \mathbb{R}^{\left[n\right] \choose 2}$) über einer der erweiterten Formulierungen dieser Arbeit maximieren -- welche mathematische Bedeutung hat dann das dazu duale Programm?
 \item Wie kann man das Framework der W-Bäume erweitern, um weitere Typen fraktionaler Ecken der verschiedenen symmetrischen erweiterten Formulierungen des Spannbaum-Polytops zu erfassen?
 \item Gilt $\dim P^{K_n, symm, 0} = \dim \aff XZ_n$ (vgl. Definition \ref{def:xz_n})?
