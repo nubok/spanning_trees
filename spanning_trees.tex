@@ -4,7 +4,6 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsmath}
-\usepackage{MnSymbol} % for cupdot
 \usepackage{mathtools} % for shortintertext
 \usepackage{paralist}
 \usepackage[numbers,square]{natbib}
@@ -206,7 +205,7 @@ Sei G ein Graph. G heißt \emph{Wald}, wenn G kreisfrei ist. Einen zusammenhäng
 Äquivalente Definitionen dafür, dass ein Graph $G=(V, E)$ ein Baum ist, sind
 \begin{itemize}
 \item $G$ ist minimal zusammenhängend (d. h. zusammenhängend und für alle $e\in E$ gilt: \linebreak $(V, E \backslash \left\{e\right\})$ ist nicht zusammenhängend)
-\item $G$ ist maximal kreisfrei (d. h. kreisfrei und für alle $e\in {V \choose 2} \backslash E$ gilt: $(V, E \cupdot \left\{e\right\})$ enthält einen Kreis)
+\item $G$ ist maximal kreisfrei (d. h. kreisfrei und für alle $e\in {V \choose 2} \backslash E$ gilt: $(V, E \mathbin{\dot{\cup}} \left\{e\right\})$ enthält einen Kreis)
 \item $G$ ist zusammenhängend und enthält $\left|V\right|-1$ Kanten
 \item $G$ ist kreisfrei (Wald) und enthält $\left|V\right|-1$ Kanten
 \end{itemize}
@@ -462,7 +461,7 @@ Sei $S \subset \left[n\right]: \left|S\right| \geq 2$ vorgegeben.
 
 Setze
 \begin{displaymath}
-\mathcal{P} := \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\}
+\mathcal{P} := \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\}
 \end{displaymath}
 
 Somit gilt:
@@ -495,7 +494,7 @@ x_e \leq 1 \ \forall e \in E.
 
 Wie wir im Beweis gesehen haben ist diese in der Beschreibung von $P^{G, spt}$ mittels Multicut-Ungleichungen redundant -- ebenso wie alle Multicut-Ungleichungen, welche sich \emph{nicht} in der Form
 \begin{displaymath}
-x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 2
+x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 2
 \end{displaymath}
 darstellen lassen.
 \end{Bem}
@@ -508,7 +507,7 @@ x\left(E\left(S\right)\right) \leq \left|S\right|-1\ \forall S \subset \left[n\r
 \end{displaymath}
 stehen in 1-zu-1-Korrespondenz zu den Multicut-Ungleichungen 
 \begin{displaymath}
-x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 2,
+x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 2,
 \end{displaymath}
 d. h. jede Cycle-Elimination-Ungleichung in $P^{G, spt}$ kann gegen die analoge Multicut-Ungleichung ausgetauscht werden, ohne dass sich das Polytop ändert.
 
@@ -650,15 +649,11 @@ x_{\left\{v, w\right\}} & \geq & 0\ \forall \left\{v, w\right\}\in {[n] \choose 
 z_{\left(v, w\right), u} & \geq & \left. 0\ \forall \left(v, w, u\right)\in [n]^{\underline{3}} \nonumber \right\}.
 \end{eqnarray}
 
-Dass es sich hierbei tatsächlich um eine erweiterte Formulierung des Spannbaum-Polytops handelt, werden wir weiter unten beweisen.
+Diese erweiterte Formulierung geht ursprünglich auf Martin zurück (\cite{Martin_extended_formulations}). Dass es sich hierbei tatsächlich um eine erweiterte Formulierung des Spannbaum-Polytops handelt, werden wir weiter unten beweisen.
 
 Bevor wir diese erweiterte Formulierung näher betrachten, wollen wir noch anmerken, dass man in \cite{springerlink:ext_form_comb_opt} eine analoge erweiterte Formulierung für $P^{G, spt}$, wobei $G$ ein beliebiger Graph sei, finden kann.
 
-Betrachten wir nun $P^{K_n, spt, symm, 0}$ näher:
-
-Offensichtlich ist jede Gleichung in \eqref{eq:spt1_redundant_2} symmetrisch in $v$ und $w$. Damit kann die Bedingung "`$\forall \left(v, w, u\right)\in [n]^{\underline{3}}$"' in der Gleichungs-Serie \eqref{eq:spt1_redundant_2} zu "`$\forall \left(\left\{v, w\right\}, u\right)\in EV_n$"' abgeschwächt werden, um redundante Gleichungen zu entfernen.
-
-Des Weiteren ist Gleichung \eqref{eq:spt1_redundant_1} redundant, denn
+Betrachten wir nun $P^{K_n, spt, symm, 0}$ näher: Offensichtlich ist jede Gleichung in \eqref{eq:spt1_redundant_2} symmetrisch in $v$ und $w$. Damit kann die Bedingung "`$\forall \left(v, w, u\right)\in [n]^{\underline{3}}$"' in der Gleichungs-Serie \eqref{eq:spt1_redundant_2} zu "`$\forall \left(\left\{v, w\right\}, u\right)\in EV_n$"' abgeschwächt werden, um redundante Gleichungen zu entfernen. Des Weiteren ist Gleichung \eqref{eq:spt1_redundant_1} redundant, denn
 {
 \allowdisplaybreaks
 \begin{eqnarray*}
@@ -671,6 +666,7 @@ x\left({\left[n\right] \choose 2}\right) & = & \sum_{\left\{u, v\right\} \in {\l
 & \stackrel{\eqref{eq:spt1_3}}{=} & \frac{1}{n} \sum_{\left(u, v\right) \in \left[n\right]^{\underline{2}}} 1 \\
 & = & n-1.
 \end{eqnarray*}
+}
 
 Dies bildet den Beweis des folgenden Lemmas:
 
@@ -801,7 +797,7 @@ wobei $T$ die Kantenmenge eines aufspannenden Baums ist.
 
 Diese Bedingung "`$\left\{v, w\right\}\in T \wedge u\in R_{T\backslash \left\{\left\{v, w\right\}\right\}}\left(w\right)$"' (mit $\left(v, w, u\right) \in \left[n\right]^{\underline{3}}$) ist äquivalent zu
 \begin{displaymath}
-\left\{v, u\right\}\notin T\wedge\left(\left[n\right], T \cupdot \left\{v, u\right\}\right)\textnormal{ enthält einen Kreis, der die Kante }\left\{v, w\right\}\textnormal{ enthält}.
+\left\{v, u\right\}\notin T\wedge\left(\left[n\right], T \mathbin{\dot{\cup}} \left\{v, u\right\}\right)\textnormal{ enthält einen Kreis, der die Kante }\left\{v, w\right\}\textnormal{ enthält}.
 \end{displaymath} 
 \end{Bem}
 
@@ -1368,7 +1364,7 @@ P^{G, for} = \proj_x \left\{\left(x, \widehat{x}\right) \in \mathbb{R}^E \times 
 x_e & \leq & \widehat{x}_e\ \forall e \in E \\
 x_e & \geq & \left.0\ \forall e \in E\right\} \\
 = \proj_x \left\{\left(x, \widehat{x}\right) \in \mathbb{R}^E \times \mathbb{R}^E: \right. & & \nonumber \\
-\widehat{x}\left(\delta_E\left(\mathcal{P}\right)\right) & \geq & \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \\
+\widehat{x}\left(\delta_E\left(\mathcal{P}\right)\right) & \geq & \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \\
 & & \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 2 \\
 \widehat{x}\left(E\right) & = & \left|V\right|-1 \nonumber \\
 \widehat{x}_e & \geq & 0\ \forall e \in E \\
@@ -1384,7 +1380,7 @@ x_e & \geq & \widehat{x}_e\ \forall e \in E \\
 x_e & \leq & \left.1\ \forall e \in E\right\} \\
 = \proj_x \left\{\left(x, \widehat{x}\right) \in \mathbb{R}^E \times \mathbb{R}^E: \right. & & \nonumber \\
 \widehat{x}\left(E \backslash \left\{e\right\}\right) & \geq & n-2 \ \forall e \in E \\
-x\left(\delta_E\left(\mathcal{P}\right)\right) & \geq & \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \\
+x\left(\delta_E\left(\mathcal{P}\right)\right) & \geq & \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \\
 & & \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 3 \\
 \widehat{x}\left(E\right) & = & \left|V\right|-1 \nonumber \\
 \widehat{x}_e & \geq & 0\ \forall e \in E \\
@@ -1403,21 +1399,21 @@ P^{G, \underline{spt}} & = &  \left\{ x \in \mathbb{R}^E: \right. \nonumber \\
 & & x\left(E\left(S\right)\right) \leq \left|S\right|-1\ \forall S \subset \left[n\right]: \left|S\right| \geq 2 \\
 & & x\left(E\right) = \left.\left|V\right|-1 \right\} \nonumber \\
 & = & \left\{ x \in \mathbb{R}^E: \right. \nonumber \\
-& & x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 2 \\
+& & x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 2 \\
 & & x\left(E\right) = \left. \left|V\right|-1 \right\} \nonumber \\
 P^{G, \overline{spt}} & = & \left\{ x \in \mathbb{R}^E: \right. \nonumber \\
 & & x\left(E\left(S\right)\right) \leq \left|S\right|-1\ \forall S \subset \left[n\right]: \left|S\right| \geq 3 \\
 & & x\left(E\right) = \left|V\right|-1 \nonumber \\
 & & x_e \geq \left. 0\ \forall e \in E \right\} \nonumber \\
 & = & \left\{ x \in \mathbb{R}^E: \right. \nonumber \\
-& & x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 3 \\
+& & x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 3 \\
 & & x\left(E\right) = \left|V\right|-1 \\
 & & x_e \geq \left. 0\ \forall e \in E \right\} \nonumber \\
 P^{G, \overline{\underline{spt}}} & = & \left\{ x \in \mathbb{R}^E: \right. \nonumber \\
 & & x\left(E\left(S\right)\right) \leq \left|S\right|-1\ \forall S \subset \left[n\right]: \left|S\right| \geq 3 \\
 & & x\left(E\right) =  \left.\left|V\right|-1 \nonumber \right\} \nonumber \\
 & = & \left\{ x \in \mathbb{R}^E: \right. \nonumber \\
-& & x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \cupdot \bigcupdot_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 3 \\
+& & x\left(\delta_E\left(\mathcal{P}\right)\right) \geq \left|\mathcal{P}\right|-1\ \forall \mathcal{P} \textnormal{ mit } \mathcal{P} = \left\{S\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{v \in V \backslash S} \left\{\left\{v\right\}\right\} \textnormal{ mit } S \subset \left[n\right] \textnormal{ und } \left|S\right| \geq 3 \\
 & & x\left(E\right) = \left.\left|V\right|-1 \right\}. \nonumber
 \end{eqnarray*}
 \end{Def}
@@ -1703,7 +1699,7 @@ Der zweite Fall ist $n \in S$:
 & \stackrel{z \geq 0}{\leq} & \left|S\right| - 1.
 \end{eqnarray*}
 
-Sei $\mathcal{P}$ eine Partitionierung der Menge $\left[n\right]$, sei $P^n$ das Element von $\mathcal{P}$, welches $n$ enthält und sei $\mathcal{P}^{\backslash n} := \mathcal{P} \backslash \left\{ P^n \right\}$, sowie $\mathcal{P}^* := \left(\mathcal{P} \backslash \left\{ P^n \right\}\right) \cupdot \left\{\left\{P^n \backslash \left\{n\right\}\right\}\right\}$.
+Sei $\mathcal{P}$ eine Partitionierung der Menge $\left[n\right]$, sei $P^n$ das Element von $\mathcal{P}$, welches $n$ enthält und sei $\mathcal{P}^{\backslash n} := \mathcal{P} \backslash \left\{ P^n \right\}$, sowie $\mathcal{P}^* := \left(\mathcal{P} \backslash \left\{ P^n \right\}\right) \mathbin{\dot{\cup}} \left\{\left\{P^n \backslash \left\{n\right\}\right\}\right\}$.
 
 \begin{eqnarray*}
 \sum_{\left\{P_1, P_2\right\} \in {\mathcal{P} \choose 2}} \sum_{\left\{v_1, v_2\right\} \in {\delta\left(P_1, P_2\right)}} x_{\left\{v_1, v_2\right\}} & \stackrel{\eqref{eq:sptkon_erweitert_asymm4_prim_1_2}, \eqref{eq:sptkon_erweitert_asymm4_prim_2,5}}{\substack{= \\ \geq}} & \sum_{\left\{P_1, P_2\right\} \in
@@ -2356,12 +2352,12 @@ Die Bedingung sagt, dass die Lösung des linearen Gleichungssystems
 A \\
 I
 \end{array}
-\right)_{\widetilde{J} \cupdot \left[m\right], *} x = \left(
+\right)_{\widetilde{J} \mathbin{\dot{\cup}} \left[m\right], *} x = \left(
 \begin{array}{c}
 b \\
 0^d
 \end{array}
-\right)_{\widetilde{J} \cupdot \left[m\right], *}
+\right)_{\widetilde{J} \mathbin{\dot{\cup}} \left[m\right], *}
 \end{displaymath}
 eindeutig bestimmt ist. Dies heißt jedoch nichts anderes, als dass die Matrix $d$ linear unabhängige Zeilen hat. Da $x \in P$ ist, ist somit $x$ eine Ecke von $P$.
 \end{bew}
@@ -2434,7 +2430,7 @@ Sei $X$ eine G-Menge.
 
 Dann gibt es eine eindeutige Zerlegung
 \begin{displaymath}
-X = \bigcupdot_{j=1}^t X_j,
+X = \mathop{\dot{\bigcup}}_{j=1}^t X_j,
 \end{displaymath}
 wobei die $X_j$ G-Bahnen von Punkten aus $X$ bilden.
 \end{Bem}
@@ -2530,7 +2526,7 @@ für $g\in G$ und $x \in X$ wird $V\left(X\right)$ zu einem $K G$-Modul.
 \end{Def}
 
 \begin{Bem}
-Sei $X = \bigcupdot_{j=1}^t X_j$ mit $X_j$ G-Bahnen wie in Bemerkung \ref{bem:gbahnen}. Dann ist
+Sei $X = \mathop{\dot{\bigcup}}_{j=1}^t X_j$ mit $X_j$ G-Bahnen wie in Bemerkung \ref{bem:gbahnen}. Dann ist
 \begin{displaymath}
 V\left(X\right) := \bigoplus_{j=1}^t K V\left(X_j\right)
 \end{displaymath}
@@ -2586,7 +2582,7 @@ Wenn wir somit eine Ecke gefunden haben und ihre $S_n$-Bahn weitere Elemente ent
 \section{W-Bäume und W-Wege}
 
 \begin{Def}
-Sei $V := \mathcal{V} \cupdot \underbrace{\left(\bigcup_{i=1}^k W_i\right)}_{=: \mathcal{W}} $ mit $\left|W_i \cap W_j\right| \leq 1$ für $i \neq j$ und $\left|W_i\right| \geq 3$ für alle $i\in \left[k\right]$.
+Sei $V := \mathcal{V} \mathbin{\dot{\cup}} \underbrace{\left(\bigcup_{i=1}^k W_i\right)}_{=: \mathcal{W}} $ mit $\left|W_i \cap W_j\right| \leq 1$ für $i \neq j$ und $\left|W_i\right| \geq 3$ für alle $i\in \left[k\right]$.
 
 Es sei explizit klargestellt, dass $\mathcal{V}$ auch leer sein darf.
 
@@ -3460,7 +3456,7 @@ Zu Fall 1:
 Mit Gleichung \eqref{eq:toshow_nichtganzz_xy2} folgt
 \begin{eqnarray*}
 2 \underbrace{x_{\left\{v_i, w_j\right\}}}_{= 0} + \underbrace{y_{\left\{v_i, w_j\right\}, w_i}}_{= x^{4}_{\left\{i, j\right\}} + \underbrace{\left|w_W^E\left(w_j, v_i\right) \cap \left\{\left\{w_i, v_i\right\}\right\}\right|}_{=1}} + \underbrace{y_{\left\{v_i, w_j\right\}, w_{i +_{\left[4\right]} 2}}}_{\stackrel{\eqref{eq:y_v_i, w_j__w_iplus2}}{=} x^{4}_{\left\{i+_{\left[4\right]} 2, j\right\}}} + y_{\left\{v_i, w_j\right\}, w_{j +_{\left[4\right]} 2}} & & \\
-+ \sum_{v \in \left[n\right] \backslash \left(W \cupdot v_i\right)} \underbrace{y_{\left\{v_i, w_j\right\}, v}}_{= 0} & = & 2,
++ \sum_{v \in \left[n\right] \backslash \left(W \mathbin{\dot{\cup}} v_i\right)} \underbrace{y_{\left\{v_i, w_j\right\}, v}}_{= 0} & = & 2,
 \end{eqnarray*}
 also
 \begin{displaymath}
@@ -3472,7 +3468,7 @@ Zu Fall 2:
 In diesem Fall gibt es ein $v_1^* \in V_1$ mit $\left\{v_1, v_1^*\right\} \in w_W^E\left(w_j, v_i\right)$ und wir haben (Gleichung \eqref{eq:toshow_nichtganzz_xy2})
 \begin{eqnarray*}
 2 & = & 2 \underbrace{x_{\left\{v_i, w_j\right\}}}_{= 0} + \underbrace{y_{\left\{v_i, w_j\right\}, w_i}}_{= x^{4}_{\left\{i, j\right\}} + \underbrace{\left|w_W^E\left(w_j, v_i\right) \cap \left\{\left\{w_i, v_i\right\}\right\}\right|}_{= 0}} + \underbrace{y_{\left\{v_i, w_j\right\}, w_{i +_{\left[4\right]} 2}}}_{\stackrel{\eqref{eq:y_v_i, w_j__w_iplus2}}{=} x^{4}_{\left\{i+_{\left[4\right]} 2, j\right\}}} \\
-& & + y_{\left\{v_i, w_j\right\}, w_{j +_{\left[4\right]} 2}} + \underbrace{y_{\left\{v_i, w_j\right\}, v_i^*}}_{= 1} + \sum_{v \in \left[n\right] \backslash \left(W \cupdot v_i \cupdot v_i^*\right)} \underbrace{y_{\left\{v_i, w_j\right\}, v}}_{= 0},
+& & + y_{\left\{v_i, w_j\right\}, w_{j +_{\left[4\right]} 2}} + \underbrace{y_{\left\{v_i, w_j\right\}, v_i^*}}_{= 1} + \sum_{v \in \left[n\right] \backslash \left(W \mathbin{\dot{\cup}} v_i \mathbin{\dot{\cup}} v_i^*\right)} \underbrace{y_{\left\{v_i, w_j\right\}, v}}_{= 0},
 \end{eqnarray*}
 also ebenfalls
 \begin{displaymath}
@@ -3838,7 +3834,7 @@ Betrachte für $n \geq 4$ die Kantenmenge
 \begin{displaymath}
 T := \left\{
 \left\{1, 2\right\}, \left\{1, 4\right\}, \left\{3, 4\right\}
-\right\} \cupdot \bigcupdot_{k=4}^{n-1} \left\{\left\{k, k+1\right\}\right\}.
+\right\} \mathbin{\dot{\cup}} \mathop{\dot{\bigcup}}_{k=4}^{n-1} \left\{\left\{k, k+1\right\}\right\}.
 \end{displaymath}
 eines aufspannenden Baums von $K_n$.
 
