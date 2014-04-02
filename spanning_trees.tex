@@ -626,7 +626,7 @@ Die Formulierung in \cite{optima:ext_form_comb_opt} führt auf folgende Definiti
 \begin{Def}
 Eine \emph{Erweiterung} eines Polytops $P \subset \mathbb{R}^n$ ist ein Polyeder $Q \subseteq \mathbb{R}^d$ zusammen mit einer linearen Projektion $p: \mathbb{R}^d \rightarrow \mathbb{R}^n$mit $p\left(Q\right) = P$.
 
-Ein Paar, bestehend aus einer Beschreibung von $Q$ mittels Gleichungen und Ungleichungen und $p$ bezeichnen wir als \emph{erweiterte Formulierung} von $P$. Ihre \emph{Größe} ist die Anzahl der Ungleichungen in der Beschreibung.
+Ein Paar, bestehend aus einer Beschreibung von $Q$ mittels Gleichungen und Ungleichungen und $p$ bezeichnen wir als \emph{erweiterte Formulierung von $P$}. Ihre \emph{Größe} ist die Anzahl der Ungleichungen in der Beschreibung.
 \end{Def}
 
 Es ist jedoch anzumerken, dass es für die Zwecke dieser Arbeit keinen Unterschied macht, auf welche Definition wir setzen, da das Spannbaum-, Wald- und Konnektor-Polytop (wie der Name schon sagt) jeweils Polytope sind und als Abbildung $p$ stets die Projektion in den Raum der $x$-Variablen verwendet wird.
@@ -1102,57 +1102,7 @@ Im Beweis von Satz \ref{sa:P_p^xy} wurde die Bedingung $y\geq 0$ nicht direkt be
 Leider ist für uns nicht ersichtlich, wie man diese Eigenschaft ausnutzen könnte, um \linebreak $P^{K_n, spt, symm, xy}$ im Sinne von asymptotisch weniger Ungleichungen zu verbessern.
 \end{Bem}
 
-
 \chapter{Neue asymmetrische erweiterte Formulierungen}
-
-\section{Einordnung in den mathematischen Kontext}
-
-Bevor wir asymmetrische erweiterte Formulierungen des Spannbaum-Polytops entwickeln, wollen wir uns in diesem Abschnitt eine kurze Erklärung dazu abgeben, warum asymmetrische erweiterte Formulierungen des Spannbaum-Polytops auch in einem größerem Umfeld eine potentielle wissenschaftliche Bedeutung besitzen könnten.
-
-Betrachten wir dazu das Perfekte-Matching-Polytop $P^{K_n, perfmatch}$ und das Mat\-ching-Polytop $P^{K_n, match}$ über dem Graphen $K_n$ (die konvexe Hülle aller perfekten Matchings bzw. Matchings über dem Graphen $K_n$).
-
-Da $P^{K_n, perfmatch}$ für gerades $n$ eine Seite von $P^{K_n, match}$ bildet, ist es offensichtlich, dass wir für ein solches gerades $n$  eine erweiterte Formulierung von $P^{K_n, match}$ in eine erweiterte Formulierung $P^{K_n, perfmatch}$ überführen können, indem wir die zusätzliche Bedingung $x\left({\left[n\right] \choose 2}\right) = \frac{n}{2}$ einfügen.
-
-Umgekehrt können wir (ebenfalls unter der Voraussetzung $n$ gerade) eine erweiterte Formulierung von $P^{K_n, perfmatch}$ in eine erweiterte Formulierung von $P^{match, K_n}$ überführen, indem wir $O\left(n^2\right)$ zusätzliche Ungleichungen analog zur Vorgehensweise in Abschnitt \ref{sec:konnektor_wald_erw} einfügen.
-
-Laut \citep{schrijver2003combinatorial} gilt folgender Satz:
-
-\begin{Sa}
-Es gilt
-\begin{eqnarray*}
-P^{K_n, perfmatch} = \left\{ x \in \mathbb{R}^{\left[n\right] \choose 2}: \right. \\
-x\left(\delta\left(S\right)\right) & \geq & 1\ \forall S \subseteq V: \left|S\right| \geq 3 \wedge \left|S\right| \textnormal{ ungerade} \\
-x\left(\delta\left(v\right)\right) & = & 1\ \forall v \in V \\
-x_e & \geq & \left.0 \ \forall e \in {\left[n\right] \choose 2}\right\} \\
-P^{K_n, match} = \left\{ x \in \mathbb{R}^{\left[n\right] \choose 2}: \right. \\
-x\left(E\left(S\right)\right) & \leq & \frac{\left|S\right| - 1}{2}\ \forall S \subseteq V: \left|S\right| \geq 3 \wedge \left|S\right| \textnormal{ ungerade} \\
-x\left(\delta\left(v\right)\right) & \leq & 1\ \forall v \in V \\
-x_e & \geq & \left.0 \ \forall e \in {\left[n\right] \choose 2}\right\}.
-\end{eqnarray*}
-\end{Sa}
-
-Man sieht die Ähnlichkeit zwischen der Ungleichungsstruktur des Matching-Poly\-tops und der des Wald-Polytops (Satz \ref{sa:darstellung_spannbaum_waldpolytop}), die wir hier nochmal wiedergeben wollen:
-
-\begin{eqnarray*}
-P^{K_n, for} =  \left\{ x \in \mathbb{R}^E: \right. & & \nonumber \\
-x\left(E\left(S\right)\right) & \leq & \left|S\right|-1\ \forall S \subseteq V: \left|S\right| \geq 2 \\
-x_e & \geq & \left. 0\ \forall e \in E \right\}. \nonumber
-\end{eqnarray*}
-
-Auf der anderen Seite wird jedoch in \cite{yannakakis:comb_lin} folgender Satz bewiesen (Satz zitiert nach \cite{optima:ext_form_comb_opt}):
-
-\begin{Sa}
-Für ein gerades n ist die Größe jeder erweiterten Formulierung des Per\-fek\-te-Matching-Polytops über $K_n$ (mindestens) $\Omega \left( 
-{
-n \choose
-\left\lfloor\frac{ \left(n-2\right)}{4} \right\rfloor
-}
-\right)$ (exponentiell in n).
-\end{Sa}
-
-Ob ein analoger Satz (Nichtexistenz einer kompakten erweiterten Formulierung) auch für asymmetrische erweiterte Formulierungen des (Perfekte-)Matching-Polytops gilt, ist ein offenes Problem.
-
-Aufgrund der ähnlich aussehenden Ungleichungen des Wald- versus des Matching-Polytops ist es jedoch, falls eine kompakte asymmetrische erweiterte Formulierung von $P^{K_n, perfmatch}$ (bzw. $P^{K_n, match}$) existiert, durchaus plausibel, dass, um eine solche zu finden, sich Ideen hinter asymmetrischen erweiterten Formulierungen des Spannbaum- bzw. Wald-Polytops als hilfreich erweisen könnten.
 
 \section{Definitionen}
 
