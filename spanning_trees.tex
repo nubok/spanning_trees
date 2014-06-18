@@ -82,14 +82,14 @@
 Sei $S$ eine Menge und $n\in\mathbb{Z}_{\geq 0}$. Dann definieren wir
 \begin{itemize}
 \item $\left[n\right] := \left\{1, \ldots, n\right\}$
-\item $S \choose n$ als die Menge aller n-elementigen Teilmengen von S
+\item $\binom{S}{n}$ als die Menge aller n-elementigen Teilmengen von S
 \item $S^{\underline{n}}$ als die Menge aller n-Tupel mit paarweise verschiedenen Elementen aus S
 \item $S^{\underline{n}^<}$ als die Menge aller n-Tupel $\left(s_1, \ldots, s_n\right)$ mit paarweise verschiedenen Elementen aus S, so dass $s_1 < s_2 < \ldots s_n$ erfüllt ist
 \item $0^X$ ($X$ beliebige Menge) als den Nullvektor des $\mathbb{R}^X$. Wenn offensichtlich ist, auf welchen Vektorraum sich bezogen wird, so verwenden wir auch $0$ als Bezeichnung für den Nullvektor
 \item Sei $T \subseteq S$. Dann bezeichnen wir mit $\chi\left(T\right) \in \mathbb{R}^{S}$ den Vektor aus dem $\mathbb{R}^{S}$ mit $\left(\chi\left(T\right)\right)_s = 1 \Leftrightarrow s \in T$ und ${\chi\left(T\right)}_s = 0 \Leftrightarrow s \notin T$ (charakteristischer Vektor von $T$). Da in dieser Arbeit stets klar ist, auf welches $S$ bezogen wird, wird $\chi\left(T\right)$ nicht zusätzlich durch $S$ indiziert
-\item $EV_n$ als Abkürzung für $\left({[n]\choose 2} \times [n]\right) \backslash \mathop{\dot{\bigcup}}\limits_{\left\{v_1, v_2\right\} \in {[n]\choose 2}} \left(\left\{v_1, v_2\right\}, v_1\right) \mathbin{\dot{\cup}} \left(\left\{v_1, v_2\right\}, v_2\right)$
+\item $EV_n$ als Abkürzung für $\left(\binom{[n]}{2} \times [n]\right) \backslash \mathop{\dot{\bigcup}}\limits_{\left\{v_1, v_2\right\} \in \binom{[n]}{2}} \left(\left\{v_1, v_2\right\}, v_1\right) \mathbin{\dot{\cup}} \left(\left\{v_1, v_2\right\}, v_2\right)$
 \item Für $n \geq 1$ definieren wir $a +_{\left[n\right]} b$ bzw. $a  -_{\left[n\right]} b$ als Abkürzung für $a + b \mod n$ bzw. $a - b \mod n$, wobei das Ergebnis in $\left[n\right]$ liegt (im Gegensatz zur "`normalen"' Addition bzw. Subtraktion modulo $n$)
-\item $E \left(S\right) := {S \choose 2} \cap E$ und $A\left(S\right) := S^{\underline{2}} \cap A$
+\item $E \left(S\right) := \binom{S}{2} \cap E$ und $A\left(S\right) := S^{\underline{2}} \cap A$
 \item Für $T$ mit $S \cap T = \emptyset$ wollen wir $\delta\left(S, T\right) := \bigcup_{s \in S, t \in T} \left\{\left\{s, t\right\}\right\}$ definieren
 \end{itemize}
 \end{Def}
@@ -97,7 +97,7 @@ Sei $S$ eine Menge und $n\in\mathbb{Z}_{\geq 0}$. Dann definieren wir
 \section{Graphentheoretische Grundlagen}
 
 \begin{Def}
-Sei $V$ (Knotenmenge -- "`vertices"') endlich und nichtleer und sei $E \subseteq {V \choose 2}$ (Kantenmenge -- "`edges"'). Dann bezeichnen wir $\left(V, E\right)$ als \emph{Graph}.
+Sei $V$ (Knotenmenge -- "`vertices"') endlich und nichtleer und sei $E \subseteq \binom{V}{2}$ (Kantenmenge -- "`edges"'). Dann bezeichnen wir $\left(V, E\right)$ als \emph{Graph}.
 %Für einen vorgegebenen Graph $G$ wollen wir seine Knotenmenge mit $V\left(G\right)$ und seine Kantenmenge mit $E\left(G\right)$ bezeichnen.
 \end{Def}
 
@@ -112,7 +112,7 @@ zu. Hierfür sind in der Literatur Begriffe wie "`nichtschlichte Graphen"', "`Mu
 \end{Bem}
 
 \begin{BspDef}
-Sei $n \geq 1$. Dann definieren wir $K_n := \left(\left[n\right], {\left[n\right] \choose 2}\right)$ als den \emph{vollständigen Graphen} auf der Knotenmenge $\left[n\right]$.
+Sei $n \geq 1$. Dann definieren wir $K_n := \left(\left[n\right], \binom{\left[n\right]}{2}\right)$ als den \emph{vollständigen Graphen} auf der Knotenmenge $\left[n\right]$.
 
 Für $n \geq 1$ definieren wir $W_n := \left(\left[n\right], \left\{\left\{1, 2\right\}, \left\{2, 3\right\}, \ldots, \left\{n-1, n\right\}\right\}\right)$ als den \emph{Weg-Graphen} auf der Knotenmenge $\left[n\right]$.
 
@@ -129,11 +129,11 @@ Sei $G=(V, E)$ ein Graph und $v\in V$. Dann setzen wir
 Nun zu den Konstrukten des \emph{Untergraphs} und der \emph{Isomorphie} von Graphen:
 
 \begin{Def}
-Sei $G=(V, E)$ ein Graph und $V' \subseteq E$ und $E' \subseteq {V' \choose 2} \cap E$. Dann heißt $\left(V', E'\right)$ ein \emph{Untergraph} oder \emph{Subgraph} von $G$.
+Sei $G=(V, E)$ ein Graph und $V' \subseteq E$ und $E' \subseteq \binom{V'}{2} \cap E$. Dann heißt $\left(V', E'\right)$ ein \emph{Untergraph} oder \emph{Subgraph} von $G$.
 \end{Def}
 
 \begin{Def}
-Seien $G_1=(V_1, E_1)$ und $G_2=(V_2, E_2)$ Graphen. Wir nennen $G_1$ und $G_2$ \emph{isomorph}, wenn es eine bijektive Abbildung $\Psi : V_1 \rightarrow V_2$ gibt, so dass für alle $\left\{v, v'\right\} \in {V_1 \choose 2}$ gilt: $\left\{\Psi\left(v\right), \Psi\left(v'\right)\right\} \in E_2 \Leftrightarrow \left\{v, v'\right\} \in E_1$ .
+Seien $G_1=(V_1, E_1)$ und $G_2=(V_2, E_2)$ Graphen. Wir nennen $G_1$ und $G_2$ \emph{isomorph}, wenn es eine bijektive Abbildung $\Psi : V_1 \rightarrow V_2$ gibt, so dass für alle $\left\{v, v'\right\} \in \binom{V_1}{2}$ gilt: $\left\{\Psi\left(v\right), \Psi\left(v'\right)\right\} \in E_2 \Leftrightarrow \left\{v, v'\right\} \in E_1$ .
 \end{Def}
 
 \begin{Def}
@@ -203,7 +203,7 @@ Sei G ein Graph. G heißt \emph{Wald}, wenn G kreisfrei ist. Einen zusammenhäng
 Äquivalente Definitionen dafür, dass ein Graph $G=(V, E)$ ein Baum ist, sind
 \begin{itemize}
 \item $G$ ist minimal zusammenhängend (d. h. zusammenhängend und für alle $e\in E$ gilt: \linebreak $(V, E \backslash \left\{e\right\})$ ist nicht zusammenhängend)
-\item $G$ ist maximal kreisfrei (d. h. kreisfrei und für alle $e\in {V \choose 2} \backslash E$ gilt: $(V, E \mathbin{\dot{\cup}} \left\{e\right\})$ enthält einen Kreis)
+\item $G$ ist maximal kreisfrei (d. h. kreisfrei und für alle $e\in \binom{V}{2} \backslash E$ gilt: $(V, E \mathbin{\dot{\cup}} \left\{e\right\})$ enthält einen Kreis)
 \item $G$ ist zusammenhängend und enthält $\left|V\right|-1$ Kanten
 \item $G$ ist kreisfrei (Wald) und enthält $\left|V\right|-1$ Kanten
 \end{itemize}
@@ -404,7 +404,7 @@ x_e & \geq & \left. 0\ \forall e \in E \right\}. \nonumber
 
 Sei $\Pi\left(V\right)$ die Menge aller Partitionen von $V$, d. h. Zerlegungen von $V$ in (disjunkte) nichtleere Teilmengen, und sei $\mathcal{P} \in \Pi\left(V\right)$. Dann definieren wir
 \begin{displaymath}
-\delta_E \left(\mathcal{P}\right) := \left\{ \left\{v_1, v_2\right\}: v_1 \in P_1, v_2 \in P_2, \left\{P_1, P_2\right\} \in {\mathcal{P} \choose 2} \right\} \cap E.
+\delta_E \left(\mathcal{P}\right) := \left\{ \left\{v_1, v_2\right\}: v_1 \in P_1, v_2 \in P_2, \left\{P_1, P_2\right\} \in \binom{\mathcal{P}}{2} \right\} \cap E.
 \end{displaymath}
 
 Dann gilt:
@@ -477,7 +477,7 @@ Durch Anwendung der Identität
 x\left(E\right) - x\left(\delta_E\left(\mathcal{P}\right)\right) & = & \sum_{\left\{v_1, v_2\right\} \in E} x_{\left\{v_1, v_2\right\}} - \left(\sum_{\substack{
 v_1 \in S, \\
 v_2 \in \left[n\right] \backslash S: \\
-\left\{v_1, v_2\right\} \in E}} x_{\left\{v_1, v_2\right\}} + \sum_{\left\{v_1, v_2\right\} \in {\left[n\right] \backslash S \choose 2} \cap E} x_{\left\{v_1, v_2\right\}}\right) \\
+\left\{v_1, v_2\right\} \in E}} x_{\left\{v_1, v_2\right\}} + \sum_{\left\{v_1, v_2\right\} \in {\binom{\left[n\right] \backslash S}{2}} \cap E} x_{\left\{v_1, v_2\right\}}\right) \\
 & = & x\left(E\left(S\right)\right)
 \end{eqnarray*}
 auf die linke Seite von \eqref{eq:pre_mcut} ist alles gezeigt.
@@ -518,7 +518,7 @@ In \cite{matousek2007diskrete} und \cite{lovasz_combinatorics} wird folgender Sa
 \begin{Sa}
 (Cayley-Formel)
 \begin{displaymath}
-\left|\left\{T \subseteq {\left[n\right] \choose 2}: T\textnormal{ aufspannender Baum in }K_n\right\}\right| = n^{n-2}.
+\left|\left\{T \subseteq \binom{\left[n\right]}{2}: T\textnormal{ aufspannender Baum in }K_n\right\}\right| = n^{n-2}.
 \end{displaymath}
 \end{Sa}
 
@@ -594,7 +594,7 @@ Dieser wird in \citep[S:~862]{schrijver2003combinatorial} beschrieben. Seine Gü
 
 Demnach sind $\Theta\left(2^n\right)$ Ungleichungen aus \eqref{eq:cycle_elim2} in der Beschreibung von $P^{K_n, spt}$ irredundant.
 
-Da es Algorithmen gibt, die für ein vorgegebenes $c \in \mathbb{R}^{n \choose 2}$ in polynomiell beschränkter Zeit einen aufspannenden Baum, Wald bzw. Konnektor von $K_n$ finden, dessen charakteristischer Vektor $x$ bezüglich $\left\langle c, x\right\rangle$ minimiert/maximiert wird (beispielsweise Algorithmen von Kruskal oder Prim; vgl. \cite{korte2012combinatorial} und \cite{schrijver2003combinatorial}) und somit die Ungleichungen in polynomiell beschränkter Zeit separierbar sind, ist dies für die meisten praktischen Anwendungen kein Problem.\footnote{Ein -- zugegebenermaßen eher theoretisches -- Beispiel, wo dies jedoch problematisch wird, ist das Problem "`Gegeben sei ein Punkt im $\mathbb{R}^{\left[n\right] \choose 2}$; liste alle Ungleichungen des Spannbaum-, Wald- bzw. Konnektor-Polytops auf, die von diesem Punkt \emph{erfüllt} werden."', da hier die Output-Länge exponentiell in n groß werden kann.}
+Da es Algorithmen gibt, die für ein vorgegebenes $c \in \mathbb{R}^{\binom{\left[n\right]}{2}}$ in polynomiell beschränkter Zeit einen aufspannenden Baum, Wald bzw. Konnektor von $K_n$ finden, dessen charakteristischer Vektor $x$ bezüglich $\left\langle c, x\right\rangle$ minimiert/maximiert wird (beispielsweise Algorithmen von Kruskal oder Prim; vgl. \cite{korte2012combinatorial} und \cite{schrijver2003combinatorial}) und somit die Ungleichungen in polynomiell beschränkter Zeit separierbar sind, ist dies für die meisten praktischen Anwendungen kein Problem.\footnote{Ein -- zugegebenermaßen eher theoretisches -- Beispiel, wo dies jedoch problematisch wird, ist das Problem "`Gegeben sei ein Punkt im $\mathbb{R}^{\binom{\left[n\right]}{2}}$; liste alle Ungleichungen des Spannbaum-, Wald- bzw. Konnektor-Polytops auf, die von diesem Punkt \emph{erfüllt} werden."', da hier die Output-Länge exponentiell in n groß werden kann.}
 
 Dennoch wäre es sinnvoll, eine Beschreibung des Spannbaum-, Wald- bzw. Konnek\-tor-Polytops zu besitzen, welche mit polynomiell in $n$ beschränkt vielen Ungleichungen auskäme. Um dies zu erreichen, werden wir im Folgenden mit sogenannten \emph{erweiterten Formulierungen} arbeiten.
 
