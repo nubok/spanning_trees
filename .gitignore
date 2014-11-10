@@ -7,6 +7,7 @@
 *.dvi
 *.log
 *.pdf
+*.ps
 *.toc
 *.synctex.gz
 
