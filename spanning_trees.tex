@@ -1545,18 +1545,71 @@ y
 mit Gleichheit im Falle $S=\left[n\right]$.
 \end{Prop}
 \begin{bew}
-\begin{eqnarray*}
-\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} & = & \sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}} \left(
-3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right)
+{
+\allowdisplaybreaks
+\begin{align*}
+& \sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u} \\
+= & \frac{1}{\left|S\right|}
+\sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}}
+\left(
+\sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u}
++ \sum_{u \in \left[n\right] \backslash \left\{v_1, v_3\right\}} y_{\left\{v_1, v_3\right\}, u}
++ \sum_{u \in \left[n\right] \backslash \left\{v_2, v_3\right\}} y_{\left\{v_2, v_3\right\}, u}
+\right)
+\\
+& + \frac{2}{\left|S\right|} \left(
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in S \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u}
++ 
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash S} y_{\left\{v_1, v_2\right\}, u}
+\right) \\
+= & \frac{1}{\left|S\right|}
+\sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}}
+\left(
+\sum_{u \in \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(
+y_{\left\{v_1, v_2\right\}, u}
++ y_{\left\{v_1, v_3\right\}, u}
++ y_{\left\{v_2, v_3\right\}, u}
+\right)
 \right. \\
-& & + \sum_{u \in  \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right) \\
-& & \left.- 2 \sum_{u \in \left[n\right] \backslash S} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right)\right) \\
-& \stackrel{y \geq 0}{\geq} & \sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}} \left(
-3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right)
+& \left.
++ 2 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right)
+\right)
+\\
+& + \frac{2}{\left|S\right|} \left(
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in S \backslash \left\{v_1, v_2\right\}} y_{\left\{v_1, v_2\right\}, u}
++ 
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash S} y_{\left\{v_1, v_2\right\}, u}
+\right) \\
+= & \frac{1}{\left|S\right|}
+\sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}}
+\left(
+\sum_{u \in \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(
+y_{\left\{v_1, v_2\right\}, u}
++ y_{\left\{v_1, v_3\right\}, u}
++ y_{\left\{v_2, v_3\right\}, u}
+\right)
 \right. \\
-& & \left.+ \sum_{u \in  \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(y_{\left\{v_1, v_2\right\}, u} + y_{\left\{v_1, v_3\right\}, u} + y_{\left\{v_2, v_3\right\}, u}\right)\right) \\
-& \stackrel{\eqref{eq:simpl_sum}}{=} & \left(\left|S\right| - 1\right) \cdot \left(\left|S\right| - 2\right).
-\end{eqnarray*}
+& \left.
++ 3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right)
+\right)
+\\
+& + \frac{2}{\left|S\right|}
+\sum_{\left\{v_1, v_2\right\} \in {S \choose 2}} \sum_{u \in \left[n\right] \backslash S} y_{\left\{v_1, v_2\right\}, u} \\
+\stackrel{y \geq 0}{\geq} & \frac{1}{\left|S\right|}
+\sum_{\left\{v_1, v_2, v_3\right\} \in {S \choose 3}}
+\left(
+\sum_{u \in \left[n\right] \backslash \left\{v_1, v_2, v_3\right\}} \left(
+y_{\left\{v_1, v_2\right\}, u}
++ y_{\left\{v_1, v_3\right\}, u}
++ y_{\left\{v_2, v_3\right\}, u}
+\right)
+\right. \\
+& \left.
++ 3 \left(y_{\left\{v_1, v_2\right\}, v_3} + y_{\left\{v_1, v_3\right\}, v_2} + y_{\left\{v_2, v_3\right\}, v_1}\right)
+\right) \\
+\stackrel{\eqref{eq:simpl_sum}}{=} & \left(\left|S\right| - 1\right) \cdot \left(\left|S\right| - 2\right).
+\end{align*}
+}
 \end{bew}
 
 \begin{bew} (Satz \ref{sa:erw_all_symm}) Die Einbettungen sind klar:
@@ -1573,6 +1626,8 @@ Sei $S \subseteq \left[n\right]$. Dann gilt:
 \end{eqnarray*}
 
 Sei umgekehrt $\mathcal{P}$ eine Partition von $\left[n\right]$. Dann gilt
+{
+\allowdisplaybreaks
 \begin{eqnarray*}
 \sum_{\left\{v_1, v_2\right\} \in \delta\left(\mathcal{P}\right)} x_{\left\{v_1, v_2\right\}} & \stackrel{\eqref{eq:simpl_sum2}}{\substack{= \\ \geq}} & \frac{n \cdot \left(n - 1\right)}{2} - \sum_{P \in \mathcal{P}} \frac{\left|P\right| \cdot \left(\left|P\right| - 1\right)}{2} \\
 & &  - \frac{1}{2} \sum_{\left\{P_1, P_2\right\} \in {\mathcal{P} \choose 2}} \sum_{\substack{v_1 \in P_1, \\
@@ -1585,6 +1640,7 @@ v_2 \in P_2}} \sum_{u \in \left[n\right] \backslash \left\{v_1, v_2\right\}} y_{
 & = & \left(n - 1\right) - \underbrace{\sum_{P \in \mathcal{P}} \left(\left|P\right| - 1\right)}_{= n - \left|\mathcal{P}\right|} \\
 & = & \left|\mathcal{P}\right| - 1.
 \end{eqnarray*}
+}
 \end{bew}
 
 \section{Asymmetrische erweiterte Formulierungen}
@@ -1628,7 +1684,7 @@ z
 & = & \sum_{v_1 \in S \backslash \left\{\max S\right\}} \left(z_{\left(v_1, \max S\right), n} + z_{\left(\max S, v_1\right), n} \right. \\
 & & \left. + \sum_{v_2 \in S \backslash \left\{\max S, v_1\right\}} z_{\left(v_1, v_2\right), \max S}\right) \\
 & \stackrel{z \geq 0}{\leq} & \sum_{v_1 \in S \backslash \left\{\max S\right\}} \left(z_{\left(v_1, \max S\right), n} + z_{\left(\max S, v_1\right), n} \right. \\
-& & \left. + \sum_{v_2 \in \left[n\right] \backslash \left\{\max S, v_1\right\}} z_{\left(v_1, v_2\right), \max S}\right) \\
+& & \left. + \sum_{v_2 \in \left[\max S - 1\right] \backslash \left\{v_1\right\}} z_{\left(v_1, v_2\right), \max S}\right) \\
 & \stackrel{\eqref{eq:sptkon_erweitert_asymm4_prim_2}}{\leq} & \left|S\right| - 1.
 \end{eqnarray*}
 \end{bew}
